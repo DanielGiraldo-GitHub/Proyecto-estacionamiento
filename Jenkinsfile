@@ -50,7 +50,7 @@ pipeline {
 				echo '------------>Analisis de codigo estatico<------------'  
 		
 				 withSonarQubeEnv('Sonar') {
-                 sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner-Dproject.settings=sonar-project.properties -Dsonar.organization=DanielGiraldo-GitHub  -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=6294439d51de179b274690e548b084ac32b14a0d"
+                 sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner-Dproject.settings=sonar-project.properties -Dsonar.organization=DanielGiraldo-GitHub"
            }
           }
 }
