@@ -28,7 +28,8 @@ public class ParqueaderoController {
 	public RestResponse saveOrUpdate(@RequestBody String parqueaderoJson) throws JsonParseException, JsonMappingException, IOException  {
 		
 		this.mapper = new ObjectMapper();
-		Parqueadero parqueadero = this.mapper.readValue(parqueaderoJson,Parqueadero.class);
+		Parqueadero parqueadero = this.mapper.readValue(parqueaderoJson,Parqueadero.class); 
+		
 		return null; 
 
 	}
