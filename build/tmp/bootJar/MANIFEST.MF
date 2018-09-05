@@ -1,2 +1,5 @@
 Manifest-Version: 1.0
+Start-Class: co.com.ceiba.CeibaEstacionamiento.daniel.giraldo.Applicat
+ ion
+Main-Class: org.springframework.boot.loader.JarLauncher
 
