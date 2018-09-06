@@ -1,0 +1,5 @@
+## YAML Template.
+---
+#server:
+ #   port: 8082
+ #   servlet.path: /vehiculo
