@@ -19,27 +19,27 @@ public class ParqueaderoRepositoryImpl implements ParqueaderoRepository {
 	ResultSet result;
 	
 	@Override
-	public int contarCarrosParqueados() {
+	public Integer contarCarrosParqueados() {
 
-		String sentencia = "SELECT COUNT(p.ID) "
-				         + "FROM   parqueadero p JOIN vehiculo v "
-				         + "ON     p.ID_VEHICULO   = v.ID WHERE p.ESTADO <> 0 "
-				         + "AND    v.TIPO_VEHICULO = 'C';";
+		String sentencia = "SELECT COUNT(p.id) "
+				         + "FROM   Parqueadero p JOIN Vehiculo v "
+				         + "ON     p.idVehiculo   = v.id WHERE p.estado <> 0 "
+				         + "AND    v.tipoVehiculo = 'C'";
 		Query query = entityManager.createQuery(sentencia);
 		
-		return (int) query.getSingleResult();			
+		return Integer.parseInt(query.getSingleResult().toString());			
 	}
 	
 	@Override
-	public int contarMotosParqueados() {
+	public Integer contarMotosParqueados() {
 
-		String sentencia = "SELECT COUNT(p.ID) "
-				         + "FROM   parqueadero p JOIN vehiculo v "
-				         + "ON     p.ID_VEHICULO   = v.ID WHERE p.ESTADO <> 0 "
-				         + "AND    v.TIPO_VEHICULO = 'M';";
+		String sentencia = "SELECT COUNT(p.id) "
+				         + "FROM   Parqueadero p JOIN Vehiculo v "
+				         + "ON     p.idVehiculo   = v.id WHERE p.estado <> 0 "
+				         + "AND    v.tipoVehiculo = 'M'";
 		Query query = entityManager.createQuery(sentencia);
 		
-		return (int) query.getSingleResult();			
+		return  Integer.parseInt(query.getSingleResult().toString());			
 	}
 
 }

@@ -6,14 +6,20 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "parqueadero")
 @Access(AccessType.FIELD)
-public class Parqueadero extends ParentEntity {
+public class Parqueadero {
 
-	private static final long serialVersionUID = -967609858153698764L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID", unique = true, nullable = false)
+	private int id;
 
 	@Column(name = "FECHA_INGRESO", nullable = false)
 	private Date fehcaIngreso;
@@ -30,7 +36,14 @@ public class Parqueadero extends ParentEntity {
 	@Column(name = "ESTADO", nullable = false)
 	private boolean estado;
 
-	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Date getFehcaIngreso() {
 		return fehcaIngreso;
 	}
