@@ -7,4 +7,6 @@ public interface VehiculoService {
 
 	RestResponse save(Vehiculo vehiculo);
 	Object buscarVehiculo(String placa);
+	boolean validate(Vehiculo vehiculo);
+	boolean validarPlaca(String placa);
 }

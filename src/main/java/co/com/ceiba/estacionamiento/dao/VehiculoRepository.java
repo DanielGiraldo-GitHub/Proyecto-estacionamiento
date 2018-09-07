@@ -6,7 +6,6 @@ public interface VehiculoRepository {
 
 
 	RestResponse guardarVehiculo(Vehiculo vehiculo);
-
 	Object buscarVehiculo(String placa);
 	
 }

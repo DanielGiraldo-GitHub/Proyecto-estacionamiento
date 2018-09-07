@@ -22,12 +22,6 @@ public class Vehiculo extends ParentEntity {
 	@Column(name = "CILINDRAJE", nullable = false)
 	private int cilindraje;
 	
-	public Vehiculo(String placa, String tipoVehiculo, int cilindraje) {
-		super();
-		this.placa = placa;
-		this.tipoVehiculo = tipoVehiculo;
-		this.cilindraje = cilindraje;
-	}
 	
 	public String getPlaca() {
 		return placa;
