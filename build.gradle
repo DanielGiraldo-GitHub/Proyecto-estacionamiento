@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '5.0.8.RELEASE'
+		springBootVersion = '2.0.4.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -28,6 +28,7 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
+    compile("org.json:json:20141113")
 	runtime('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
