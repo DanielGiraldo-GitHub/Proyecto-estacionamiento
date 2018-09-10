@@ -1,8 +1,6 @@
 package co.com.ceiba.estacionamiento.dao;
 
 import java.sql.ResultSet;
-import java.text.ParseException;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -10,7 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
-import co.com.ceiba.estacionamiento.util.ControlFecha;
 import co.com.ceiba.estacionamiento.util.RestResponse;
 
 @Repository
@@ -19,7 +16,7 @@ public class VehiculoRepositoryImpl implements VehiculoRepository {
 
 	@PersistenceContext
 	public EntityManager entityManager;
-
+	
 	ResultSet result;
 
 	@Override
@@ -32,9 +29,14 @@ public class VehiculoRepositoryImpl implements VehiculoRepository {
 	@Override
 	public Object buscarVehiculo(String placa) {
 
-		String sentencia = "SELECT v FROM Vehiculo v WHERE v.placa ='" + placa + "'";
-		Query query = entityManager.createQuery(sentencia);
-		return (query.getSingleResult());
+		Query query = entityManager.createQuery("SELECT v FROM Vehiculo v WHERE v.placa =?");
+		query.setParameter(0, placa);
+		return (query.getSingleResult());	
+	}
+
+	@Override
+	public Object buscarVehiculoPorId(int idVehiculo) {
+		return 	entityManager.find(Vehiculo.class, idVehiculo);
 	}
 
 }

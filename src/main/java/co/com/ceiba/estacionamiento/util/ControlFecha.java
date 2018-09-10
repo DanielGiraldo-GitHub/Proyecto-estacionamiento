@@ -32,17 +32,16 @@ public class ControlFecha {
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.setTime(formateador.parse(formateador.format(fecha)));
 		fechaActual.add(Calendar.DAY_OF_YEAR, 4);
-		System.out.println("fecha sistema "+fechaActual.getTime());
 		return fechaActual;
 	}
 
-	public int[] calcularTiempo(Date fechaIngreso, Date fechaSalida) {
+	public int[] calcularTiempo(Date fechaIngreso) throws ParseException {
 
 		// la posicion [0] equivale a los dias y la posicion [1] equivale a las
 		// horas
 		int[] tiempo = new int[2];
-
-		int tiempoTotal = (int) ((fechaSalida.getTime() - fechaIngreso.getTime()) / 1000);
+		Calendar fechaSalida = fechaAcutalSistema();
+		int tiempoTotal = (int) ((fechaSalida.getTime().getTime() - fechaIngreso.getTime()) / 1000);
 
 		if (tiempoTotal > MAXIMO_DIA_EN_SEGUNDOS) {
 			tiempo[0] = (int) Math.floor(tiempoTotal / MAXIMO_DIA_EN_SEGUNDOS);

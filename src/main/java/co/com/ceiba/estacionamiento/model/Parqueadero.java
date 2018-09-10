@@ -1,7 +1,6 @@
 package co.com.ceiba.estacionamiento.model;
 
 import java.util.Date;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
@@ -29,8 +28,8 @@ public class Parqueadero {
 
 	@Column(name = "PRECIO", nullable = true)
 	private Double precio;
-
-	@Column(name = "ID_VEHICULO", nullable = false)
+    
+	@Column (name = "ID_VEHICULO", nullable = false,unique = false)
 	private int idVehiculo;
 
 	@Column(name = "ESTADO", nullable = false)
@@ -39,6 +38,14 @@ public class Parqueadero {
 	public int getId() {
 		return id;
 	}
+
+	public Parqueadero(Date fehcaIngreso, int idVehiculo, boolean estado) {
+		super();
+		this.fehcaIngreso = fehcaIngreso;
+		this.idVehiculo = idVehiculo;
+		this.estado = estado;
+	}
+
 
 	public void setId(int id) {
 		this.id = id;

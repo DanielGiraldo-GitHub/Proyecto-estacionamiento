@@ -27,6 +27,7 @@ public class Vehiculo {
 
 	@Column(name = "CILINDRAJE", nullable = false)
 	private int cilindraje;
+	
 
 	public int getId() {
 		return id;
