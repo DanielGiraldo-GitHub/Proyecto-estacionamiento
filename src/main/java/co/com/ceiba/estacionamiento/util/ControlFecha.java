@@ -41,13 +41,22 @@ public class ControlFecha {
 		int[] tiempo = new int[2];
 		Calendar fechaSalida = fechaAcutalSistema();
 		int tiempoTotal = (int) ((fechaSalida.getTime().getTime() - fechaIngreso.getTime()) / 1000);
+		
 		if (tiempoTotal > MAXIMO_DIA_EN_SEGUNDOS) {
-			tiempo[0] = (int) Math.floor(tiempoTotal / MAXIMO_DIA_EN_SEGUNDOS);
+			tiempo[0] = (int) Math.floor(computeMaximoDias(tiempoTotal));
 			tiempoTotal = tiempoTotal - (tiempo[0] * MAXIMO_DIA_EN_SEGUNDOS);
 		}
 		if (tiempoTotal > MAXIMO_HORA_EN_SEGUNDOS) {
-			tiempo[1] = (int) Math.floor(tiempoTotal / MAXIMO_HORA_EN_SEGUNDOS);
+			tiempo[1] = (int) Math.floor(computeMaximoHoras(tiempoTotal));
 		}
 		return tiempo;
+	}
+
+	public float computeMaximoDias(long factor) {
+		return factor / 86400;
+	}
+
+	public float computeMaximoHoras(long factor) {
+		return factor / 3600;
 	}
 }

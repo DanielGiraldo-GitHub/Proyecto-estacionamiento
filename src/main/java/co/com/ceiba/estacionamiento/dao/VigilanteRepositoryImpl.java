@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
+import dominio.excepcion.ParqueaderoException;
 
 @Repository
 @Transactional
@@ -48,7 +49,7 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 			return  query.getResultList();
 			
 		} catch (Exception e) {
-			throw new PersistenceException("Error al cargar los carro que se encuentran estacionados en el parqueadero");
+			throw new  ParqueaderoException("Error al cargar los carro que se encuentran estacionados en el parqueadero");
 		}
 		
 		}
@@ -62,7 +63,7 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 			return  query.getResultList();
 			
 		} catch (Exception e) {
-			throw new PersistenceException("Error al cargar las motos que se encuentran estacionadas en el parqueadero");
+			throw new  ParqueaderoException("Error al cargar las motos que se encuentran estacionadas en el parqueadero");
 		}
 	}
 	
