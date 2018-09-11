@@ -16,9 +16,9 @@ public class ControlTarifas {
 		int horas = tiempoPermanencia[1];
 
 		if (horas > HORAS_PERMANECIA)
-			return ((dias + 1) * PRECIO_HORA_CARROS);
+			return ((dias + 1) * PRECIO_DIA_CARROS);
 		else
-			return (dias * PRECIO_HORA_CARROS + horas * PRECIO_HORA_CARROS);
+			return (dias * PRECIO_DIA_CARROS + horas * PRECIO_HORA_CARROS);
 	}
 
 	public double calcularPrecioMoto(int cilindraje, int[] tiempoPermanencia) {
@@ -30,7 +30,7 @@ public class ControlTarifas {
 		if (cilindraje > MAXIMO_CILINDRAJE_MOTO)
 			precio += COBRO_ADICIONAL_MOTOS;
 
-		else if (horas > HORAS_PERMANECIA) {
+		 if (horas > HORAS_PERMANECIA) {
 			precio += ((dias + 1) * PRECIO_DIA_MOTOS);
 			return precio;
 		} else {

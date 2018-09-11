@@ -28,8 +28,8 @@ public class Parqueadero {
 
 	@Column(name = "PRECIO", nullable = true)
 	private Double precio;
-    
-	@Column (name = "ID_VEHICULO", nullable = false,unique = false)
+
+	@Column(name = "ID_VEHICULO", nullable = false, unique = false)
 	private int idVehiculo;
 
 	@Column(name = "ESTADO", nullable = false)
@@ -39,6 +39,9 @@ public class Parqueadero {
 		return id;
 	}
 
+	public Parqueadero() {
+	}
+
 	public Parqueadero(Date fehcaIngreso, int idVehiculo, boolean estado) {
 		super();
 		this.fehcaIngreso = fehcaIngreso;
@@ -46,16 +49,16 @@ public class Parqueadero {
 		this.estado = estado;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	public Date getFehcaIngreso() {
 		return fehcaIngreso;
+
 	}
 
-	public void setFehcaIngreso(Date fehcaIngreso) {
+	public void setFehcaIngreso(Date fehcaIngreso){
 		this.fehcaIngreso = fehcaIngreso;
 	}
 

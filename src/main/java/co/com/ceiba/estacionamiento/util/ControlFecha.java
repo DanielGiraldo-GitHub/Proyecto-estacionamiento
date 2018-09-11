@@ -9,7 +9,7 @@ public class ControlFecha {
 
 	static final int MAXIMO_DIA_EN_SEGUNDOS = 86400;
 	static final int MAXIMO_HORA_EN_SEGUNDOS = 3600;
-	
+
 	public ControlFecha() {
 		super();
 	}
@@ -27,11 +27,10 @@ public class ControlFecha {
 	public Calendar fechaAcutalSistema() throws ParseException {
 
 		Date fecha = new Date();
-	
-		SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss.SSS");
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.setTime(formateador.parse(formateador.format(fecha)));
-		fechaActual.add(Calendar.DAY_OF_YEAR, 4);
+		fechaActual.add(Calendar.DAY_OF_YEAR, 0);
 		return fechaActual;
 	}
 
@@ -42,7 +41,6 @@ public class ControlFecha {
 		int[] tiempo = new int[2];
 		Calendar fechaSalida = fechaAcutalSistema();
 		int tiempoTotal = (int) ((fechaSalida.getTime().getTime() - fechaIngreso.getTime()) / 1000);
-
 		if (tiempoTotal > MAXIMO_DIA_EN_SEGUNDOS) {
 			tiempo[0] = (int) Math.floor(tiempoTotal / MAXIMO_DIA_EN_SEGUNDOS);
 			tiempoTotal = tiempoTotal - (tiempo[0] * MAXIMO_DIA_EN_SEGUNDOS);

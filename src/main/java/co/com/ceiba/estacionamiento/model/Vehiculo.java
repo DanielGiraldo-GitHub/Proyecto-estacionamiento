@@ -14,12 +14,13 @@ import javax.persistence.Table;
 @Access(AccessType.FIELD)
 public class Vehiculo {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
 	private int id;
 
-	@Column(name = "PLACA", nullable = false, length = 25)
+	@Column(name = "PLACA", unique = true,nullable = false, length = 25)
 	private String placa;
 
 	@Column(name = "TIPO_VEHICULO", nullable = false, length = 1)
