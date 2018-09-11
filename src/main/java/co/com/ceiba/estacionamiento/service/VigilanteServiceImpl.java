@@ -59,7 +59,7 @@ public class VigilanteServiceImpl implements VigilanteService {
 	public Vehiculo buscarVehiculo(Vehiculo vehiculo) {
 		try {
 			return vigilanteRepository.buscarVehiculo(vehiculo.getPlaca());
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			return null;
 		}
 

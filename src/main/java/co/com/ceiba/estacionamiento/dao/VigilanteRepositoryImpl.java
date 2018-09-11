@@ -1,10 +1,7 @@
 package co.com.ceiba.estacionamiento.dao;
-
-import java.sql.ResultSet;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
@@ -16,10 +13,13 @@ import dominio.excepcion.ParqueaderoException;
 @Transactional
 public class VigilanteRepositoryImpl implements VigilanteRepository {
 	
+	public VigilanteRepositoryImpl(EntityManager entityManager) {
+		super();
+		this.entityManager = entityManager;
+	}
+
 	@PersistenceContext
 	public EntityManager entityManager;
-
-	ResultSet result;
 
 	@Override
 	public Integer contarCarrosParqueados() {
@@ -78,9 +78,8 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 	}
 	
 	@Override
-	public void guardarVehiculo(Vehiculo vehiculo) throws RuntimeException {
+	public void guardarVehiculo(Vehiculo vehiculo){
 		entityManager.persist(vehiculo);
-		
 	}
 
 	@Override

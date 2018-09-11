@@ -52,11 +52,11 @@ public class ControlFecha {
 		return tiempo;
 	}
 
-	public float computeMaximoDias(long factor) {
+	public int computeMaximoDias(int factor) {
 		return factor / 86400;
 	}
 
-	public float computeMaximoHoras(long factor) {
+	public int computeMaximoHoras(int factor) {
 		return factor / 3600;
 	}
 }
