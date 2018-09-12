@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
-import dominio.excepcion.ParqueaderoException;
 
 @Repository
 @Transactional
@@ -46,7 +45,10 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 	public List<Vehiculo> listarCarrosParqueados() {
 			Query query = entityManager.createQuery("SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso "
 					+ "FROM Parqueadero p join Vehiculo v on p.idVehiculo = v.id WHERE   v.tipoVehiculo = 'C' and p.estado <> 0");
-			return query.getResultList();
+			
+			@SuppressWarnings("unchecked")
+			List<Vehiculo> lista = query.getResultList();
+			return lista;
 	}
 
 	@Override
@@ -54,7 +56,9 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 			Query query = entityManager.createQuery("SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso "
 					+ "                               FROM    Parqueadero p join Vehiculo v on p.idVehiculo = v.id "
 					+ "                               WHERE   v.tipoVehiculo = 'M' and p.estado <> 0");
-			return query.getResultList();
+			@SuppressWarnings("unchecked")
+			List<Vehiculo> lista = query.getResultList();
+			return lista;
 	}
 
 	@Override
@@ -91,7 +95,7 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 					+ "                               WHERE   p.estado <> 0 AND v.placa =?");
 			query.setParameter(0, placa);
 			return (Vehiculo) (query.getSingleResult());
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			return null;
 		}
 
@@ -109,7 +113,7 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 					.createQuery("SELECT p FROM Parqueadero p WHERE p.estado <> 0 AND  p.idVehiculo =?");
 			query.setParameter(0, idVehiculo);
 			return (Parqueadero) (query.getSingleResult());
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			return null;
 		}
 	}

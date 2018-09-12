@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class co.com.ceiba.estacionamiento.unitaria.VigilanteRepositoryImplTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class co.com.ceiba.estacionamiento.unitaria.VigilanteRepositoryImplTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/co.com.ceiba.estacionamiento.unitaria.html">co.com.ceiba.estacionamiento.unitaria</a> &gt; VigilanteRepositoryImplTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">9</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">4</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.160s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">55%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+<li>
+<a href="#tab3">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="contarCarrosParqueadosTest"></a>
+<h3 class="failures">contarCarrosParqueadosTest</h3>
+<span class="code">
+<pre>java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped [SELECT COUNT(p.id) FROM   Parqueadero p JOIN co.com.ceiba.estacionamiento.model.Vehiculo v ON     p.idVehiculo   = v.id WHERE p.estado &lt;&gt; 0 AND    v.tipoVehiculo = 'C']
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:133)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:157)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:164)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:670)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:23)
+	at co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl.contarCarrosParqueados(VigilanteRepositoryImpl.java:30)
+	at co.com.ceiba.estacionamiento.unitaria.VigilanteRepositoryImplTest.contarCarrosParqueadosTest(VigilanteRepositoryImplTest.java:110)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:109)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped [SELECT COUNT(p.id) FROM   Parqueadero p JOIN co.com.ceiba.estacionamiento.model.Vehiculo v ON     p.idVehiculo   = v.id WHERE p.estado &lt;&gt; 0 AND    v.tipoVehiculo = 'C']
+	at org.hibernate.hql.internal.ast.QuerySyntaxException.generateQueryException(QuerySyntaxException.java:79)
+	at org.hibernate.QueryException.wrapWithQueryString(QueryException.java:103)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:217)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:141)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.&lt;init&gt;(HQLQueryPlan.java:115)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.&lt;init&gt;(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:153)
+	at org.hibernate.internal.AbstractSharedSessionContract.getQueryPlan(AbstractSharedSessionContract.java:553)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:662)
+	... 51 more
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped
+	at org.hibernate.hql.internal.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:169)
+	at org.hibernate.hql.internal.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:91)
+	at org.hibernate.hql.internal.ast.tree.FromClause.addFromElement(FromClause.java:79)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:326)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3706)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:3595)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:720)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:576)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:313)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:261)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:266)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:189)
+	... 57 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="contarMotosParqueadosTest"></a>
+<h3 class="failures">contarMotosParqueadosTest</h3>
+<span class="code">
+<pre>java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped [SELECT COUNT(p.id) FROM   Parqueadero p JOIN co.com.ceiba.estacionamiento.model.Vehiculo v ON     p.idVehiculo   = v.id WHERE p.estado &lt;&gt; 0 AND    v.tipoVehiculo = 'M']
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:133)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:157)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:164)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:670)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:23)
+	at co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl.contarMotosParqueados(VigilanteRepositoryImpl.java:40)
+	at co.com.ceiba.estacionamiento.unitaria.VigilanteRepositoryImplTest.contarMotosParqueadosTest(VigilanteRepositoryImplTest.java:124)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:109)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped [SELECT COUNT(p.id) FROM   Parqueadero p JOIN co.com.ceiba.estacionamiento.model.Vehiculo v ON     p.idVehiculo   = v.id WHERE p.estado &lt;&gt; 0 AND    v.tipoVehiculo = 'M']
+	at org.hibernate.hql.internal.ast.QuerySyntaxException.generateQueryException(QuerySyntaxException.java:79)
+	at org.hibernate.QueryException.wrapWithQueryString(QueryException.java:103)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:217)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:141)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.&lt;init&gt;(HQLQueryPlan.java:115)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.&lt;init&gt;(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:153)
+	at org.hibernate.internal.AbstractSharedSessionContract.getQueryPlan(AbstractSharedSessionContract.java:553)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:662)
+	... 51 more
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped
+	at org.hibernate.hql.internal.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:169)
+	at org.hibernate.hql.internal.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:91)
+	at org.hibernate.hql.internal.ast.tree.FromClause.addFromElement(FromClause.java:79)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:326)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3706)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:3595)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:720)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:576)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:313)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:261)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:266)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:189)
+	... 57 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="listarCarrosParqueadosTest"></a>
+<h3 class="failures">listarCarrosParqueadosTest</h3>
+<span class="code">
+<pre>java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped [SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso FROM Parqueadero p join co.com.ceiba.estacionamiento.model.Vehiculo v on p.idVehiculo = v.id WHERE   v.tipoVehiculo = 'C' and p.estado &lt;&gt; 0]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:133)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:157)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:164)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:670)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:23)
+	at co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl.listarCarrosParqueados(VigilanteRepositoryImpl.java:47)
+	at co.com.ceiba.estacionamiento.unitaria.VigilanteRepositoryImplTest.listarCarrosParqueadosTest(VigilanteRepositoryImplTest.java:150)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:109)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped [SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso FROM Parqueadero p join co.com.ceiba.estacionamiento.model.Vehiculo v on p.idVehiculo = v.id WHERE   v.tipoVehiculo = 'C' and p.estado &lt;&gt; 0]
+	at org.hibernate.hql.internal.ast.QuerySyntaxException.generateQueryException(QuerySyntaxException.java:79)
+	at org.hibernate.QueryException.wrapWithQueryString(QueryException.java:103)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:217)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:141)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.&lt;init&gt;(HQLQueryPlan.java:115)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.&lt;init&gt;(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:153)
+	at org.hibernate.internal.AbstractSharedSessionContract.getQueryPlan(AbstractSharedSessionContract.java:553)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:662)
+	... 51 more
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped
+	at org.hibernate.hql.internal.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:169)
+	at org.hibernate.hql.internal.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:91)
+	at org.hibernate.hql.internal.ast.tree.FromClause.addFromElement(FromClause.java:79)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:326)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3706)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:3595)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:720)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:576)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:313)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:261)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:266)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:189)
+	... 57 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="listarMotosParqueadasTest"></a>
+<h3 class="failures">listarMotosParqueadasTest</h3>
+<span class="code">
+<pre>java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped [SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso                                FROM    Parqueadero p join co.com.ceiba.estacionamiento.model.Vehiculo v on p.idVehiculo = v.id                                WHERE   v.tipoVehiculo = 'M' and p.estado &lt;&gt; 0]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:133)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:157)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:164)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:670)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:23)
+	at co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl.listarMotosParqueadas(VigilanteRepositoryImpl.java:54)
+	at co.com.ceiba.estacionamiento.unitaria.VigilanteRepositoryImplTest.listarMotosParqueadasTest(VigilanteRepositoryImplTest.java:138)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:109)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped [SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso                                FROM    Parqueadero p join co.com.ceiba.estacionamiento.model.Vehiculo v on p.idVehiculo = v.id                                WHERE   v.tipoVehiculo = 'M' and p.estado &lt;&gt; 0]
+	at org.hibernate.hql.internal.ast.QuerySyntaxException.generateQueryException(QuerySyntaxException.java:79)
+	at org.hibernate.QueryException.wrapWithQueryString(QueryException.java:103)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:217)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:141)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.&lt;init&gt;(HQLQueryPlan.java:115)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.&lt;init&gt;(HQLQueryPlan.java:77)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:153)
+	at org.hibernate.internal.AbstractSharedSessionContract.getQueryPlan(AbstractSharedSessionContract.java:553)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:662)
+	... 51 more
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: Parqueadero is not mapped
+	at org.hibernate.hql.internal.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:169)
+	at org.hibernate.hql.internal.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:91)
+	at org.hibernate.hql.internal.ast.tree.FromClause.addFromElement(FromClause.java:79)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:326)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3706)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:3595)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:720)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:576)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:313)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:261)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:266)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:189)
+	... 57 more
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">buscarVehiculoNoEncontradoTest</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">buscarVehiculoTest</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">contarCarrosParqueadosTest</td>
+<td class="failures">0.003s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">contarMotosParqueadosTest</td>
+<td class="failures">0.003s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">guardarVehiculoExistenteTest</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">guardarVehiculoSinPlacaTest</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">guardarVehiculoTest</td>
+<td class="success">0.037s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">listarCarrosParqueadosTest</td>
+<td class="failures">0.012s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">listarMotosParqueadasTest</td>
+<td class="failures">0.076s</td>
+<td class="failures">failed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>08:59:56.206 [Test worker] DEBUG org.hibernate.jpa.HibernatePersistenceProvider - Located and parsed 1 persistence units; checking each
+08:59:56.206 [Test worker] DEBUG org.hibernate.jpa.HibernatePersistenceProvider - Checking persistence-unit [name=TestPersistence, explicit-provider=org.hibernate.jpa.HibernatePersistenceProvider] against incoming persistence unit name [TestPersistence]
+08:59:56.206 [Test worker] DEBUG org.hibernate.jpa.boot.spi.ProviderChecker - Persistence-unit [TestPersistence] requested PersistenceProvider [org.hibernate.jpa.HibernatePersistenceProvider]
+08:59:56.206 [Test worker] DEBUG org.hibernate.jpa.internal.util.LogHelper - PersistenceUnitInfo [
+	name: TestPersistence
+	persistence provider classname: org.hibernate.jpa.HibernatePersistenceProvider
+	classloader: null
+	excludeUnlistedClasses: false
+	JTA datasource: null
+	Non JTA datasource: null
+	Transaction type: RESOURCE_LOCAL
+	PU root URL: file:/C:/Users/daniel.giraldo/Documents/GitHub/Ceiba-Estacionamiento(daniel.giraldo)/build/resources/main/
+	Shared Cache Mode: null
+	Validation Mode: null
+	Jar files URLs []
+	Managed classes names [
+		co.com.ceiba.estacionamiento.model.Vehiculo
+		co.com.ceiba.estacionamiento.unitaria.TestVigilanteRepository]
+	Mapping files names []
+	Properties [
+		javax.persistence.jdbc.driver: com.mysql.jdbc.Driver
+		javax.persistence.jdbc.password: 1234
+		javax.persistence.jdbc.url: jdbc:mysql://localhost:3306/parqueadero
+		hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+		hibernate.show_sql: true
+		javax.persistence.jdbc.user: root]
+08:59:56.207 [Test worker] DEBUG org.hibernate.integrator.internal.IntegratorServiceImpl - Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+08:59:56.207 [Test worker] DEBUG org.hibernate.integrator.internal.IntegratorServiceImpl - Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+08:59:56.207 [Test worker] DEBUG org.hibernate.integrator.internal.IntegratorServiceImpl - Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+08:59:56.207 [Test worker] DEBUG org.hibernate.integrator.internal.IntegratorServiceImpl - Adding Integrator [org.hibernate.jpa.event.spi.JpaIntegrator].
+08:59:56.212 [Test worker] DEBUG org.hibernate.service.spi.ServiceBinding - Overriding existing service binding [org.hibernate.secure.spi.JaccService]
+08:59:56.213 [Test worker] DEBUG org.hibernate.cache.internal.RegionFactoryInitiator - Cache region factory : org.hibernate.cache.internal.NoCachingRegionFactory
+08:59:56.218 [Test worker] DEBUG org.hibernate.boot.model.process.internal.ScanningCoordinator - Unable to resolve class [co.com.ceiba.estacionamiento.unitaria.TestVigilanteRepository] named in persistence unit [file:/C:/Users/daniel.giraldo/Documents/GitHub/Ceiba-Estacionamiento(daniel.giraldo)/build/resources/main/]
+08:59:56.219 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration boolean -&gt; org.hibernate.type.BooleanType@6c7bcca1
+08:59:56.219 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration boolean -&gt; org.hibernate.type.BooleanType@6c7bcca1
+08:59:56.219 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.lang.Boolean -&gt; org.hibernate.type.BooleanType@6c7bcca1
+08:59:56.219 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration numeric_boolean -&gt; org.hibernate.type.NumericBooleanType@8cadff2
+08:59:56.219 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration true_false -&gt; org.hibernate.type.TrueFalseType@2abfdf5b
+08:59:56.219 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration yes_no -&gt; org.hibernate.type.YesNoType@6a6e4209
+08:59:56.219 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration byte -&gt; org.hibernate.type.ByteType@53f52401
+08:59:56.219 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration byte -&gt; org.hibernate.type.ByteType@53f52401
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.lang.Byte -&gt; org.hibernate.type.ByteType@53f52401
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration character -&gt; org.hibernate.type.CharacterType@3e5cbd5b
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration char -&gt; org.hibernate.type.CharacterType@3e5cbd5b
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.lang.Character -&gt; org.hibernate.type.CharacterType@3e5cbd5b
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration short -&gt; org.hibernate.type.ShortType@7123f5c6
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration short -&gt; org.hibernate.type.ShortType@7123f5c6
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.lang.Short -&gt; org.hibernate.type.ShortType@7123f5c6
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration integer -&gt; org.hibernate.type.IntegerType@28ae657a
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration int -&gt; org.hibernate.type.IntegerType@28ae657a
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.lang.Integer -&gt; org.hibernate.type.IntegerType@28ae657a
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration long -&gt; org.hibernate.type.LongType@3b0eebff
+08:59:56.220 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration long -&gt; org.hibernate.type.LongType@3b0eebff
+08:59:56.221 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.lang.Long -&gt; org.hibernate.type.LongType@3b0eebff
+08:59:56.221 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration float -&gt; org.hibernate.type.FloatType@4659ba3e
+08:59:56.221 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration float -&gt; org.hibernate.type.FloatType@4659ba3e
+08:59:56.221 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.lang.Float -&gt; org.hibernate.type.FloatType@4659ba3e
+08:59:56.221 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration double -&gt; org.hibernate.type.DoubleType@7d0902f3
+08:59:56.221 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration double -&gt; org.hibernate.type.DoubleType@7d0902f3
+08:59:56.221 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.lang.Double -&gt; org.hibernate.type.DoubleType@7d0902f3
+08:59:56.221 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration big_decimal -&gt; org.hibernate.type.BigDecimalType@3c517e08
+08:59:56.221 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.math.BigDecimal -&gt; org.hibernate.type.BigDecimalType@3c517e08
+08:59:56.221 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration big_integer -&gt; org.hibernate.type.BigIntegerType@63767775
+08:59:56.221 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.math.BigInteger -&gt; org.hibernate.type.BigIntegerType@63767775
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration string -&gt; org.hibernate.type.StringType@bdcc1fb
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.lang.String -&gt; org.hibernate.type.StringType@bdcc1fb
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration nstring -&gt; org.hibernate.type.StringNVarcharType@64eca974
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration ncharacter -&gt; org.hibernate.type.CharacterNCharType@25271503
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration url -&gt; org.hibernate.type.UrlType@3b290955
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.net.URL -&gt; org.hibernate.type.UrlType@3b290955
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration Duration -&gt; org.hibernate.type.DurationType@3a2bc88f
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.time.Duration -&gt; org.hibernate.type.DurationType@3a2bc88f
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration Instant -&gt; org.hibernate.type.InstantType@758cad9d
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.time.Instant -&gt; org.hibernate.type.InstantType@758cad9d
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration LocalDateTime -&gt; org.hibernate.type.LocalDateTimeType@5470b2d5
+08:59:56.222 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.time.LocalDateTime -&gt; org.hibernate.type.LocalDateTimeType@5470b2d5
+08:59:56.223 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration LocalDate -&gt; org.hibernate.type.LocalDateType@721a9547
+08:59:56.223 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.time.LocalDate -&gt; org.hibernate.type.LocalDateType@721a9547
+08:59:56.223 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration LocalTime -&gt; org.hibernate.type.LocalTimeType@36e80f4d
+08:59:56.223 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.time.LocalTime -&gt; org.hibernate.type.LocalTimeType@36e80f4d
+08:59:56.223 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration OffsetDateTime -&gt; org.hibernate.type.OffsetDateTimeType@67c71429
+08:59:56.223 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.time.OffsetDateTime -&gt; org.hibernate.type.OffsetDateTimeType@67c71429
+08:59:56.223 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration OffsetTime -&gt; org.hibernate.type.OffsetTimeType@62fb02f9
+08:59:56.224 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.time.OffsetTime -&gt; org.hibernate.type.OffsetTimeType@62fb02f9
+08:59:56.224 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration ZonedDateTime -&gt; org.hibernate.type.ZonedDateTimeType@4a77d21c
+08:59:56.224 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.time.ZonedDateTime -&gt; org.hibernate.type.ZonedDateTimeType@4a77d21c
+08:59:56.224 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration date -&gt; org.hibernate.type.DateType@399f2c91
+08:59:56.224 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.sql.Date -&gt; org.hibernate.type.DateType@399f2c91
+08:59:56.224 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration time -&gt; org.hibernate.type.TimeType@43759631
+08:59:56.225 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.sql.Time -&gt; org.hibernate.type.TimeType@43759631
+08:59:56.225 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration timestamp -&gt; org.hibernate.type.TimestampType@4b43b0bf
+08:59:56.225 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.sql.Timestamp -&gt; org.hibernate.type.TimestampType@4b43b0bf
+08:59:56.225 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.util.Date -&gt; org.hibernate.type.TimestampType@4b43b0bf
+08:59:56.225 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration dbtimestamp -&gt; org.hibernate.type.DbTimestampType@21d8820c
+08:59:56.225 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration calendar -&gt; org.hibernate.type.CalendarType@2bf44728
+08:59:56.225 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.util.Calendar -&gt; org.hibernate.type.CalendarType@2bf44728
+08:59:56.227 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.util.GregorianCalendar -&gt; org.hibernate.type.CalendarType@2bf44728
+08:59:56.227 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration calendar_date -&gt; org.hibernate.type.CalendarDateType@4be2aa9b
+08:59:56.227 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration locale -&gt; org.hibernate.type.LocaleType@2c6234bd
+08:59:56.228 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.util.Locale -&gt; org.hibernate.type.LocaleType@2c6234bd
+08:59:56.229 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration currency -&gt; org.hibernate.type.CurrencyType@58d11dd7
+08:59:56.230 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.util.Currency -&gt; org.hibernate.type.CurrencyType@58d11dd7
+08:59:56.230 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration timezone -&gt; org.hibernate.type.TimeZoneType@6635225b
+08:59:56.230 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.util.TimeZone -&gt; org.hibernate.type.TimeZoneType@6635225b
+08:59:56.230 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration class -&gt; org.hibernate.type.ClassType@7460278f
+08:59:56.230 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.lang.Class -&gt; org.hibernate.type.ClassType@7460278f
+08:59:56.230 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration uuid-binary -&gt; org.hibernate.type.UUIDBinaryType@7c1366e7
+08:59:56.230 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.util.UUID -&gt; org.hibernate.type.UUIDBinaryType@7c1366e7
+08:59:56.230 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration uuid-char -&gt; org.hibernate.type.UUIDCharType@4efeb71
+08:59:56.230 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration binary -&gt; org.hibernate.type.BinaryType@16523516
+08:59:56.230 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration byte[] -&gt; org.hibernate.type.BinaryType@16523516
+08:59:56.231 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration [B -&gt; org.hibernate.type.BinaryType@16523516
+08:59:56.231 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration wrapper-binary -&gt; org.hibernate.type.WrapperBinaryType@6e78e665
+08:59:56.231 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration Byte[] -&gt; org.hibernate.type.WrapperBinaryType@6e78e665
+08:59:56.231 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration [Ljava.lang.Byte; -&gt; org.hibernate.type.WrapperBinaryType@6e78e665
+08:59:56.231 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration row_version -&gt; org.hibernate.type.RowVersionType@31f3fb97
+08:59:56.231 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration image -&gt; org.hibernate.type.ImageType@55612393
+08:59:56.232 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration characters -&gt; org.hibernate.type.CharArrayType@63617ba4
+08:59:56.232 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration char[] -&gt; org.hibernate.type.CharArrayType@63617ba4
+08:59:56.232 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration [C -&gt; org.hibernate.type.CharArrayType@63617ba4
+08:59:56.232 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration wrapper-characters -&gt; org.hibernate.type.CharacterArrayType@6b439cd3
+08:59:56.232 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration [Ljava.lang.Character; -&gt; org.hibernate.type.CharacterArrayType@6b439cd3
+08:59:56.232 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration Character[] -&gt; org.hibernate.type.CharacterArrayType@6b439cd3
+08:59:56.233 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration text -&gt; org.hibernate.type.TextType@608eeeb4
+08:59:56.233 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration ntext -&gt; org.hibernate.type.NTextType@51056a60
+08:59:56.233 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration blob -&gt; org.hibernate.type.BlobType@5bfaf860
+08:59:56.233 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.sql.Blob -&gt; org.hibernate.type.BlobType@5bfaf860
+08:59:56.233 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration materialized_blob -&gt; org.hibernate.type.MaterializedBlobType@c536650
+08:59:56.233 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration clob -&gt; org.hibernate.type.ClobType@79fde0ef
+08:59:56.233 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.sql.Clob -&gt; org.hibernate.type.ClobType@79fde0ef
+08:59:56.234 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration nclob -&gt; org.hibernate.type.NClobType@32944e4
+08:59:56.234 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.sql.NClob -&gt; org.hibernate.type.NClobType@32944e4
+08:59:56.234 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration materialized_clob -&gt; org.hibernate.type.MaterializedClobType@92eb06e
+08:59:56.234 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration materialized_nclob -&gt; org.hibernate.type.MaterializedNClobType@1cb3d2db
+08:59:56.234 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration serializable -&gt; org.hibernate.type.SerializableType@55a9ded3
+08:59:56.234 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration object -&gt; org.hibernate.type.ObjectType@4a127f9c
+08:59:56.235 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration java.lang.Object -&gt; org.hibernate.type.ObjectType@4a127f9c
+08:59:56.235 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration imm_date -&gt; org.hibernate.type.AdaptedImmutableType@2a7111ba
+08:59:56.235 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration imm_time -&gt; org.hibernate.type.AdaptedImmutableType@41391cf8
+08:59:56.235 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration imm_timestamp -&gt; org.hibernate.type.AdaptedImmutableType@425e7f1d
+08:59:56.235 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration imm_dbtimestamp -&gt; org.hibernate.type.AdaptedImmutableType@ab6c5d5
+08:59:56.235 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration imm_calendar -&gt; org.hibernate.type.AdaptedImmutableType@2868e9f8
+08:59:56.235 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration imm_calendar_date -&gt; org.hibernate.type.AdaptedImmutableType@213ffed1
+08:59:56.235 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration imm_binary -&gt; org.hibernate.type.AdaptedImmutableType@1028cb7c
+08:59:56.235 [Test worker] DEBUG org.hibernate.type.BasicTypeRegistry - Adding type registration imm_serializable -&gt; org.hibernate.type.AdaptedImmutableType@2c8c2cc1
+08:59:56.236 [Test worker] WARN org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+08:59:56.236 [Test worker] INFO org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/parqueadero]
+08:59:56.236 [Test worker] INFO org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root, password=1234}
+08:59:56.236 [Test worker] INFO org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+08:59:56.236 [Test worker] DEBUG org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - Initializing Connection pool with 1 Connections
+08:59:56.236 [Test worker] INFO org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+08:59:56.254 [Test worker] DEBUG org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator - Database -&gt;
+       name : MySQL
+    version : 8.0.12
+      major : 8
+      minor : 0
+08:59:56.254 [Test worker] DEBUG org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator - Driver -&gt;
+       name : MySQL Connector Java
+    version : mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )
+      major : 5
+      minor : 1
+08:59:56.254 [Test worker] DEBUG org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator - JDBC version : 4.0
+08:59:56.254 [Test worker] INFO org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+08:59:56.256 [Test worker] DEBUG org.hibernate.engine.jdbc.env.spi.IdentifierHelperBuilder - JDBC driver metadata reported database stores quoted identifiers in more than one case
+08:59:56.257 [Test worker] DEBUG org.hibernate.engine.jdbc.env.spi.IdentifierHelperBuilder - IdentifierCaseStrategy for both quoted and unquoted identifiers was set to the same strategy [LOWER]; that will likely lead to problems in schema update and validation if using quoted identifiers
+08:59:56.261 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [uuid2] -&gt; [org.hibernate.id.UUIDGenerator]
+08:59:56.261 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [guid] -&gt; [org.hibernate.id.GUIDGenerator]
+08:59:56.261 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [uuid] -&gt; [org.hibernate.id.UUIDHexGenerator]
+08:59:56.261 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [uuid.hex] -&gt; [org.hibernate.id.UUIDHexGenerator]
+08:59:56.261 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [assigned] -&gt; [org.hibernate.id.Assigned]
+08:59:56.261 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [identity] -&gt; [org.hibernate.id.IdentityGenerator]
+08:59:56.261 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [select] -&gt; [org.hibernate.id.SelectGenerator]
+08:59:56.261 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [sequence] -&gt; [org.hibernate.id.enhanced.SequenceStyleGenerator]
+08:59:56.261 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [seqhilo] -&gt; [org.hibernate.id.SequenceHiLoGenerator]
+08:59:56.262 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [increment] -&gt; [org.hibernate.id.IncrementGenerator]
+08:59:56.262 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [foreign] -&gt; [org.hibernate.id.ForeignGenerator]
+08:59:56.262 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [sequence-identity] -&gt; [org.hibernate.id.SequenceIdentityGenerator]
+08:59:56.262 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [enhanced-sequence] -&gt; [org.hibernate.id.enhanced.SequenceStyleGenerator]
+08:59:56.262 [Test worker] DEBUG org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [enhanced-table] -&gt; [org.hibernate.id.enhanced.TableGenerator]
+08:59:56.262 [Test worker] DEBUG org.hibernate.boot.model.relational.Namespace - Created database namespace [logicalName=Name{catalog=null, schema=null}, physicalName=Name{catalog=null, schema=null}]
+08:59:56.262 [Test worker] DEBUG org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: co.com.ceiba.estacionamiento.model.Vehiculo
+08:59:56.262 [Test worker] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
+08:59:56.262 [Test worker] DEBUG org.hibernate.cfg.annotations.EntityBinder - Import with entity name Vehiculo
+08:59:56.262 [Test worker] DEBUG org.hibernate.cfg.annotations.EntityBinder - Bind entity co.com.ceiba.estacionamiento.model.Vehiculo on table vehiculo
+08:59:56.263 [Test worker] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(vehiculo), mappingColumn=ID, insertable=true, updatable=true, unique=true}
+08:59:56.263 [Test worker] DEBUG org.hibernate.cfg.annotations.PropertyBinder - MetadataSourceProcessor property id with lazy=false
+08:59:56.263 [Test worker] DEBUG org.hibernate.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [co.com.ceiba.estacionamiento.model.Vehiculo:id]
+08:59:56.263 [Test worker] DEBUG org.hibernate.cfg.annotations.SimpleValueBinder - building SimpleValue for id
+08:59:56.263 [Test worker] DEBUG org.hibernate.cfg.annotations.PropertyBinder - Building property id
+08:59:56.265 [Test worker] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(vehiculo), mappingColumn=CILINDRAJE, insertable=true, updatable=true, unique=false}
+08:59:56.265 [Test worker] DEBUG org.hibernate.cfg.annotations.PropertyBinder - MetadataSourceProcessor property cilindraje with lazy=false
+08:59:56.265 [Test worker] DEBUG org.hibernate.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [co.com.ceiba.estacionamiento.model.Vehiculo:cilindraje]
+08:59:56.265 [Test worker] DEBUG org.hibernate.cfg.annotations.SimpleValueBinder - building SimpleValue for cilindraje
+08:59:56.265 [Test worker] DEBUG org.hibernate.cfg.annotations.PropertyBinder - Building property cilindraje
+08:59:56.266 [Test worker] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(vehiculo), mappingColumn=PLACA, insertable=true, updatable=true, unique=true}
+08:59:56.266 [Test worker] DEBUG org.hibernate.cfg.annotations.PropertyBinder - MetadataSourceProcessor property placa with lazy=false
+08:59:56.266 [Test worker] DEBUG org.hibernate.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [co.com.ceiba.estacionamiento.model.Vehiculo:placa]
+08:59:56.266 [Test worker] DEBUG org.hibernate.cfg.annotations.SimpleValueBinder - building SimpleValue for placa
+08:59:56.266 [Test worker] DEBUG org.hibernate.cfg.annotations.PropertyBinder - Building property placa
+08:59:56.266 [Test worker] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(vehiculo), mappingColumn=TIPO_VEHICULO, insertable=true, updatable=true, unique=false}
+08:59:56.266 [Test worker] DEBUG org.hibernate.cfg.annotations.PropertyBinder - MetadataSourceProcessor property tipoVehiculo with lazy=false
+08:59:56.266 [Test worker] DEBUG org.hibernate.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [co.com.ceiba.estacionamiento.model.Vehiculo:tipoVehiculo]
+08:59:56.266 [Test worker] DEBUG org.hibernate.cfg.annotations.SimpleValueBinder - building SimpleValue for tipoVehiculo
+08:59:56.266 [Test worker] DEBUG org.hibernate.cfg.annotations.PropertyBinder - Building property tipoVehiculo
+08:59:56.267 [Test worker] DEBUG org.hibernate.cfg.annotations.SimpleValueBinder - Starting fillSimpleValue for id
+08:59:56.268 [Test worker] DEBUG org.hibernate.cfg.annotations.SimpleValueBinder - Starting fillSimpleValue for cilindraje
+08:59:56.268 [Test worker] DEBUG org.hibernate.cfg.annotations.SimpleValueBinder - Starting fillSimpleValue for placa
+08:59:56.268 [Test worker] DEBUG org.hibernate.cfg.annotations.SimpleValueBinder - Starting fillSimpleValue for tipoVehiculo
+08:59:56.268 [Test worker] DEBUG org.hibernate.mapping.PrimaryKey - Forcing column [id] to be non-null as it is part of the primary key for table [vehiculo]
+08:59:56.270 [Test worker] DEBUG org.hibernate.internal.SessionFactoryImpl - Building session factory
+08:59:56.270 [Test worker] DEBUG org.hibernate.cfg.Settings - SessionFactory name : null
+08:59:56.270 [Test worker] DEBUG org.hibernate.cfg.Settings - Automatic flush during beforeCompletion(): enabled
+08:59:56.270 [Test worker] DEBUG org.hibernate.cfg.Settings - Automatic session close at end of transaction: disabled
+08:59:56.270 [Test worker] DEBUG org.hibernate.cfg.Settings - Statistics: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Deleted entity synthetic identifier rollback: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Default entity-mode: pojo
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Allow initialization of lazy state outside session : disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Using BatchFetchStyle : LEGACY
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Default batch fetch size: -1
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Maximum outer join fetch depth: 2
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Default null ordering: NONE
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Order SQL updates by primary key: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Order SQL inserts for batching: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - multi-tenancy strategy : NONE
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - JTA Track by Thread: enabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Query language substitutions: {}
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - JPA query language strict compliance: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Named query checking : enabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Second-level cache: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Second-level query cache: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Second-level query cache factory: null
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Second-level cache region prefix: null
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Optimize second-level cache for minimal puts: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Structured second-level cache entries: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Second-level cache direct-reference entries: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Automatic eviction of collection cache: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - JDBC batch size: 15
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - JDBC batch updates for versioned data: enabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Scrollable result sets: enabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Wrap result sets: disabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - JDBC3 getGeneratedKeys(): enabled
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - JDBC result set fetch size: null
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Connection release mode: AFTER_TRANSACTION
+08:59:56.271 [Test worker] DEBUG org.hibernate.cfg.Settings - Generate SQL with comments: disabled
+08:59:56.273 [Test worker] DEBUG org.hibernate.internal.SessionFactoryImpl - Session factory constructed with filter configurations : {}
+08:59:56.273 [Test worker] DEBUG org.hibernate.internal.SessionFactoryImpl - Instantiating session factory with properties: {sun.desktop=windows, awt.toolkit=sun.awt.windows.WToolkit, file.encoding.pkg=sun.io, java.specification.version=1.8, sun.cpu.isalist=amd64, sun.jnu.encoding=Cp1252, hibernate.dialect=org.hibernate.dialect.MySQL5Dialect, org.gradle.test.worker=9, java.class.path=C:\Users\daniel.giraldo\Documents\GitHub\Ceiba-Estacionamiento(daniel.giraldo)\build\classes\java\test;C:\Users\daniel.giraldo\Documents\GitHub\Ceiba-Estacionamiento(daniel.giraldo)\build\resources\test;C:\Users\daniel.giraldo\Documents\GitHub\Ceiba-Estacionamiento(daniel.giraldo)\build\classes\java\main;C:\Users\daniel.giraldo\Documents\GitHub\Ceiba-Estacionamiento(daniel.giraldo)\build\resources\main;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-data-jpa\2.0.4.RELEASE\69970d3a7c353d8e727e2c6b2a9e621114f5e089\spring-boot-starter-data-jpa-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-web\2.0.4.RELEASE\98d49e981ecf804da877d84259b7b0d1ec2fb6f6\spring-boot-starter-web-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.json\json\20141113\c590c04911645db2f53b9bbefd5c3fcd8ca5581d\json-20141113.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\com.h2database\h2\1.4.197\bb391050048ca8ae3e32451b5a3714ecd3596a46\h2-1.4.197.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\mysql\mysql-connector-java\5.1.46\9a3e63b387e376364211e96827bc27db8d7a92e9\mysql-connector-java-5.1.46.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-test\2.0.4.RELEASE\8f473705d2742b669f0318f10a956f94a93ba3d2\spring-boot-starter-test-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-aop\2.0.4.RELEASE\5e963eb965b72e113a05351c482e3d613f04e59d\spring-boot-starter-aop-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-jdbc\2.0.4.RELEASE\3e9b13a3bee8b8f9b2b9fde4f9e9aac0ccf2b3ba\spring-boot-starter-jdbc-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-json\2.0.4.RELEASE\c7afabf0d7c85db178da4ce0634e3bd2ddb0eb71\spring-boot-starter-json-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter\2.0.4.RELEASE\ec46c63a2adeee40058eff1a6baefca13975dc94\spring-boot-starter-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.hibernate\hibernate-core\5.2.17.Final\f2dc36470e7a2ffcf6106bb1625ecf5b54bb5f65\hibernate-core-5.2.17.Final.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\javax.transaction\javax.transaction-api\1.2\d81aff979d603edd90dcd8db2abc1f4ce6479e3e\javax.transaction-api-1.2.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.data\spring-data-jpa\2.0.9.RELEASE\30acb36f682367d93ed400b4324fe2559f0fcb\spring-data-jpa-2.0.9.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-aspects\5.0.8.RELEASE\e66926466b8c72658d7e536923041dc93976baf3\spring-aspects-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-tomcat\2.0.4.RELEASE\dcf28989a34b0801fea0e810c371fb9dab1e7784\spring-boot-starter-tomcat-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.hibernate.validator\hibernate-validator\6.0.11.Final\36f9d10a11e4768f55e8fb91ebe4338a5c43954e\hibernate-validator-6.0.11.Final.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-webmvc\5.0.8.RELEASE\7e5fe57590ca8e4468e50fe1d92b0b67aa4a327a\spring-webmvc-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-web\5.0.8.RELEASE\fa43cdadb4ab2491fd1d0ddb06c0808e4b60fc85\spring-web-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-test-autoconfigure\2.0.4.RELEASE\8a2e3f31e607fdb08deda2f59263ce177f1c4310\spring-boot-test-autoconfigure-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-test\2.0.4.RELEASE\8a17fc3cf16b6d75f2ba132ade04409a670095de\spring-boot-test-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\com.jayway.jsonpath\json-path\2.4.0\765a4401ceb2dc8d40553c2075eb80a8fa35c2ae\json-path-2.4.0.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.assertj\assertj-core\3.9.1\c5ce126b15f28d56cd8f960c1a6a058b9c9aea87\assertj-core-3.9.1.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.mockito\mockito-core\2.15.0\b84bfbbc29cd22c9529409627af6ea2897f4fa85\mockito-core-2.15.0.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-library\1.3\4785a3c21320980282f9f33d0d1264a69040538f\hamcrest-library-1.3.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.skyscreamer\jsonassert\1.5.0\6c9d5fe2f59da598d9aefc1cfc6528ff3cf32df3\jsonassert-1.5.0.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-test\5.0.8.RELEASE\5782619373bd7e7b7d9106203c317b04bb613ebb\spring-test-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-autoconfigure\2.0.4.RELEASE\65cd1244d606acc02ab7bfc47a203a3fe2400dda\spring-boot-autoconfigure-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot\2.0.4.RELEASE\c8619c5b06d4dcdb4cac1e5e9c839e6e8b1c8574\spring-boot-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-orm\5.0.8.RELEASE\4da63072d1ed6a2eb4bc0a4c8da5e09f39b5021e\spring-orm-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-jdbc\5.0.8.RELEASE\efcf5f0ccaaa9deec2d9133c9d6bfbb7e55370ff\spring-jdbc-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.data\spring-data-commons\2.0.9.RELEASE\9c8f3ea29c9dd6e4c41876c46e9f5f4987390beb\spring-data-commons-2.0.9.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-context\5.0.8.RELEASE\3a067d8990761111c9b6d1d895640be26cc1fb38\spring-context-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-tx\5.0.8.RELEASE\b6488db6192f71bd682a13b9d42127307631c616\spring-tx-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-aop\5.0.8.RELEASE\f5086c1a3185c481104511837427b39a07a57aa2\spring-aop-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-beans\5.0.8.RELEASE\5fc965d3e7f5515099244857a8ae9e2a208c169b\spring-beans-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-expression\5.0.8.RELEASE\f23158f22c917df2cddf2ecebc398a9e95f95fae\spring-expression-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-core\5.0.8.RELEASE\dc39c49e3246cdf73d3786ac41119140aed3fa08\spring-core-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.xmlunit\xmlunit-core\2.5.1\4ffdb346572a7356f7521cd3119ce5287d2e339d\xmlunit-core-2.5.1.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-logging\2.0.4.RELEASE\dcd1a2c431c970f44adae64d9145133979a513ab\spring-boot-starter-logging-2.0.4.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\javax.annotation\javax.annotation-api\1.3.2\934c04d3cfef185a8008e7bf34331b79730a9d43\javax.annotation-api-1.3.2.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.yaml\snakeyaml\1.19\2d998d3d674b172a588e54ab619854d073f555b5\snakeyaml-1.19.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.aspectj\aspectjweaver\1.8.13\ad94df2a28d658a40dc27bbaff6a1ce5fbf04e9b\aspectjweaver-1.8.13.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\com.zaxxer\HikariCP\2.7.9\a83113d2c091d0d0f853dad3217bd7df3beb6ae3\HikariCP-2.7.9.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.hibernate.common\hibernate-commons-annotations\5.0.1.Final\71e1cff3fcb20d3b3af4f3363c3ddb24d33c6879\hibernate-commons-annotations-5.0.1.Final.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.jboss.logging\jboss-logging\3.3.2.Final\3789d00e859632e6c6206adc0c71625559e6e3b0\jboss-logging-3.3.2.Final.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.hibernate.javax.persistence\hibernate-jpa-2.1-api\1.0.2.Final\52afb5762c704a6b586e27742470c08f91877fc1\hibernate-jpa-2.1-api-1.0.2.Final.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.javassist\javassist\3.22.0-GA\3e83394258ae2089be7219b971ec21a8288528ad\javassist-3.22.0-GA.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\antlr\antlr\2.7.7\83cd2cd674a217ade95a4bb83a8a14f351f48bd0\antlr-2.7.7.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.jboss\jandex\2.0.3.Final\bfc4d6257dbff7a33a357f0de116be6ff951d849\jandex-2.0.3.Final.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\com.fasterxml\classmate\1.3.4\3d5f48f10bbe4eb7bd862f10c0583be2e0053c6\classmate-1.3.4.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\dom4j\dom4j\1.6.1\5d3ccc056b6f056dbf0dddfdf43894b9065a8f94\dom4j-1.6.1.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\ch.qos.logback\logback-classic\1.2.3\7c4f3c474fb2c041d8028740440937705ebb473a\logback-classic-1.2.3.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-to-slf4j\2.10.0\f7e631ccf49cfc0aefa4a2a728da7d374c05bd3c\log4j-to-slf4j-2.10.0.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.slf4j\jul-to-slf4j\1.7.25\af5364cd6679bfffb114f0dec8a157aaa283b76\jul-to-slf4j-1.7.25.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\1.7.25\da76ca59f6a57ee3102f8f9bd9cee742973efa8a\slf4j-api-1.7.25.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.datatype\jackson-datatype-jdk8\2.9.6\456895fc91bf7180b216fead220373e6278230c9\jackson-datatype-jdk8-2.9.6.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.datatype\jackson-datatype-jsr310\2.9.6\ea54f6193d224e5e5732bbd4262327eb465397c2\jackson-datatype-jsr310-2.9.6.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.module\jackson-module-parameter-names\2.9.6\129acd77a4b6ee30d62d3a0899b1344c8ec2bff8\jackson-module-parameter-names-2.9.6.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.9.6\cfa4f316351a91bfd95cb0644c6a2c95f52db1fc\jackson-databind-2.9.6.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.apache.tomcat.embed\tomcat-embed-websocket\8.5.32\ea5302e378f1449d4e5dda79e8d810c1e7931f91\tomcat-embed-websocket-8.5.32.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.apache.tomcat.embed\tomcat-embed-core\8.5.32\6bc6896200146010cc4666bdc6b9b0cbb453ee22\tomcat-embed-core-8.5.32.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.apache.tomcat.embed\tomcat-embed-el\8.5.32\e4fd0ee015d83fa1c5ec93ff1d05bdaf9a4480c5\tomcat-embed-el-8.5.32.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\javax.validation\validation-api\2.0.1.Final\cb855558e6271b1b32e716d24cb85c7f583ce09e\validation-api-2.0.1.Final.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\net.minidev\json-smart\2.3\7396407491352ce4fa30de92efb158adb76b5b\json-smart-2.3.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy\1.7.11\f02857a4e2c66ccbe7aaad6100a0a6c461bce9b3\byte-buddy-1.7.11.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.7.11\b425a8933ca07edd03c6dbc8bc3b595fba9780de\byte-buddy-agent-1.7.11.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.objenesis\objenesis\2.6\639033469776fd37c08358c6b92a4761feb2af4b\objenesis-2.6.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\com.vaadin.external.google\android-json\0.0.20131108.vaadin1\fa26d351fe62a6a17f5cda1287c1c6110dec413f\android-json-0.0.20131108.vaadin1.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.springframework\spring-jcl\5.0.8.RELEASE\a1fa8fb560fb252321776e16bc9ac8201af4ef5e\spring-jcl-5.0.8.RELEASE.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.9.0\7c10d545325e3a6e72e06381afe469fd40eb701\jackson-annotations-2.9.0.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.9.6\4e393793c37c77e042ccc7be5a914ae39251b365\jackson-core-2.9.6.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\net.minidev\accessors-smart\1.2\c592b500269bfde36096641b01238a8350f8aa31\accessors-smart-1.2.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\ch.qos.logback\logback-core\1.2.3\864344400c3d4d92dfeb0a305dc87d953677c03c\logback-core-1.2.3.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.10.0\fec5797a55b786184a537abd39c3fa1449d752d6\log4j-api-2.10.0.jar;C:\Users\daniel.giraldo\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\5.0.4\da08b8cce7bbf903602a25a3a163ae252435795\asm-5.0.4.jar, java.vm.vendor=Oracle Corporation, sun.arch.data.model=64, user.variant=, java.vendor.url=http://java.oracle.com/, user.timezone=America/Bogota, javax.persistence.jdbc.user=****, javax.persistence.jdbc.url=jdbc:mysql://localhost:3306/parqueadero, os.name=Windows 10, java.vm.specification.version=1.8, user.country=CO, sun.java.launcher=SUN_STANDARD, sun.boot.library.path=C:\Program Files\Java\jdk1.8.0_181\jre\bin, sun.java.command=worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 9', sun.cpu.endian=little, user.home=C:\Users\daniel.giraldo, user.language=es, java.specification.vendor=Oracle Corporation, org.gradle.native=false, java.home=C:\Program Files\Java\jdk1.8.0_181\jre, file.separator=\, line.separator=
+, java.vm.specification.vendor=Oracle Corporation, java.specification.name=Java Platform API Specification, hibernate.transaction.coordinator_class=class org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorBuilderImpl, java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment, javax.persistence.jdbc.driver=com.mysql.jdbc.Driver, sun.boot.class.path=C:\Program Files\Java\jdk1.8.0_181\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_181\jre\classes, user.script=, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, java.runtime.version=1.8.0_181-b13, user.name=daniel.giraldo, path.separator=;, hibernate.connection.username=****, os.version=10.0, java.endorsed.dirs=C:\Program Files\Java\jdk1.8.0_181\jre\lib\endorsed, java.runtime.name=Java(TM) SE Runtime Environment, hibernate.connection.url=jdbc:mysql://localhost:3306/parqueadero, hibernate.ejb.persistenceUnitName=TestPersistence, file.encoding=windows-1252, java.vm.name=Java HotSpot(TM) 64-Bit Server VM, hibernate.show_sql=true, hibernate.connection.driver_class=com.mysql.jdbc.Driver, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, java.io.tmpdir=C:\Users\DANIEL~1.GIR\AppData\Local\Temp\, java.version=1.8.0_181, user.dir=C:\Users\daniel.giraldo\Documents\GitHub\Ceiba-Estacionamiento(daniel.giraldo), os.arch=amd64, java.vm.specification.name=Java Virtual Machine Specification, hibernate.connection.password=****, java.awt.printerjob=sun.awt.windows.WPrinterJob, sun.os.patch.level=, hibernate.boot.CfgXmlAccessService.key=org.hibernate.boot.cfgxml.spi.LoadedConfig@54ff4cbb, java.library.path=C:\Program Files\Java\jdk1.8.0_181\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_181/bin/server;C:/Program Files/Java/jre1.8.0_181/bin;C:/Program Files/Java/jre1.8.0_181/lib/amd64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Oracle\product\11.1.0\client_1\bin;C:\Program Files\CollabNet\Subversion Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Users\daniel.giraldo\AppData\Local\Microsoft\WindowsApps;C:\Users\daniel.giraldo\AppData\Local\GitHubDesktop\bin;C:\Users\daniel.giraldo\eclipse\jee-neon\eclipse;;., java.vm.info=mixed mode, java.vendor=Oracle Corporation, java.vm.version=25.181-b13, hibernate.bytecode.use_reflection_optimizer=false, java.ext.dirs=C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext;C:\Windows\Sun\Java\lib\ext, sun.io.unicode.encoding=UnicodeLittle, javax.persistence.jdbc.password=****, java.class.version=52.0}
+08:59:56.275 [Test worker] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+08:59:56.276 [Test worker] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+08:59:56.276 [Test worker] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+08:59:56.276 [Test worker] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+08:59:56.276 [Test worker] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+08:59:56.277 [Test worker] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+08:59:56.285 [Test worker] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+08:59:56.285 [Test worker] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator as ValidatorFactory-scoped message interpolator.
+08:59:56.285 [Test worker] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+08:59:56.285 [Test worker] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+08:59:56.285 [Test worker] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+08:59:56.285 [Test worker] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+08:59:56.285 [Test worker] DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl - Not known whether passed class name [co.com.ceiba.estacionamiento.model.Vehiculo] is safe
+08:59:56.285 [Test worker] DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : co.com.ceiba.estacionamiento.model.Vehiculo
+08:59:56.291 [Test worker] DEBUG org.hibernate.secure.spi.JaccIntegrator - Skipping JACC integration as it was not enabled
+08:59:56.291 [Test worker] DEBUG org.hibernate.engine.spi.CascadeStyles - External cascade style registration [persist : STYLE_PERSIST_SKIPLAZY] overrode base registration [STYLE_PERSIST_SKIPLAZY]
+08:59:56.293 [Test worker] DEBUG org.hibernate.internal.SessionFactoryImpl - Instantiated session factory
+08:59:56.293 [Test worker] DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl - Not known whether passed class name [co.com.ceiba.estacionamiento.model.Vehiculo] is safe
+08:59:56.293 [Test worker] DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : co.com.ceiba.estacionamiento.model.Vehiculo
+08:59:56.293 [Test worker] DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl - Not known whether passed class name [co.com.ceiba.estacionamiento.model.Vehiculo] is safe
+08:59:56.293 [Test worker] DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : co.com.ceiba.estacionamiento.model.Vehiculo
+08:59:56.295 [Test worker] DEBUG org.hibernate.persister.entity.AbstractEntityPersister - Static SQL for entity: co.com.ceiba.estacionamiento.model.Vehiculo
+08:59:56.295 [Test worker] DEBUG org.hibernate.persister.entity.AbstractEntityPersister -  Version select: select ID from vehiculo where ID =?
+08:59:56.295 [Test worker] DEBUG org.hibernate.persister.entity.AbstractEntityPersister -  Snapshot select: select vehiculo_.ID, vehiculo_.CILINDRAJE as CILINDRA2_0_, vehiculo_.PLACA as PLACA3_0_, vehiculo_.TIPO_VEHICULO as TIPO_VEH4_0_ from vehiculo vehiculo_ where vehiculo_.ID=?
+08:59:56.295 [Test worker] DEBUG org.hibernate.persister.entity.AbstractEntityPersister -  Insert 0: insert into vehiculo (CILINDRAJE, PLACA, TIPO_VEHICULO, ID) values (?, ?, ?, ?)
+08:59:56.295 [Test worker] DEBUG org.hibernate.persister.entity.AbstractEntityPersister -  Update 0: update vehiculo set CILINDRAJE=?, PLACA=?, TIPO_VEHICULO=? where ID=?
+08:59:56.295 [Test worker] DEBUG org.hibernate.persister.entity.AbstractEntityPersister -  Delete 0: delete from vehiculo where ID=?
+08:59:56.295 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.spaces.QuerySpacesImpl - Adding QuerySpace : uid = &lt;gen:0&gt; -&gt; org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@41bf5602]
+08:59:56.295 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : cilindraje
+08:59:56.295 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : placa
+08:59:56.295 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : tipoVehiculo
+08:59:56.295 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
+08:59:56.296 [Test worker] DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor - processing queryspace &lt;gen:0&gt;
+08:59:56.296 [Test worker] DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter - LoadPlan(entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - Returns
+       - EntityReturnImpl(entity=co.com.ceiba.estacionamiento.model.Vehiculo, querySpaceUid=&lt;gen:0&gt;, path=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=&lt;gen:0&gt;, entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+          - SQL table alias mapping - vehiculo0_
+          - alias suffix - 0_
+          - suffixed key columns - {ID1_0_0_}
+
+08:59:56.296 [Test worker] DEBUG org.hibernate.loader.entity.plan.EntityLoader - Static select for entity co.com.ceiba.estacionamiento.model.Vehiculo [NONE]: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=?
+08:59:56.296 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.spaces.QuerySpacesImpl - Adding QuerySpace : uid = &lt;gen:0&gt; -&gt; org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@19ce8da2]
+08:59:56.296 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : cilindraje
+08:59:56.296 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : placa
+08:59:56.296 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : tipoVehiculo
+08:59:56.296 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
+08:59:56.296 [Test worker] DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor - processing queryspace &lt;gen:0&gt;
+08:59:56.297 [Test worker] DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter - LoadPlan(entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - Returns
+       - EntityReturnImpl(entity=co.com.ceiba.estacionamiento.model.Vehiculo, querySpaceUid=&lt;gen:0&gt;, path=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=&lt;gen:0&gt;, entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+          - SQL table alias mapping - vehiculo0_
+          - alias suffix - 0_
+          - suffixed key columns - {ID1_0_0_}
+
+08:59:56.297 [Test worker] DEBUG org.hibernate.loader.entity.plan.EntityLoader - Static select for entity co.com.ceiba.estacionamiento.model.Vehiculo [READ]: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=?
+08:59:56.297 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.spaces.QuerySpacesImpl - Adding QuerySpace : uid = &lt;gen:0&gt; -&gt; org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@6ddbf609]
+08:59:56.297 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : cilindraje
+08:59:56.297 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : placa
+08:59:56.297 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : tipoVehiculo
+08:59:56.297 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
+08:59:56.297 [Test worker] DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor - processing queryspace &lt;gen:0&gt;
+08:59:56.297 [Test worker] DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter - LoadPlan(entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - Returns
+       - EntityReturnImpl(entity=co.com.ceiba.estacionamiento.model.Vehiculo, querySpaceUid=&lt;gen:0&gt;, path=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=&lt;gen:0&gt;, entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+          - SQL table alias mapping - vehiculo0_
+          - alias suffix - 0_
+          - suffixed key columns - {ID1_0_0_}
+
+08:59:56.297 [Test worker] DEBUG org.hibernate.loader.entity.plan.EntityLoader - Static select for entity co.com.ceiba.estacionamiento.model.Vehiculo [UPGRADE]: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=? for update
+08:59:56.298 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.spaces.QuerySpacesImpl - Adding QuerySpace : uid = &lt;gen:0&gt; -&gt; org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@67479ebf]
+08:59:56.298 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : cilindraje
+08:59:56.298 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : placa
+08:59:56.298 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : tipoVehiculo
+08:59:56.298 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
+08:59:56.298 [Test worker] DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor - processing queryspace &lt;gen:0&gt;
+08:59:56.298 [Test worker] DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter - LoadPlan(entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - Returns
+       - EntityReturnImpl(entity=co.com.ceiba.estacionamiento.model.Vehiculo, querySpaceUid=&lt;gen:0&gt;, path=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=&lt;gen:0&gt;, entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+          - SQL table alias mapping - vehiculo0_
+          - alias suffix - 0_
+          - suffixed key columns - {ID1_0_0_}
+
+08:59:56.298 [Test worker] DEBUG org.hibernate.loader.entity.plan.EntityLoader - Static select for entity co.com.ceiba.estacionamiento.model.Vehiculo [UPGRADE_NOWAIT]: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=? for update
+08:59:56.298 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.spaces.QuerySpacesImpl - Adding QuerySpace : uid = &lt;gen:0&gt; -&gt; org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@7e76b850]
+08:59:56.298 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : cilindraje
+08:59:56.298 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : placa
+08:59:56.298 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : tipoVehiculo
+08:59:56.298 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
+08:59:56.298 [Test worker] DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor - processing queryspace &lt;gen:0&gt;
+08:59:56.299 [Test worker] DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter - LoadPlan(entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - Returns
+       - EntityReturnImpl(entity=co.com.ceiba.estacionamiento.model.Vehiculo, querySpaceUid=&lt;gen:0&gt;, path=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=&lt;gen:0&gt;, entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+          - SQL table alias mapping - vehiculo0_
+          - alias suffix - 0_
+          - suffixed key columns - {ID1_0_0_}
+
+08:59:56.299 [Test worker] DEBUG org.hibernate.loader.entity.plan.EntityLoader - Static select for entity co.com.ceiba.estacionamiento.model.Vehiculo [UPGRADE_SKIPLOCKED]: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=? for update
+08:59:56.299 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.spaces.QuerySpacesImpl - Adding QuerySpace : uid = &lt;gen:0&gt; -&gt; org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@625fca09]
+08:59:56.299 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : cilindraje
+08:59:56.299 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : placa
+08:59:56.299 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : tipoVehiculo
+08:59:56.299 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
+08:59:56.299 [Test worker] DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor - processing queryspace &lt;gen:0&gt;
+08:59:56.299 [Test worker] DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter - LoadPlan(entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - Returns
+       - EntityReturnImpl(entity=co.com.ceiba.estacionamiento.model.Vehiculo, querySpaceUid=&lt;gen:0&gt;, path=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=&lt;gen:0&gt;, entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+          - SQL table alias mapping - vehiculo0_
+          - alias suffix - 0_
+          - suffixed key columns - {ID1_0_0_}
+
+08:59:56.299 [Test worker] DEBUG org.hibernate.loader.entity.plan.EntityLoader - Static select for entity co.com.ceiba.estacionamiento.model.Vehiculo [FORCE]: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=? for update
+08:59:56.299 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.spaces.QuerySpacesImpl - Adding QuerySpace : uid = &lt;gen:0&gt; -&gt; org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@1e1b3810]
+08:59:56.302 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : cilindraje
+08:59:56.302 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : placa
+08:59:56.302 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : tipoVehiculo
+08:59:56.302 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
+08:59:56.303 [Test worker] DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor - processing queryspace &lt;gen:0&gt;
+08:59:56.303 [Test worker] DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter - LoadPlan(entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - Returns
+       - EntityReturnImpl(entity=co.com.ceiba.estacionamiento.model.Vehiculo, querySpaceUid=&lt;gen:0&gt;, path=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=&lt;gen:0&gt;, entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+          - SQL table alias mapping - vehiculo0_
+          - alias suffix - 0_
+          - suffixed key columns - {ID1_0_0_}
+
+08:59:56.304 [Test worker] DEBUG org.hibernate.loader.entity.plan.EntityLoader - Static select for entity co.com.ceiba.estacionamiento.model.Vehiculo [PESSIMISTIC_READ]: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=? lock in share mode
+08:59:56.304 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.spaces.QuerySpacesImpl - Adding QuerySpace : uid = &lt;gen:0&gt; -&gt; org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@bf874fa]
+08:59:56.305 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : cilindraje
+08:59:56.305 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : placa
+08:59:56.305 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : tipoVehiculo
+08:59:56.305 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
+08:59:56.305 [Test worker] DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor - processing queryspace &lt;gen:0&gt;
+08:59:56.306 [Test worker] DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter - LoadPlan(entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - Returns
+       - EntityReturnImpl(entity=co.com.ceiba.estacionamiento.model.Vehiculo, querySpaceUid=&lt;gen:0&gt;, path=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=&lt;gen:0&gt;, entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+          - SQL table alias mapping - vehiculo0_
+          - alias suffix - 0_
+          - suffixed key columns - {ID1_0_0_}
+
+08:59:56.306 [Test worker] DEBUG org.hibernate.loader.entity.plan.EntityLoader - Static select for entity co.com.ceiba.estacionamiento.model.Vehiculo [PESSIMISTIC_WRITE]: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=? for update
+08:59:56.307 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.spaces.QuerySpacesImpl - Adding QuerySpace : uid = &lt;gen:0&gt; -&gt; org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@3c869504]
+08:59:56.307 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : cilindraje
+08:59:56.307 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : placa
+08:59:56.307 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : tipoVehiculo
+08:59:56.307 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
+08:59:56.307 [Test worker] DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor - processing queryspace &lt;gen:0&gt;
+08:59:56.307 [Test worker] DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter - LoadPlan(entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - Returns
+       - EntityReturnImpl(entity=co.com.ceiba.estacionamiento.model.Vehiculo, querySpaceUid=&lt;gen:0&gt;, path=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=&lt;gen:0&gt;, entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+          - SQL table alias mapping - vehiculo0_
+          - alias suffix - 0_
+          - suffixed key columns - {ID1_0_0_}
+
+08:59:56.308 [Test worker] DEBUG org.hibernate.loader.entity.plan.EntityLoader - Static select for entity co.com.ceiba.estacionamiento.model.Vehiculo [PESSIMISTIC_FORCE_INCREMENT]: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=? for update
+08:59:56.308 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.spaces.QuerySpacesImpl - Adding QuerySpace : uid = &lt;gen:0&gt; -&gt; org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@3c6ecbc2]
+08:59:56.309 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : cilindraje
+08:59:56.309 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : placa
+08:59:56.309 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : tipoVehiculo
+08:59:56.309 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
+08:59:56.309 [Test worker] DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor - processing queryspace &lt;gen:0&gt;
+08:59:56.310 [Test worker] DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter - LoadPlan(entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - Returns
+       - EntityReturnImpl(entity=co.com.ceiba.estacionamiento.model.Vehiculo, querySpaceUid=&lt;gen:0&gt;, path=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=&lt;gen:0&gt;, entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+          - SQL table alias mapping - vehiculo0_
+          - alias suffix - 0_
+          - suffixed key columns - {ID1_0_0_}
+
+08:59:56.312 [Test worker] DEBUG org.hibernate.loader.entity.plan.EntityLoader - Static select for entity co.com.ceiba.estacionamiento.model.Vehiculo [OPTIMISTIC]: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=?
+08:59:56.312 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.spaces.QuerySpacesImpl - Adding QuerySpace : uid = &lt;gen:0&gt; -&gt; org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@18b09022]
+08:59:56.312 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : cilindraje
+08:59:56.312 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : placa
+08:59:56.312 [Test worker] DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker - Visiting attribute path : tipoVehiculo
+08:59:56.313 [Test worker] DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
+08:59:56.313 [Test worker] DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor - processing queryspace &lt;gen:0&gt;
+08:59:56.313 [Test worker] DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter - LoadPlan(entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - Returns
+       - EntityReturnImpl(entity=co.com.ceiba.estacionamiento.model.Vehiculo, querySpaceUid=&lt;gen:0&gt;, path=co.com.ceiba.estacionamiento.model.Vehiculo)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=&lt;gen:0&gt;, entity=co.com.ceiba.estacionamiento.model.Vehiculo)
+          - SQL table alias mapping - vehiculo0_
+          - alias suffix - 0_
+          - suffixed key columns - {ID1_0_0_}
+
+08:59:56.313 [Test worker] DEBUG org.hibernate.loader.entity.plan.EntityLoader - Static select for entity co.com.ceiba.estacionamiento.model.Vehiculo [OPTIMISTIC_FORCE_INCREMENT]: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=?
+08:59:56.314 [Test worker] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_MERGE on entity co.com.ceiba.estacionamiento.model.Vehiculo: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=?
+08:59:56.314 [Test worker] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_REFRESH on entity co.com.ceiba.estacionamiento.model.Vehiculo: select vehiculo0_.ID as ID1_0_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_0_, vehiculo0_.PLACA as PLACA3_0_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_0_ from vehiculo vehiculo0_ where vehiculo0_.ID=?
+08:59:56.315 [Test worker] DEBUG org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator - No actions specified; doing nothing
+08:59:56.315 [Test worker] DEBUG org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - No JtaPlatform was specified, checking resolver
+08:59:56.315 [Test worker] DEBUG org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformResolverInitiator - No JtaPlatformResolver was specified, using default [org.hibernate.engine.transaction.jta.platform.internal.StandardJtaPlatformResolver]
+08:59:56.321 [Test worker] DEBUG org.hibernate.engine.transaction.jta.platform.internal.StandardJtaPlatformResolver - Could not resolve JtaPlatform, using default [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+08:59:56.322 [Test worker] DEBUG org.hibernate.query.spi.NamedQueryRepository - Checking 0 named HQL queries
+08:59:56.322 [Test worker] DEBUG org.hibernate.query.spi.NamedQueryRepository - Checking 0 named SQL queries
+08:59:56.322 [Test worker] DEBUG org.hibernate.internal.SessionFactoryRegistry - Registering SessionFactory: 967816b8-faa8-4493-a312-12a534471820 (&lt;unnamed&gt;)
+08:59:56.322 [Test worker] DEBUG org.hibernate.internal.SessionFactoryRegistry - Not binding SessionFactory to JNDI, no JNDI name configured
+08:59:56.322 [Test worker] DEBUG org.hibernate.stat.internal.StatisticsInitiator - Statistics initialized [enabled=false]
+08:59:56.324 [Test worker] DEBUG org.hibernate.hql.internal.QueryTranslatorFactoryInitiator - QueryTranslatorFactory : org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory@26d35140
+08:59:56.324 [Test worker] INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+08:59:56.324 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - parse() - HQL: SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso FROM Parqueadero p join co.com.ceiba.estacionamiento.model.Vehiculo v on p.idVehiculo = v.id WHERE   v.tipoVehiculo = 'C' and p.estado &lt;&gt; 0
+08:59:56.329 [Test worker] DEBUG org.hibernate.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
+08:59:56.331 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - --- HQL AST ---
+ \-[QUERY] Node: 'query'
+    +-[SELECT_FROM] Node: 'SELECT_FROM'
+    |  +-[FROM] Node: 'FROM'
+    |  |  +-[RANGE] Node: 'RANGE'
+    |  |  |  +-[IDENT] Node: 'Parqueadero'
+    |  |  |  \-[ALIAS] Node: 'p'
+    |  |  \-[JOIN] Node: 'join'
+    |  |     +-[DOT] Node: '.'
+    |  |     |  +-[DOT] Node: '.'
+    |  |     |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  |  |  +-[IDENT] Node: 'co'
+    |  |     |  |  |  |  |  \-[IDENT] Node: 'com'
+    |  |     |  |  |  |  \-[IDENT] Node: 'ceiba'
+    |  |     |  |  |  \-[IDENT] Node: 'estacionamiento'
+    |  |     |  |  \-[IDENT] Node: 'model'
+    |  |     |  \-[IDENT] Node: 'Vehiculo'
+    |  |     +-[ALIAS] Node: 'v'
+    |  |     \-[WITH] Node: 'with'
+    |  |        \-[EQ] Node: '='
+    |  |           +-[DOT] Node: '.'
+    |  |           |  +-[IDENT] Node: 'p'
+    |  |           |  \-[IDENT] Node: 'idVehiculo'
+    |  |           \-[DOT] Node: '.'
+    |  |              +-[IDENT] Node: 'v'
+    |  |              \-[IDENT] Node: 'id'
+    |  \-[SELECT] Node: 'SELECT'
+    |     +-[DOT] Node: '.'
+    |     |  +-[IDENT] Node: 'v'
+    |     |  \-[IDENT] Node: 'placa'
+    |     +-[DOT] Node: '.'
+    |     |  +-[IDENT] Node: 'v'
+    |     |  \-[IDENT] Node: 'tipoVehiculo'
+    |     +-[DOT] Node: '.'
+    |     |  +-[IDENT] Node: 'v'
+    |     |  \-[IDENT] Node: 'cilindraje'
+    |     \-[DOT] Node: '.'
+    |        +-[IDENT] Node: 'p'
+    |        \-[IDENT] Node: 'fehcaIngreso'
+    \-[WHERE] Node: 'WHERE'
+       \-[AND] Node: 'and'
+          +-[EQ] Node: '='
+          |  +-[DOT] Node: '.'
+          |  |  +-[IDENT] Node: 'v'
+          |  |  \-[IDENT] Node: 'tipoVehiculo'
+          |  \-[QUOTED_STRING] Node: ''C''
+          \-[NE] Node: '&lt;&gt;'
+             +-[DOT] Node: '.'
+             |  +-[IDENT] Node: 'p'
+             |  \-[IDENT] Node: 'estado'
+             \-[NUM_INT] Node: '0'
+
+08:59:56.332 [Test worker] DEBUG org.hibernate.hql.internal.antlr.HqlSqlBaseWalker - select &lt;&lt; begin [level=1, statement=select]
+08:59:56.335 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - parse() - HQL: SELECT COUNT(p.id) FROM   Parqueadero p JOIN co.com.ceiba.estacionamiento.model.Vehiculo v ON     p.idVehiculo   = v.id WHERE p.estado &lt;&gt; 0 AND    v.tipoVehiculo = 'C'
+08:59:56.336 [Test worker] DEBUG org.hibernate.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
+08:59:56.337 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - --- HQL AST ---
+ \-[QUERY] Node: 'query'
+    +-[SELECT_FROM] Node: 'SELECT_FROM'
+    |  +-[FROM] Node: 'FROM'
+    |  |  +-[RANGE] Node: 'RANGE'
+    |  |  |  +-[IDENT] Node: 'Parqueadero'
+    |  |  |  \-[ALIAS] Node: 'p'
+    |  |  \-[JOIN] Node: 'JOIN'
+    |  |     +-[DOT] Node: '.'
+    |  |     |  +-[DOT] Node: '.'
+    |  |     |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  |  |  +-[IDENT] Node: 'co'
+    |  |     |  |  |  |  |  \-[IDENT] Node: 'com'
+    |  |     |  |  |  |  \-[IDENT] Node: 'ceiba'
+    |  |     |  |  |  \-[IDENT] Node: 'estacionamiento'
+    |  |     |  |  \-[IDENT] Node: 'model'
+    |  |     |  \-[IDENT] Node: 'Vehiculo'
+    |  |     +-[ALIAS] Node: 'v'
+    |  |     \-[WITH] Node: 'with'
+    |  |        \-[EQ] Node: '='
+    |  |           +-[DOT] Node: '.'
+    |  |           |  +-[IDENT] Node: 'p'
+    |  |           |  \-[IDENT] Node: 'idVehiculo'
+    |  |           \-[DOT] Node: '.'
+    |  |              +-[IDENT] Node: 'v'
+    |  |              \-[IDENT] Node: 'id'
+    |  \-[SELECT] Node: 'SELECT'
+    |     \-[COUNT] Node: 'COUNT'
+    |        \-[DOT] Node: '.'
+    |           +-[IDENT] Node: 'p'
+    |           \-[IDENT] Node: 'id'
+    \-[WHERE] Node: 'WHERE'
+       \-[AND] Node: 'AND'
+          +-[NE] Node: '&lt;&gt;'
+          |  +-[DOT] Node: '.'
+          |  |  +-[IDENT] Node: 'p'
+          |  |  \-[IDENT] Node: 'estado'
+          |  \-[NUM_INT] Node: '0'
+          \-[EQ] Node: '='
+             +-[DOT] Node: '.'
+             |  +-[IDENT] Node: 'v'
+             |  \-[IDENT] Node: 'tipoVehiculo'
+             \-[QUOTED_STRING] Node: ''C''
+
+08:59:56.337 [Test worker] DEBUG org.hibernate.hql.internal.antlr.HqlSqlBaseWalker - select &lt;&lt; begin [level=1, statement=select]
+08:59:56.360 [Test worker] DEBUG org.hibernate.SQL - select next_val as id_val from hibernate_sequence for update
+Hibernate: select next_val as id_val from hibernate_sequence for update
+08:59:56.362 [Test worker] DEBUG org.hibernate.SQL - update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+08:59:56.366 [Test worker] DEBUG org.hibernate.event.internal.AbstractSaveEventListener - Generated identifier: 85, using strategy: org.hibernate.id.enhanced.SequenceStyleGenerator
+08:59:56.375 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - parse() - HQL: SELECT COUNT(p.id) FROM   Parqueadero p JOIN co.com.ceiba.estacionamiento.model.Vehiculo v ON     p.idVehiculo   = v.id WHERE p.estado &lt;&gt; 0 AND    v.tipoVehiculo = 'M'
+08:59:56.376 [Test worker] DEBUG org.hibernate.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
+08:59:56.377 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - --- HQL AST ---
+ \-[QUERY] Node: 'query'
+    +-[SELECT_FROM] Node: 'SELECT_FROM'
+    |  +-[FROM] Node: 'FROM'
+    |  |  +-[RANGE] Node: 'RANGE'
+    |  |  |  +-[IDENT] Node: 'Parqueadero'
+    |  |  |  \-[ALIAS] Node: 'p'
+    |  |  \-[JOIN] Node: 'JOIN'
+    |  |     +-[DOT] Node: '.'
+    |  |     |  +-[DOT] Node: '.'
+    |  |     |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  |  |  +-[IDENT] Node: 'co'
+    |  |     |  |  |  |  |  \-[IDENT] Node: 'com'
+    |  |     |  |  |  |  \-[IDENT] Node: 'ceiba'
+    |  |     |  |  |  \-[IDENT] Node: 'estacionamiento'
+    |  |     |  |  \-[IDENT] Node: 'model'
+    |  |     |  \-[IDENT] Node: 'Vehiculo'
+    |  |     +-[ALIAS] Node: 'v'
+    |  |     \-[WITH] Node: 'with'
+    |  |        \-[EQ] Node: '='
+    |  |           +-[DOT] Node: '.'
+    |  |           |  +-[IDENT] Node: 'p'
+    |  |           |  \-[IDENT] Node: 'idVehiculo'
+    |  |           \-[DOT] Node: '.'
+    |  |              +-[IDENT] Node: 'v'
+    |  |              \-[IDENT] Node: 'id'
+    |  \-[SELECT] Node: 'SELECT'
+    |     \-[COUNT] Node: 'COUNT'
+    |        \-[DOT] Node: '.'
+    |           +-[IDENT] Node: 'p'
+    |           \-[IDENT] Node: 'id'
+    \-[WHERE] Node: 'WHERE'
+       \-[AND] Node: 'AND'
+          +-[NE] Node: '&lt;&gt;'
+          |  +-[DOT] Node: '.'
+          |  |  +-[IDENT] Node: 'p'
+          |  |  \-[IDENT] Node: 'estado'
+          |  \-[NUM_INT] Node: '0'
+          \-[EQ] Node: '='
+             +-[DOT] Node: '.'
+             |  +-[IDENT] Node: 'v'
+             |  \-[IDENT] Node: 'tipoVehiculo'
+             \-[QUOTED_STRING] Node: ''M''
+
+08:59:56.377 [Test worker] DEBUG org.hibernate.hql.internal.antlr.HqlSqlBaseWalker - select &lt;&lt; begin [level=1, statement=select]
+08:59:56.378 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - parse() - HQL: SELECT v FROM co.com.ceiba.estacionamiento.model.Vehiculo v WHERE v.placa =?
+08:59:56.378 [Test worker] DEBUG org.hibernate.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
+08:59:56.379 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - --- HQL AST ---
+ \-[QUERY] Node: 'query'
+    +-[SELECT_FROM] Node: 'SELECT_FROM'
+    |  +-[FROM] Node: 'FROM'
+    |  |  \-[RANGE] Node: 'RANGE'
+    |  |     +-[DOT] Node: '.'
+    |  |     |  +-[DOT] Node: '.'
+    |  |     |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  |  |  +-[IDENT] Node: 'co'
+    |  |     |  |  |  |  |  \-[IDENT] Node: 'com'
+    |  |     |  |  |  |  \-[IDENT] Node: 'ceiba'
+    |  |     |  |  |  \-[IDENT] Node: 'estacionamiento'
+    |  |     |  |  \-[IDENT] Node: 'model'
+    |  |     |  \-[IDENT] Node: 'Vehiculo'
+    |  |     \-[ALIAS] Node: 'v'
+    |  \-[SELECT] Node: 'SELECT'
+    |     \-[IDENT] Node: 'v'
+    \-[WHERE] Node: 'WHERE'
+       \-[EQ] Node: '='
+          +-[DOT] Node: '.'
+          |  +-[IDENT] Node: 'v'
+          |  \-[IDENT] Node: 'placa'
+          \-[PARAM] Node: '?'
+
+08:59:56.379 [Test worker] DEBUG org.hibernate.hql.internal.antlr.HqlSqlBaseWalker - select &lt;&lt; begin [level=1, statement=select]
+08:59:56.380 [Test worker] DEBUG org.hibernate.hql.internal.ast.tree.FromElement - FromClause{level=1} : co.com.ceiba.estacionamiento.model.Vehiculo (v) -&gt; vehiculo0_
+08:59:56.380 [Test worker] DEBUG org.hibernate.hql.internal.ast.tree.FromReferenceNode - Resolved : v -&gt; vehiculo0_.ID
+08:59:56.380 [Test worker] DEBUG org.hibernate.hql.internal.ast.tree.FromReferenceNode - Resolved : v -&gt; vehiculo0_.ID
+08:59:56.380 [Test worker] DEBUG org.hibernate.hql.internal.ast.tree.DotNode - getDataType() : placa -&gt; org.hibernate.type.StringType@bdcc1fb
+08:59:56.380 [Test worker] DEBUG org.hibernate.hql.internal.ast.tree.FromReferenceNode - Resolved : v.placa -&gt; vehiculo0_.PLACA
+08:59:56.380 [Test worker] WARN org.hibernate.hql.internal.ast.HqlSqlWalker - [DEPRECATION] Encountered positional parameter near line 1, column 76 in HQL: [SELECT v FROM co.com.ceiba.estacionamiento.model.Vehiculo v WHERE v.placa =?].  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+08:59:56.380 [Test worker] DEBUG org.hibernate.hql.internal.antlr.HqlSqlBaseWalker - select : finishing up [level=1, statement=select]
+08:59:56.380 [Test worker] DEBUG org.hibernate.hql.internal.ast.HqlSqlWalker - processQuery() :  ( SELECT ( {select clause} vehiculo0_.ID ) ( FromClause{level=1} vehiculo vehiculo0_ ) ( WHERE ( = ( vehiculo0_.PLACA vehiculo0_.ID placa ) ? ) ) )
+08:59:56.381 [Test worker] DEBUG org.hibernate.hql.internal.ast.util.JoinProcessor - Using FROM fragment [vehiculo vehiculo0_]
+08:59:56.381 [Test worker] DEBUG org.hibernate.hql.internal.antlr.HqlSqlBaseWalker - select &gt;&gt; end [level=1, statement=select]
+08:59:56.381 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - --- SQL AST ---
+ \-[SELECT] QueryNode: 'SELECT'  querySpaces (vehiculo)
+    +-[SELECT_CLAUSE] SelectClause: '{select clause}'
+    |  +-[ALIAS_REF] IdentNode: 'vehiculo0_.ID as ID1_0_' {alias=v, className=co.com.ceiba.estacionamiento.model.Vehiculo, tableAlias=vehiculo0_}
+    |  \-[SQL_TOKEN] SqlFragment: 'vehiculo0_.CILINDRAJE as CILINDRA2_0_, vehiculo0_.PLACA as PLACA3_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_'
+    +-[FROM] FromClause: 'FROM' FromClause{level=1, fromElementCounter=1, fromElements=1, fromElementByClassAlias=[v], fromElementByTableAlias=[vehiculo0_], fromElementsByPath=[], collectionJoinFromElementsByPath=[], impliedElements=[]}
+    |  \-[FROM_FRAGMENT] FromElement: 'vehiculo vehiculo0_' FromElement{explicit,not a collection join,not a fetch join,fetch non-lazy properties,classAlias=v,role=null,tableName=vehiculo,tableAlias=vehiculo0_,origin=null,columns={,className=co.com.ceiba.estacionamiento.model.Vehiculo}}
+    \-[WHERE] SqlNode: 'WHERE'
+       \-[EQ] BinaryLogicOperatorNode: '='
+          +-[DOT] DotNode: 'vehiculo0_.PLACA' {propertyName=placa,dereferenceType=PRIMITIVE,getPropertyPath=placa,path=v.placa,tableAlias=vehiculo0_,className=co.com.ceiba.estacionamiento.model.Vehiculo,classAlias=v}
+          |  +-[ALIAS_REF] IdentNode: 'vehiculo0_.ID' {alias=v, className=co.com.ceiba.estacionamiento.model.Vehiculo, tableAlias=vehiculo0_}
+          |  \-[IDENT] IdentNode: 'placa' {originalText=placa}
+          \-[PARAM] ParameterNode: '?' {ordinal=0, expectedType=org.hibernate.type.StringType@bdcc1fb}
+
+08:59:56.381 [Test worker] DEBUG org.hibernate.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
+08:59:56.381 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - HQL: SELECT v FROM co.com.ceiba.estacionamiento.model.Vehiculo v WHERE v.placa =?
+08:59:56.381 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - SQL: select vehiculo0_.ID as ID1_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_, vehiculo0_.PLACA as PLACA3_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_ from vehiculo vehiculo0_ where vehiculo0_.PLACA=?
+08:59:56.382 [Test worker] DEBUG org.hibernate.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
+08:59:56.382 [Test worker] DEBUG org.hibernate.SQL - select vehiculo0_.ID as ID1_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_, vehiculo0_.PLACA as PLACA3_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_ from vehiculo vehiculo0_ where vehiculo0_.PLACA=?
+Hibernate: select vehiculo0_.ID as ID1_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_, vehiculo0_.PLACA as PLACA3_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_ from vehiculo vehiculo0_ where vehiculo0_.PLACA=?
+08:59:56.383 [Test worker] DEBUG org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl - Initiating JDBC connection release from afterTransaction
+08:59:56.385 [Test worker] DEBUG org.hibernate.SQL - select next_val as id_val from hibernate_sequence for update
+Hibernate: select next_val as id_val from hibernate_sequence for update
+08:59:56.386 [Test worker] DEBUG org.hibernate.SQL - update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+08:59:56.390 [Test worker] DEBUG org.hibernate.event.internal.AbstractSaveEventListener - Generated identifier: 86, using strategy: org.hibernate.id.enhanced.SequenceStyleGenerator
+08:59:56.463 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - parse() - HQL: SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso                                FROM    Parqueadero p join co.com.ceiba.estacionamiento.model.Vehiculo v on p.idVehiculo = v.id                                WHERE   v.tipoVehiculo = 'M' and p.estado &lt;&gt; 0
+08:59:56.464 [Test worker] DEBUG org.hibernate.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
+08:59:56.465 [Test worker] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - --- HQL AST ---
+ \-[QUERY] Node: 'query'
+    +-[SELECT_FROM] Node: 'SELECT_FROM'
+    |  +-[FROM] Node: 'FROM'
+    |  |  +-[RANGE] Node: 'RANGE'
+    |  |  |  +-[IDENT] Node: 'Parqueadero'
+    |  |  |  \-[ALIAS] Node: 'p'
+    |  |  \-[JOIN] Node: 'join'
+    |  |     +-[DOT] Node: '.'
+    |  |     |  +-[DOT] Node: '.'
+    |  |     |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  |  |  +-[IDENT] Node: 'co'
+    |  |     |  |  |  |  |  \-[IDENT] Node: 'com'
+    |  |     |  |  |  |  \-[IDENT] Node: 'ceiba'
+    |  |     |  |  |  \-[IDENT] Node: 'estacionamiento'
+    |  |     |  |  \-[IDENT] Node: 'model'
+    |  |     |  \-[IDENT] Node: 'Vehiculo'
+    |  |     +-[ALIAS] Node: 'v'
+    |  |     \-[WITH] Node: 'with'
+    |  |        \-[EQ] Node: '='
+    |  |           +-[DOT] Node: '.'
+    |  |           |  +-[IDENT] Node: 'p'
+    |  |           |  \-[IDENT] Node: 'idVehiculo'
+    |  |           \-[DOT] Node: '.'
+    |  |              +-[IDENT] Node: 'v'
+    |  |              \-[IDENT] Node: 'id'
+    |  \-[SELECT] Node: 'SELECT'
+    |     +-[DOT] Node: '.'
+    |     |  +-[IDENT] Node: 'v'
+    |     |  \-[IDENT] Node: 'placa'
+    |     +-[DOT] Node: '.'
+    |     |  +-[IDENT] Node: 'v'
+    |     |  \-[IDENT] Node: 'tipoVehiculo'
+    |     +-[DOT] Node: '.'
+    |     |  +-[IDENT] Node: 'v'
+    |     |  \-[IDENT] Node: 'cilindraje'
+    |     \-[DOT] Node: '.'
+    |        +-[IDENT] Node: 'p'
+    |        \-[IDENT] Node: 'fehcaIngreso'
+    \-[WHERE] Node: 'WHERE'
+       \-[AND] Node: 'and'
+          +-[EQ] Node: '='
+          |  +-[DOT] Node: '.'
+          |  |  +-[IDENT] Node: 'v'
+          |  |  \-[IDENT] Node: 'tipoVehiculo'
+          |  \-[QUOTED_STRING] Node: ''M''
+          \-[NE] Node: '&lt;&gt;'
+             +-[DOT] Node: '.'
+             |  +-[IDENT] Node: 'p'
+             |  \-[IDENT] Node: 'estado'
+             \-[NUM_INT] Node: '0'
+
+08:59:56.466 [Test worker] DEBUG org.hibernate.hql.internal.antlr.HqlSqlBaseWalker - select &lt;&lt; begin [level=1, statement=select]
+08:59:56.468 [Test worker] DEBUG org.hibernate.SQL - select next_val as id_val from hibernate_sequence for update
+Hibernate: select next_val as id_val from hibernate_sequence for update
+08:59:56.468 [Test worker] DEBUG org.hibernate.SQL - update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+08:59:56.474 [Test worker] DEBUG org.hibernate.event.internal.AbstractSaveEventListener - Generated identifier: 87, using strategy: org.hibernate.id.enhanced.SequenceStyleGenerator
+08:59:56.475 [Test worker] DEBUG org.hibernate.SQL - select vehiculo0_.ID as ID1_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_, vehiculo0_.PLACA as PLACA3_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_ from vehiculo vehiculo0_ where vehiculo0_.PLACA=?
+Hibernate: select vehiculo0_.ID as ID1_0_, vehiculo0_.CILINDRAJE as CILINDRA2_0_, vehiculo0_.PLACA as PLACA3_0_, vehiculo0_.TIPO_VEHICULO as TIPO_VEH4_0_ from vehiculo vehiculo0_ where vehiculo0_.PLACA=?
+08:59:56.481 [Test worker] DEBUG org.hibernate.loader.Loader - Result set row: 0
+08:59:56.481 [Test worker] DEBUG org.hibernate.loader.Loader - Result row: EntityKey[co.com.ceiba.estacionamiento.model.Vehiculo#1]
+08:59:56.482 [Test worker] DEBUG org.hibernate.engine.internal.TwoPhaseLoad - Resolving associations for [co.com.ceiba.estacionamiento.model.Vehiculo#1]
+08:59:56.482 [Test worker] DEBUG org.hibernate.engine.internal.TwoPhaseLoad - Done materializing entity [co.com.ceiba.estacionamiento.model.Vehiculo#1]
+08:59:56.482 [Test worker] DEBUG org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl - Initiating JDBC connection release from afterTransaction
+</pre>
+</span>
+</div>
+<div id="tab3" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Wed Sep 12 08:59:56 COT 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 4.8.1</a> at 12/09/2018 08:59:56 AM</p>
+</div>
+</div>
+</body>
+</html>
