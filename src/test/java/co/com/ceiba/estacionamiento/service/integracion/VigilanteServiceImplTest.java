@@ -1,5 +1,6 @@
 package co.com.ceiba.estacionamiento.service.integracion;
 
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -7,6 +8,9 @@ import javax.persistence.PersistenceContext;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.dao.DataIntegrityViolationException;
+
+import co.com.ceiba.estacionamiento.dao.VigilanteRepository;
 import co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
 import co.com.ceiba.estacionamiento.service.VigilanteService;
@@ -17,17 +21,20 @@ public class VigilanteServiceImplTest {
 
 	@PersistenceContext
 	private static EntityManager entityManager;
-	private static VigilanteRepositoryImpl repositorio ;
+	private static VigilanteRepository repositorioVigilante;
+	private static VigilanteServiceImpl repositorio;
 	static final String EXITO_AL_GUARDAR_VEHICULO = "Exito";
 	static final String CAMPOS_SIN_DILIGENCIAR = "los campos obligatorios no estan diligenciados";
 	static final String RESTRICCION_DE_PLACA = "El vehiculo no puede ser parqueado los dias domingo y lunes";
-
+	static final String VEHICULO_NO_ENCONTRADO = "Este vehiculo no se encuentra registrado";
+	static final String PLACA_DUPLICADA = "Este vehiculo ya se encuentra registrado";
+	
 	@BeforeClass
 	public static void setUpClass() throws Exception {
-		
-			entityManager = (EntityManager) Persistence.createEntityManagerFactory("TestPersistence")
-					.createEntityManager();	
-			 repositorio = new VigilanteRepositoryImpl(entityManager);
+
+		entityManager = (EntityManager) Persistence.createEntityManagerFactory("TestPersistence").createEntityManager();
+		repositorioVigilante = new VigilanteRepositoryImpl(entityManager);
+		repositorio = new VigilanteServiceImpl(repositorioVigilante);
 	}
 
 	@Test
@@ -40,10 +47,10 @@ public class VigilanteServiceImplTest {
 		vehiculo.setTipoVehiculo("M");
 		vehiculo.setCilindraje(125);
 
-		VigilanteService vigilanteService = mock(VigilanteService.class);
 		// act
-		vigilanteService.save(vehiculo);
+		repositorio.save(vehiculo);
 	}
+
 	@Test
 	public void guardarVehiculoExistenteTest() {
 
@@ -53,15 +60,14 @@ public class VigilanteServiceImplTest {
 		vehiculo.setPlaca("GXL315");
 		vehiculo.setTipoVehiculo("C");
 		vehiculo.setCilindraje(115);
-
-		VigilanteService vigilanteService = mock(VigilanteService.class);
+		mock(Vehiculo.class);
 		try {
 			// act
-			vigilanteService.save(vehiculo);
+			repositorio.save(vehiculo);
 
-		} catch (ParqueaderoException e) {
+		} catch (DataIntegrityViolationException e) {
 			// assert
-			Assert.assertEquals(CAMPOS_SIN_DILIGENCIAR, e.getMessage());
+			Assert.assertEquals(PLACA_DUPLICADA, e.getMessage());
 		}
 	}
 
@@ -72,12 +78,11 @@ public class VigilanteServiceImplTest {
 		Vehiculo vehiculo = new Vehiculo();
 		vehiculo.setTipoVehiculo("M");
 		vehiculo.setCilindraje(125);
-
-		VigilanteService vigilanteService = mock(VigilanteService.class);
 		try {
 			// act
-			vigilanteService.save(vehiculo);
-
+		
+			repositorio.save(vehiculo);
+			mock(Vehiculo.class);
 		} catch (ParqueaderoException e) {
 			// assert
 			Assert.assertEquals(CAMPOS_SIN_DILIGENCIAR, e.getMessage());
@@ -87,13 +92,10 @@ public class VigilanteServiceImplTest {
 	@Test
 	public void buscarVehiculo() {
 
-		VigilanteServiceImpl vigilanteService = mock(VigilanteServiceImpl.class);
-		vigilanteService = new VigilanteServiceImpl(repositorio);
 		Vehiculo vehiculo = new Vehiculo(1, "GXL315", "C", 115);
 		// act
-		System.out.println(" vehiculo id " + vehiculo.getId() + " placa " + vehiculo.getPlaca()+" cilindraje "+vehiculo.getCilindraje() + " tipoVehiculo "+vehiculo.getTipoVehiculo());
-		Vehiculo result = vigilanteService.buscarVehiculo(vehiculo);
-		System.out.println("result vehiculo id " + result.getId() + " placa " + result.getPlaca()+" cilindraje "+result.getCilindraje() + " tipoVehiculo "+result.getTipoVehiculo());
+		mock(Vehiculo.class);
+		Vehiculo result = repositorio.buscarVehiculo(vehiculo);
 		Assert.assertEquals(vehiculo.getPlaca(), result.getPlaca());
 	}
 
@@ -101,12 +103,15 @@ public class VigilanteServiceImplTest {
 	public void buscarVehiculoNoEncontrado() {
 
 		String placa = "GXL";
-		VigilanteServiceImpl vigilanteService = mock(VigilanteServiceImpl.class);
-		vigilanteService = new VigilanteServiceImpl(repositorio);
 		Vehiculo vehiculo = new Vehiculo();
 		vehiculo.setPlaca(placa);
+		mock(Vehiculo.class);
 		// act
-		Assert.assertEquals(null, vigilanteService.buscarVehiculo(vehiculo));
+		try {
+			Vehiculo resul= repositorio.buscarVehiculo(vehiculo);
+		} catch (ParqueaderoException e) {
+			Assert.assertEquals(VEHICULO_NO_ENCONTRADO,e.getMessage());
+		}
 	}
 
 }

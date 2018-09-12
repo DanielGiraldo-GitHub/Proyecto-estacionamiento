@@ -3,6 +3,7 @@ package co.com.ceiba.estacionamiento.service;
 import java.text.ParseException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import co.com.ceiba.estacionamiento.dao.VigilanteRepository;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
@@ -50,7 +51,7 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 		try {
 			vigilanteRepository.guardarVehiculo(vehiculo);
-		} catch (RuntimeException e) {
+		} catch (DataIntegrityViolationException e) {
 			throw new ParqueaderoException(PLACA_DUPLICADA);
 		}
 	}
@@ -58,7 +59,9 @@ public class VigilanteServiceImpl implements VigilanteService {
 	@Override
 	public Vehiculo buscarVehiculo(Vehiculo vehiculo) {
 
-		return vigilanteRepository.buscarVehiculo(vehiculo.getPlaca());
+		Vehiculo resul =vigilanteRepository.buscarVehiculo(vehiculo.getPlaca());
+		if(resul!= null)return resul;
+		throw new ParqueaderoException(VEHICULO_NO_ENCONTRADO);
 	}
 
 	@Override

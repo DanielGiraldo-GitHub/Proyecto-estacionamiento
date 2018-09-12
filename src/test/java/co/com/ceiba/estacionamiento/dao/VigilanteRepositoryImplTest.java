@@ -31,6 +31,7 @@ public class VigilanteRepositoryImplTest {
 
 		entityManager = (EntityManager) Persistence.createEntityManagerFactory("TestPersistence").createEntityManager();
 		repositorio = new VigilanteRepositoryImpl(entityManager);
+		mock(VigilanteRepositoryImpl.class);
 	}
 
 	@Test
@@ -97,8 +98,12 @@ public class VigilanteRepositoryImplTest {
 		String placa = "GXL";
 		Vehiculo vehiculo = new Vehiculo();
 		vehiculo.setPlaca(placa);
+		 mock(Vehiculo.class);
 		// act
-		Assert.assertEquals(null, repositorio.buscarVehiculo(placa));
+			Vehiculo resul= repositorio.buscarVehiculo(placa);
+			Assert.assertEquals(null, resul);
+		
+
 	}
 
 	@Test
