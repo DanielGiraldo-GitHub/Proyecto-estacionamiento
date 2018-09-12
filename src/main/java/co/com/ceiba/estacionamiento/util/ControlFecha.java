@@ -9,14 +9,20 @@ public class ControlFecha {
 
 	static final int MAXIMO_DIA_EN_SEGUNDOS = 86400;
 	static final int MAXIMO_HORA_EN_SEGUNDOS = 3600;
+	
+	private Calendar fechaSistema ;
 
-	public ControlFecha() {
+	public ControlFecha()  {
 		super();
+		try {
+			fechaSistema = this.fechaAcutalSistema();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public boolean velidarDia() throws ParseException {
 
-		Calendar fechaSistema = fechaAcutalSistema();
 		boolean retorno = true;
 		if (fechaSistema.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY
 				|| fechaSistema.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY)
@@ -39,7 +45,7 @@ public class ControlFecha {
 		// la posicion [0] equivale a los dias y la posicion [1] equivale a las
 		// horas
 		int[] tiempo = new int[2];
-		Calendar fechaSalida = fechaAcutalSistema();
+		Calendar fechaSalida = fechaSistema;
 		int tiempoTotal = (int) ((fechaSalida.getTime().getTime() - fechaIngreso.getTime()) / 1000);
 		
 		if (tiempoTotal > MAXIMO_DIA_EN_SEGUNDOS) {
