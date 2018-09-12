@@ -5,25 +5,21 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-import javax.validation.ValidationException;
-
 import org.springframework.stereotype.Repository;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
-import dominio.excepcion.ParqueaderoException;
 
 @Repository
 @Transactional
 public class VigilanteRepositoryImpl implements VigilanteRepository {
 
-
+	@PersistenceContext
+	public EntityManager entityManager;
+	
 	public VigilanteRepositoryImpl(EntityManager entityManager) {
 		super();
 		this.entityManager = entityManager;
 	}
-
-	@PersistenceContext
-	public EntityManager entityManager;
 
 	@Override
 	public Integer contarCarrosParqueados() {
