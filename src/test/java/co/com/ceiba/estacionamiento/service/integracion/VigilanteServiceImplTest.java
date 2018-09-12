@@ -1,6 +1,5 @@
 package co.com.ceiba.estacionamiento.service.integracion;
 
-import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -8,12 +7,9 @@ import javax.persistence.PersistenceContext;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.dao.DataIntegrityViolationException;
-
 import co.com.ceiba.estacionamiento.dao.VigilanteRepository;
 import co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
-import co.com.ceiba.estacionamiento.service.VigilanteService;
 import co.com.ceiba.estacionamiento.service.VigilanteServiceImpl;
 import dominio.excepcion.ParqueaderoException;
 

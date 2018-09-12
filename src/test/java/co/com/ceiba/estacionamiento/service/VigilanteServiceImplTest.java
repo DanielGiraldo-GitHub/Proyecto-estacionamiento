@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import co.com.ceiba.estacionamiento.dao.VigilanteRepository;
 import co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl;
 import co.com.ceiba.estacionamiento.model.Vehiculo;

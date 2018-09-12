@@ -39,11 +39,9 @@ public class VigilanteRepositoryImplTest {
 
 		// arrange
 		Vehiculo vehiculo = new Vehiculo();
-
 		vehiculo.setPlaca("BCA55C");
 		vehiculo.setTipoVehiculo("M");
 		vehiculo.setCilindraje(125);
-
 		// act
 		repositorio.guardarVehiculo(vehiculo);
 	}
@@ -56,7 +54,6 @@ public class VigilanteRepositoryImplTest {
 		vehiculo.setPlaca("GXL315");
 		vehiculo.setTipoVehiculo("C");
 		vehiculo.setCilindraje(115);
-
 		try {
 			repositorio.guardarVehiculo(vehiculo);
 
@@ -76,7 +73,6 @@ public class VigilanteRepositoryImplTest {
 		try {
 			mock(Vehiculo.class);
 			repositorio.guardarVehiculo(vehiculo);
-
 		} catch (ParqueaderoException e) {
 			// assert
 			Assert.assertEquals(CAMPOS_SIN_DILIGENCIAR, e.getMessage());
@@ -136,7 +132,6 @@ public class VigilanteRepositoryImplTest {
 
 		// arrange
 		Vehiculo vehiculo_1 = mock(Vehiculo.class);
-		Vehiculo vehiculo_2 = mock(Vehiculo.class);
 		vehiculo_1 = new Vehiculo(18, "BCA54C", "M", 125);
 		List<Vehiculo> listaMotos = new ArrayList<>();
 		listaMotos.add(vehiculo_1);
@@ -195,7 +190,6 @@ public class VigilanteRepositoryImplTest {
 		Parqueadero parqueadero = new Parqueadero();
 		parqueadero.setId(23);
 		Parqueadero resultado = repositorio.buscarParqueaderoVehiculo(20);
-		System.out.println("resultado ******************************** " + resultado.getId());
 		Assert.assertEquals(parqueadero.getId(), resultado.getId());
 	}
 
