@@ -121,7 +121,7 @@ public class VigilanteRepositoryImplTest {
 	public void contarMotosParqueadosTest() {
 
 		// arrange
-		Integer cantidad = 2;
+		Integer cantidad = 1;
 		Assert.assertTrue(repositorio.contarMotosParqueados() >= cantidad);
 	}
 
@@ -132,10 +132,8 @@ public class VigilanteRepositoryImplTest {
 		Vehiculo vehiculo_1 = mock(Vehiculo.class);
 		Vehiculo vehiculo_2 = mock(Vehiculo.class);
 		vehiculo_1 = new Vehiculo(18, "BCA54C", "M", 125);
-		vehiculo_2 = new Vehiculo(21, "LSD94A", "M", 650);
 		List<Vehiculo> listaMotos = new ArrayList<>();
 		listaMotos.add(vehiculo_1);
-		listaMotos.add(vehiculo_2);
 		List<Vehiculo> listaResultado = repositorio.listarMotosParqueadas();
 		Assert.assertTrue(listaResultado.size() >= listaMotos.size());
 	}
