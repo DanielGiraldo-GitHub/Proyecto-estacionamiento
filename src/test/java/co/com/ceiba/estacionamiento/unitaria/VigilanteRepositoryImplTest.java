@@ -16,7 +16,7 @@ import co.com.ceiba.estacionamiento.model.Vehiculo;
 import co.com.ceiba.estacionamiento.service.VigilanteServiceImpl;
 import dominio.excepcion.ParqueaderoException;
 
-public class TestVigilanteRepository {
+public class VigilanteRepositoryImplTest {
 
 	@PersistenceContext
 	private static EntityManager entityManager;
