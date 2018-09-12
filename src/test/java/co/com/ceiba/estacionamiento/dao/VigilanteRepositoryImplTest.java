@@ -73,6 +73,7 @@ public class VigilanteRepositoryImplTest {
 		vehiculo.setTipoVehiculo("M");
 		vehiculo.setCilindraje(125);
 		try {
+			mock(Vehiculo.class);
 			repositorio.guardarVehiculo(vehiculo);
 
 		} catch (ParqueaderoException e) {
