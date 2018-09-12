@@ -57,8 +57,8 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 	@Override
 	public Vehiculo buscarVehiculo(Vehiculo vehiculo) {
-	
-			return vigilanteRepository.buscarVehiculo(vehiculo.getPlaca());	
+
+		return vigilanteRepository.buscarVehiculo(vehiculo.getPlaca());
 	}
 
 	@Override
@@ -118,9 +118,10 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 		int[] tiempoPermanencia;
 		try {
-			if (parqueadero == null) throw new ParqueaderoException("Este vehiculo no se encuentra en el parqueadero");
-
-			 else {
+			if (parqueadero == null) {
+				throw new ParqueaderoException("Este vehiculo no se encuentra en el parqueadero");
+			}
+			else {
 				tiempoPermanencia = controlFechas.calcularTiempo(parqueadero.getFehcaIngreso());
 				if (vehiculo.getTipoVehiculo().equals("C")) {
 					parqueadero.setPrecio(controlTarifas.calcularPrecioCarro(tiempoPermanencia));
@@ -132,11 +133,10 @@ public class VigilanteServiceImpl implements VigilanteService {
 				parqueadero.setFechaSalida(controlFechas.fechaAcutalSistema().getTime());
 				vigilanteRepository.salidaVehiculoParqueado(parqueadero);
 			}
+			return parqueadero;
 		} catch (ParseException e) {
 			throw new ParqueaderoException(ERROR_AL_CALCULAR_PRECIO);
 		}
-
-		return parqueadero;
 	}
 
 	@Override
@@ -148,10 +148,10 @@ public class VigilanteServiceImpl implements VigilanteService {
 			if (busquedaVehiculo == null) {
 				save(vehiculo);
 				busquedaVehiculo = buscarVehiculo(vehiculo);
-			} 
-			if(buscarParqueaderoVehiculo(busquedaVehiculo.getId())!=null) 
+			}
+			if (buscarParqueaderoVehiculo(busquedaVehiculo.getId()) != null)
 				throw new ParqueaderoException("este vehiculo ya se encuentra en el parqueadero");
-			
+
 			parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(), busquedaVehiculo.getId(), true);
 			vigilanteRepository.ingresarVehiculoParqueadero(parqueadero);
 
