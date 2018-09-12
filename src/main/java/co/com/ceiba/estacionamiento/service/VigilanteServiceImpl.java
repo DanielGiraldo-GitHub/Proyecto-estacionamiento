@@ -1,5 +1,6 @@
 package co.com.ceiba.estacionamiento.service;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,12 +58,8 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 	@Override
 	public Vehiculo buscarVehiculo(Vehiculo vehiculo) {
-		try {
-			return vigilanteRepository.buscarVehiculo(vehiculo.getPlaca());
-		} catch (RuntimeException e) {
-			return null;
-		}
-
+	
+			return vigilanteRepository.buscarVehiculo(vehiculo.getPlaca());	
 	}
 
 	@Override
@@ -169,7 +166,7 @@ public class VigilanteServiceImpl implements VigilanteService {
 	public Vehiculo buscarVehiculoParqueado(String placa) {
 		try {
 			return vigilanteRepository.buscarVehiculo(placa);
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
 			return null;
 		}
 

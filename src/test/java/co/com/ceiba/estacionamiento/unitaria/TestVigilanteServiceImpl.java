@@ -44,6 +44,26 @@ public class TestVigilanteServiceImpl {
 		// act
 		vigilanteService.save(vehiculo);
 	}
+	@Test
+	public void guardarVehiculoExistenteTest() {
+
+		// arrange
+		Vehiculo vehiculo = new Vehiculo();
+
+		vehiculo.setPlaca("GXL315");
+		vehiculo.setTipoVehiculo("C");
+		vehiculo.setCilindraje(115);
+
+		VigilanteService vigilanteService = mock(VigilanteService.class);
+		try {
+			// act
+			vigilanteService.save(vehiculo);
+
+		} catch (ParqueaderoException e) {
+			// assert
+			Assert.assertEquals(CAMPOS_SIN_DILIGENCIAR, e.getMessage());
+		}
+	}
 
 	@Test
 	public void guardarVehiculoSinPlacaTest() {
@@ -80,11 +100,13 @@ public class TestVigilanteServiceImpl {
 	@Test
 	public void buscarVehiculoNoEncontrado() {
 
-		String placa = "GXL3";
-		VigilanteRepositoryImpl vigilanteRepositoryImpl = mock(VigilanteRepositoryImpl.class);
-
+		String placa = "GXL";
+		VigilanteServiceImpl vigilanteService = mock(VigilanteServiceImpl.class);
+		vigilanteService = new VigilanteServiceImpl(repositorio);
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setPlaca(placa);
 		// act
-		Assert.assertEquals(null, vigilanteRepositoryImpl.buscarVehiculo(placa));
+		Assert.assertEquals(null, vigilanteService.buscarVehiculo(vehiculo));
 	}
 
 }

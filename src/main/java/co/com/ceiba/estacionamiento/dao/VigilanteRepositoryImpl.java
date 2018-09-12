@@ -1,4 +1,5 @@
 package co.com.ceiba.estacionamiento.dao;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,7 +13,7 @@ import dominio.excepcion.ParqueaderoException;
 @Repository
 @Transactional
 public class VigilanteRepositoryImpl implements VigilanteRepository {
-	
+
 	public VigilanteRepositoryImpl(EntityManager entityManager) {
 		super();
 		this.entityManager = entityManager;
@@ -43,51 +44,43 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 
 	@Override
 	public List<Vehiculo> listarCarrosParqueados() {
-		try {
 			Query query = entityManager.createQuery("SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso "
 					+ "FROM Parqueadero p join Vehiculo v on p.idVehiculo = v.id WHERE   v.tipoVehiculo = 'C' and p.estado <> 0");
-			return  query.getResultList();
-			
-		} catch (Exception e) {
-			throw new  ParqueaderoException("Error al cargar los carro que se encuentran estacionados en el parqueadero");
-		}
-		
-		}
+			return query.getResultList();
+	}
 
 	@Override
 	public List<Vehiculo> listarMotosParqueadas() {
-		try {
 			Query query = entityManager.createQuery("SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso "
 					+ "                               FROM    Parqueadero p join Vehiculo v on p.idVehiculo = v.id "
 					+ "                               WHERE   v.tipoVehiculo = 'M' and p.estado <> 0");
-			return  query.getResultList();
-			
-		} catch (Exception e) {
-			throw new  ParqueaderoException("Error al cargar las motos que se encuentran estacionadas en el parqueadero");
-		}
+			return query.getResultList();
 	}
-	
+
 	@Override
 	public void salidaVehiculoParqueado(Parqueadero parqueadero) {
-		entityManager.merge(parqueadero);	
+		entityManager.merge(parqueadero);
 	}
 
 	@Override
 	public void ingresarVehiculoParqueadero(Parqueadero parqueadero) {
-		entityManager.persist(parqueadero);	
+		entityManager.persist(parqueadero);
 	}
-	
+
 	@Override
-	public void guardarVehiculo(Vehiculo vehiculo){
+	public void guardarVehiculo(Vehiculo vehiculo) {
 		entityManager.persist(vehiculo);
 	}
 
 	@Override
 	public Vehiculo buscarVehiculo(String placa) {
-
-		Query query = entityManager.createQuery("SELECT v FROM Vehiculo v WHERE v.placa =?");
-		query.setParameter(0, placa);
-		return (Vehiculo) (query.getSingleResult());	
+		try {
+			Query query = entityManager.createQuery("SELECT v FROM Vehiculo v WHERE v.placa =?");
+			query.setParameter(0, placa);
+			return (Vehiculo) (query.getSingleResult());
+		} catch (RuntimeException e) {
+			return null;
+		}
 	}
 
 	@Override
@@ -97,27 +90,28 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 					+ "                               FROM    Parqueadero p join Vehiculo v on p.idVehiculo = v.id "
 					+ "                               WHERE   p.estado <> 0 AND v.placa =?");
 			query.setParameter(0, placa);
-			return (Vehiculo) (query.getSingleResult());	
+			return (Vehiculo) (query.getSingleResult());
 		} catch (Exception e) {
 			return null;
 		}
-			
+
 	}
+
 	@Override
 	public Vehiculo buscarVehiculoPorId(int idVehiculo) {
-		return 	entityManager.find(Vehiculo.class, idVehiculo);
+		return entityManager.find(Vehiculo.class, idVehiculo);
 	}
 
 	@Override
 	public Parqueadero buscarParqueaderoVehiculo(int idVehiculo) {
 		try {
-			Query query = entityManager.createQuery("SELECT p FROM Parqueadero p WHERE p.estado <> 0 AND  p.idVehiculo =?");
+			Query query = entityManager
+					.createQuery("SELECT p FROM Parqueadero p WHERE p.estado <> 0 AND  p.idVehiculo =?");
 			query.setParameter(0, idVehiculo);
-			return (Parqueadero) (query.getSingleResult());	
+			return (Parqueadero) (query.getSingleResult());
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
-	
 }
