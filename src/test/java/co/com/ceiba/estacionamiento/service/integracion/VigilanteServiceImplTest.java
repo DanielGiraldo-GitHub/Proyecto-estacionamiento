@@ -60,14 +60,14 @@ public class VigilanteServiceImplTest {
 		vehiculo.setPlaca("GXL315");
 		vehiculo.setTipoVehiculo("C");
 		vehiculo.setCilindraje(115);
-		mock(Vehiculo.class);
 		try {
 			// act
+			mock(Vehiculo.class);
 			repositorio.save(vehiculo);
 
-		} catch (DataIntegrityViolationException e) {
+		} catch (ParqueaderoException e) {
 			// assert
-			Assert.assertEquals(PLACA_DUPLICADA, e.getMessage());
+			Assert.assertEquals(CAMPOS_SIN_DILIGENCIAR, e.getMessage());
 		}
 	}
 
