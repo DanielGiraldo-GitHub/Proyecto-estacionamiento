@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2018-09-13T21:36:03" hostname="DANIEL-GIRALDO" time="0.141">
+  <properties/>
+  <testcase name="salidaVehiculosParqueaderoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.086"/>
+  <testcase name="listarCarrosParqueadosTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.004"/>
+  <testcase name="buscarVehiculoParqueadoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.038"/>
+  <testcase name="contarCarrosParqueadosTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
+  <testcase name="buscarParqueaderoVehiculoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.0"/>
+  <testcase name="buscarParqueaderoVehiculoNoParqueadoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
+  <testcase name="contarMotosParqueadosTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.0"/>
+  <testcase name="buscarVehiculoNoEncontradoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
+  <testcase name="guardarVehiculoSinPlacaTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.0"/>
+  <testcase name="listarMotosParqueadasTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.0"/>
+  <testcase name="ingresoVehiculosParqueaderoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
+  <testcase name="guardarVehiculoExistenteTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
+  <testcase name="buscarVehiculoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
