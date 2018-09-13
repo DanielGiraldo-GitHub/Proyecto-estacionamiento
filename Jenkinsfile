@@ -32,12 +32,6 @@ pipeline {
 			}  
 		}    
 		
-		stage('Compile') {
-			steps{
-				echo "------------>Compile<------------"
-				sh 'gradle --b ./build.gradle compileJava'
-			}
-		}
 		
 		stage('Unit Tests') {    
 			steps{    

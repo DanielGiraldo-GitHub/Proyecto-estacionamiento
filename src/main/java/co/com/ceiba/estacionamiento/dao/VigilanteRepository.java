@@ -23,9 +23,10 @@ public interface VigilanteRepository {
 	Vehiculo buscarVehiculo(String placa);
 
 	Vehiculo buscarVehiculoPorId(int idVehiculo);
-	
+
 	Vehiculo buscarVehiculoParqueado(String placa);
-	
+
 	Parqueadero buscarParqueaderoVehiculo(int idVehiculo);
+
 
 }

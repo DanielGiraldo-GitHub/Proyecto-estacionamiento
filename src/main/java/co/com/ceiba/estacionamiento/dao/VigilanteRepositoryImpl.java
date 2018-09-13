@@ -117,5 +117,6 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 			return null;
 		}
 	}
+	
 
 }

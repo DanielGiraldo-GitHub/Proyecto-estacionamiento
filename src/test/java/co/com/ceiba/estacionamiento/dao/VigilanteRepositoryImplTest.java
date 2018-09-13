@@ -8,11 +8,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
@@ -24,7 +22,7 @@ public class VigilanteRepositoryImplTest {
 	@PersistenceContext
 	private static EntityManager entityManager;
 	private static VigilanteRepositoryImpl repositorio;
-	private static ControlFecha control;
+	private static ControlFecha control = new ControlFecha();
 	
 	static final String EXITO_AL_GUARDAR_VEHICULO = "Exito";
 	static final String CAMPOS_SIN_DILIGENCIAR = "los campos obligatorios no estan diligenciados";
@@ -35,10 +33,10 @@ public class VigilanteRepositoryImplTest {
 
 		entityManager = (EntityManager) Persistence.createEntityManagerFactory("TestPersistence").createEntityManager();
 		repositorio = new VigilanteRepositoryImpl(entityManager);
-		control = new ControlFecha();
 	}
 
 	
+	@Test
 	public void guardarVehiculoTest() {
 
 		// arrange
@@ -50,7 +48,7 @@ public class VigilanteRepositoryImplTest {
 		repositorio.guardarVehiculo(vehiculo);
 	}
 
-	
+	@Test
 	public void guardarVehiculoExistenteTest() {
 
 		// arrange
@@ -67,7 +65,7 @@ public class VigilanteRepositoryImplTest {
 		}
 	}
 
-	
+	@Test
 	public void guardarVehiculoSinPlacaTest() {
 
 		// arrange
@@ -92,6 +90,7 @@ public class VigilanteRepositoryImplTest {
 		Assert.assertEquals(vehiculo.getPlaca(), result.getPlaca());
 	}
 	
+	@Test
 	public void buscarVehiculoNoEncontradoTest() {
 
 		String placa = "GXL";
@@ -106,6 +105,7 @@ public class VigilanteRepositoryImplTest {
 	}
 
 	
+	@Test
 	public void contarCarrosParqueadosTest() {
 
 		// arrange
@@ -122,7 +122,7 @@ public class VigilanteRepositoryImplTest {
 
 	}
 
-	
+	@Test
 	public void contarMotosParqueadosTest() {
 
 		// arrange
@@ -130,7 +130,7 @@ public class VigilanteRepositoryImplTest {
 		Assert.assertTrue(repositorio.contarMotosParqueados() >= cantidad);
 	}
 	
-	
+	@Test
 	public void listarMotosParqueadasTest() {
 
 		// arrange
@@ -143,7 +143,7 @@ public class VigilanteRepositoryImplTest {
 		Assert.assertTrue(listaResultado.size() >= listaMotos.size());
 	}
 
-	
+	@Test
 	public void listarCarrosParqueadosTest() {
 
 		// arrange
@@ -155,7 +155,7 @@ public class VigilanteRepositoryImplTest {
 		Assert.assertTrue(listaResultado.size() >= listaCarros.size());
 	}
 
-	
+	@Test
 	public void salidaVehiculosParqueaderoTest() {
 
 		// arrange
@@ -175,7 +175,7 @@ public class VigilanteRepositoryImplTest {
 		}
 	}
 
-	
+	@Test
 	public void ingresoVehiculosParqueaderoTest(){
 		
 		mock(Parqueadero.class);
@@ -188,7 +188,7 @@ public class VigilanteRepositoryImplTest {
 		}
 	}
 
-	
+	@Test
 	public void buscarParqueaderoVehiculoTest() {
 
 		Parqueadero parqueadero = new Parqueadero();
@@ -197,7 +197,7 @@ public class VigilanteRepositoryImplTest {
 		Assert.assertEquals(parqueadero.getId(), resultado.getId());
 	}
 
-	
+	@Test
 	public void buscarParqueaderoVehiculoNoParqueadoTest() {
 
 		// arrange
@@ -208,7 +208,7 @@ public class VigilanteRepositoryImplTest {
 		Assert.assertEquals(null, parqueadero);
 	}
 
-	
+	@Test
 	public void buscarVehiculoParqueadoTest() {
 
 		Vehiculo vehiculo = repositorio.buscarVehiculoParqueado("KDY533");
