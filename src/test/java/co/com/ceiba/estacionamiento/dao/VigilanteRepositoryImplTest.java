@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
@@ -36,7 +37,7 @@ public class VigilanteRepositoryImplTest {
 		control = new ControlFecha();
 	}
 
-	
+	@Test
 	public void guardarVehiculoTest() {
 
 		// arrange
@@ -48,7 +49,7 @@ public class VigilanteRepositoryImplTest {
 		repositorio.guardarVehiculo(vehiculo);
 	}
 
-	
+	@Test
 	public void guardarVehiculoExistenteTest() {
 
 		// arrange
@@ -65,7 +66,7 @@ public class VigilanteRepositoryImplTest {
 		}
 	}
 
-	
+	@Test
 	public void guardarVehiculoSinPlacaTest() {
 
 		// arrange
@@ -81,7 +82,7 @@ public class VigilanteRepositoryImplTest {
 		}
 	}
 
-	
+	@Test
 	public void buscarVehiculoTest() {
 
 		Vehiculo vehiculo = new Vehiculo(1, "GXL315", "C", 115);
@@ -89,7 +90,7 @@ public class VigilanteRepositoryImplTest {
 		Vehiculo result = repositorio.buscarVehiculo(vehiculo.getPlaca());
 		Assert.assertEquals(vehiculo.getPlaca(), result.getPlaca());
 	}
-
+	@Test
 	public void buscarVehiculoNoEncontradoTest() {
 
 		String placa = "GXL";
@@ -103,7 +104,7 @@ public class VigilanteRepositoryImplTest {
 
 	}
 
-	
+	@Test
 	public void contarCarrosParqueadosTest() {
 
 		// arrange
@@ -120,15 +121,15 @@ public class VigilanteRepositoryImplTest {
 
 	}
 
-	
+	@Test
 	public void contarMotosParqueadosTest() {
 
 		// arrange
 		Integer cantidad = 1;
 		Assert.assertTrue(repositorio.contarMotosParqueados() >= cantidad);
 	}
-
 	
+	@Test
 	public void listarMotosParqueadasTest() {
 
 		// arrange
@@ -141,7 +142,7 @@ public class VigilanteRepositoryImplTest {
 		Assert.assertTrue(listaResultado.size() >= listaMotos.size());
 	}
 
-	
+	@Test
 	public void listarCarrosParqueadosTest() {
 
 		// arrange
@@ -153,7 +154,7 @@ public class VigilanteRepositoryImplTest {
 		Assert.assertTrue(listaResultado.size() >= listaCarros.size());
 	}
 
-	
+	@Test
 	public void salidaVehiculosParqueaderoTest() {
 
 		// arrange
@@ -173,7 +174,7 @@ public class VigilanteRepositoryImplTest {
 		}
 	}
 
-	
+	@Test
 	public void ingresoVehiculosParqueaderoTest(){
 		
 		mock(Parqueadero.class);
@@ -186,7 +187,7 @@ public class VigilanteRepositoryImplTest {
 		}
 	}
 
-	
+	@Test
 	public void buscarParqueaderoVehiculoTest() {
 
 		Parqueadero parqueadero = new Parqueadero();
@@ -196,7 +197,7 @@ public class VigilanteRepositoryImplTest {
 		Assert.assertEquals(parqueadero.getId(), resultado.getId());
 	}
 
-	
+	@Test
 	public void buscarParqueaderoVehiculoNoParqueadoTest() {
 
 		// arrange
@@ -207,7 +208,7 @@ public class VigilanteRepositoryImplTest {
 		Assert.assertEquals(null, parqueadero);
 	}
 
-	
+	@Test
 	public void buscarVehiculoParqueadoTest() {
 		mock(Vehiculo.class);
 		Vehiculo vehiculo = repositorio.buscarVehiculoParqueado("KDY533");
