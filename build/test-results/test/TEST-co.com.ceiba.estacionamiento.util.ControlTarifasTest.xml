@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.ceiba.estacionamiento.util.ControlTarifasTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-09-13T12:15:43" hostname="DANIEL-GIRALDO" time="0.0">
+<testsuite name="co.com.ceiba.estacionamiento.util.ControlTarifasTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-09-13T13:46:01" hostname="DANIEL-GIRALDO" time="0.001">
   <properties/>
-  <testcase name="calcularPrecioCarroTest" classname="co.com.ceiba.estacionamiento.util.ControlTarifasTest" time="0.0"/>
+  <testcase name="calcularPrecioCarroTest" classname="co.com.ceiba.estacionamiento.util.ControlTarifasTest" time="0.001"/>
   <testcase name="calcularPrecioMotoConCilindrajeSuperadoTest" classname="co.com.ceiba.estacionamiento.util.ControlTarifasTest" time="0.0"/>
   <testcase name="calcularPrecioMotoSinCilindrajeSuperadoTest" classname="co.com.ceiba.estacionamiento.util.ControlTarifasTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

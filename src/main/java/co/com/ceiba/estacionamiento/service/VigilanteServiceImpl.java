@@ -79,7 +79,7 @@ public class VigilanteServiceImpl implements VigilanteService {
 			try {
 				return controlFechas.velidarDia();
 			} catch (ParseException e) {
-
+				throw new ParqueaderoException("Error al validar la placa del vehiculo");
 			}
 		return true;
 	}
@@ -166,21 +166,13 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 	@Override
 	public Vehiculo buscarVehiculoParqueado(String placa) {
-		try {
-			return vigilanteRepository.buscarVehiculo(placa);
-		} catch (NullPointerException e) {
-			return null;
-		}
 
+			return vigilanteRepository.buscarVehiculo(placa);
 	}
 
 	@Override
 	public Parqueadero buscarParqueaderoVehiculo(int idVehiculo) {
-		try {
+		
 			return vigilanteRepository.buscarParqueaderoVehiculo(idVehiculo);
-		} catch (Exception e) {
-			return null;
-		}
-
 	}
 }

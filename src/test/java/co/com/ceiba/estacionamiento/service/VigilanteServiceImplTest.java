@@ -1,6 +1,9 @@
 package co.com.ceiba.estacionamiento.service;
 
 import static org.mockito.Mockito.mock;
+
+import java.text.ParseException;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
@@ -9,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import co.com.ceiba.estacionamiento.dao.VigilanteRepository;
 import co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl;
+import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
 import co.com.ceiba.estacionamiento.service.VigilanteService;
 import co.com.ceiba.estacionamiento.service.VigilanteServiceImpl;
@@ -25,7 +29,8 @@ public class VigilanteServiceImplTest {
 	static final String PLACA_DUPLICADA = "Este vehiculo ya se encuentra registrado";
 	static final String RESTRICCION_DE_PLACA = "El vehiculo no puede ser parqueado los dias domingo y lunes";
 	static final String VEHICULO_NO_ENCONTRADO = "Este vehiculo no se encuentra registrado";
-	
+	static final String VEHICULO_PARQUEADO = "este vehiculo ya se encuentra en el parqueadero";
+
 	@BeforeClass
 	public static void setUpClass() throws Exception {
 
@@ -109,11 +114,147 @@ public class VigilanteServiceImplTest {
 		// act
 		mock(Vehiculo.class);
 		try {
-			Vehiculo resul= repositorio.buscarVehiculo(vehiculo);
+			Vehiculo resul = repositorio.buscarVehiculo(vehiculo);
 		} catch (ParqueaderoException e) {
-			Assert.assertEquals(VEHICULO_NO_ENCONTRADO,e.getMessage());
+			Assert.assertEquals(VEHICULO_NO_ENCONTRADO, e.getMessage());
 		}
-		
+
+	}
+
+	@Test
+	public void validarPlacaTest() {
+		String placa = "AFIOD";
+		Assert.assertTrue(repositorio.validarPlaca(placa));
+	}
+
+	@Test
+	public void consultarDisponibilidadTest() {
+
+		int[] cuposDisponibles = new int[2];
+		cuposDisponibles[0] = 19;
+		cuposDisponibles[1] = 9;
+		int[] disponibilidad = repositorio.consultarDisponibilidad();
+		System.out.println(cuposDisponibles[0] + " = " + disponibilidad[0]);
+		System.out.println(cuposDisponibles[1] + " = " + disponibilidad[1]);
+		Assert.assertEquals(cuposDisponibles[0], disponibilidad[0]);
+	}
+
+	@Test
+	public void salidaVehiculoTest() {
+
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setId(18);
+		vehiculo.setPlaca("BCA54C");
+		vehiculo.setTipoVehiculo("M");
+		vehiculo.setCilindraje(125);
+		mock(Vehiculo.class);
+		mock(Parqueadero.class);
+		Parqueadero parqueadero = repositorio.buscarParqueaderoVehiculo(vehiculo.getId());
+		Parqueadero parqueaderoSalida = repositorio.salidaVehiculo(parqueadero, vehiculo);
+
+		Assert.assertEquals(false, parqueaderoSalida.isEstado());
+		Assert.assertTrue(null != parqueaderoSalida.getFechaSalida());
+	}
+
+	@Test // "este vehiculo ya se encuentra en el parqueadero"
+	public void ingresarVehiculoParqueaderoVehiculoInexistenteTest() {
+
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setPlaca("VAJ51C");
+		vehiculo.setTipoVehiculo("M");
+		vehiculo.setCilindraje(250);
+		mock(Vehiculo.class);
+
+		try {
+			repositorio.ingresarVehiculoParqueadero(vehiculo);
+
+		} catch (ParqueaderoException e) {
+
+			Assert.assertEquals(VEHICULO_NO_ENCONTRADO, e.getMessage());
+		}
+	}
+
+	@Test //
+	public void ingresarVehiculoParqueaderoVehiculoExistenteTest() {
+
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setId(18);
+		vehiculo.setPlaca("BCA54C");
+		vehiculo.setTipoVehiculo("M");
+		vehiculo.setCilindraje(125);
+		mock(Vehiculo.class);
+
+		try {
+			repositorio.ingresarVehiculoParqueadero(vehiculo);
+
+		} catch (ParqueaderoException e) {
+
+			Assert.assertEquals(VEHICULO_PARQUEADO, e.getMessage());
+		}
+	}
+
+	@Test
+	public void ingresarVehiculoParqueaderoTest() {
+
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setId(19);
+		vehiculo.setPlaca("XXL342");
+		vehiculo.setTipoVehiculo("C");
+		vehiculo.setCilindraje(1800);
+		mock(Vehiculo.class);
+
+		try {
+			repositorio.ingresarVehiculoParqueadero(vehiculo);
+
+		} catch (ParqueaderoException e) {
+
+			Assert.assertEquals(VEHICULO_PARQUEADO, e.getMessage());
+		}
+
+		repositorio.ingresarVehiculoParqueadero(vehiculo);
+		Vehiculo busqueda = repositorio.buscarVehiculoParqueado(vehiculo.getPlaca());
+		Assert.assertEquals(vehiculo.getPlaca(), busqueda.getPlaca());
+
+	}
+	
+
+	@Test
+	public void buscarVehiculoParqueadoEncontradoTest() {
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setId(18);
+		vehiculo.setPlaca("BCA54C");
+		vehiculo.setTipoVehiculo("M");
+		vehiculo.setCilindraje(125);
+		mock(Vehiculo.class);
+
+		Vehiculo busqueda = repositorio.buscarVehiculoParqueado(vehiculo.getPlaca());
+		Assert.assertEquals(vehiculo.getId(), busqueda.getId());
+	}
+
+	@Test
+	public void buscarVehiculoParqueadoNoEncontradoTest() {
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setPlaca("FSJ54C");
+		mock(Vehiculo.class);
+
+		Vehiculo busqueda = repositorio.buscarVehiculoParqueado(vehiculo.getPlaca());
+		Assert.assertEquals(null, busqueda);
+	}
+
+	@Test
+	public void buscarParqueaderoVehiculoEncontradoTest() {
+		int idVehiculo = 18;
+		Parqueadero parqueadero = repositorio.buscarParqueaderoVehiculo(idVehiculo);
+		mock(Parqueadero.class);
+		Assert.assertEquals(idVehiculo, parqueadero.getIdVehiculo());
+	}
+	
+	@Test
+	public void buscarParqueaderoVehiculoNoEncontradoTest() {
+		int idVehiculo = 255;
+		Parqueadero parqueadero = repositorio.buscarParqueaderoVehiculo(idVehiculo);
+		mock(Parqueadero.class);
+		Assert.assertEquals(null, parqueadero);
 	}
 
 }
