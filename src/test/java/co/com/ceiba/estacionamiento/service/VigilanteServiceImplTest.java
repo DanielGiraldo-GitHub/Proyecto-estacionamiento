@@ -127,7 +127,7 @@ public class VigilanteServiceImplTest {
 		Assert.assertTrue(repositorio.validarPlaca(placa));
 	}
 
-	@Test
+	
 	public void consultarDisponibilidadTest() {
 
 		int[] cuposDisponibles = new int[2];
@@ -139,7 +139,7 @@ public class VigilanteServiceImplTest {
 		Assert.assertEquals(cuposDisponibles[0], disponibilidad[0]);
 	}
 
-	@Test
+	
 	public void salidaVehiculoTest() {
 
 		Vehiculo vehiculo = new Vehiculo();
@@ -174,7 +174,7 @@ public class VigilanteServiceImplTest {
 		}
 	}
 
-	@Test //
+	 //
 	public void ingresarVehiculoParqueaderoVehiculoExistenteTest() {
 
 		Vehiculo vehiculo = new Vehiculo();
@@ -193,7 +193,7 @@ public class VigilanteServiceImplTest {
 		}
 	}
 
-	@Test
+	
 	public void ingresarVehiculoParqueaderoTest() {
 
 		Vehiculo vehiculo = new Vehiculo();
@@ -241,7 +241,7 @@ public class VigilanteServiceImplTest {
 		Assert.assertEquals(null, busqueda);
 	}
 
-	@Test
+	
 	public void buscarParqueaderoVehiculoEncontradoTest() {
 		int idVehiculo = 18;
 		Parqueadero parqueadero = repositorio.buscarParqueaderoVehiculo(idVehiculo);
