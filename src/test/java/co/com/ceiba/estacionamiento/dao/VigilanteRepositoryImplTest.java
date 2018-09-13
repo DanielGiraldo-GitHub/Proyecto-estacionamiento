@@ -1,6 +1,7 @@
 package co.com.ceiba.estacionamiento.dao;
 
 import static org.mockito.Mockito.mock;
+
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,7 +24,7 @@ public class VigilanteRepositoryImplTest {
 	private static EntityManager entityManager;
 	private static VigilanteRepositoryImpl repositorio;
 	private static ControlFecha control = new ControlFecha();
-	
+
 	static final String EXITO_AL_GUARDAR_VEHICULO = "Exito";
 	static final String CAMPOS_SIN_DILIGENCIAR = "los campos obligatorios no estan diligenciados";
 	static final String RESTRICCION_DE_PLACA = "El vehiculo no puede ser parqueado los dias domingo y lunes";
@@ -32,10 +33,10 @@ public class VigilanteRepositoryImplTest {
 	public static void setUpClass() throws Exception {
 
 		entityManager = (EntityManager) Persistence.createEntityManagerFactory("TestPersistence").createEntityManager();
-		repositorio = new VigilanteRepositoryImpl(entityManager);
+		repositorio = new VigilanteRepositoryImpl(entityManager);	
+		mock(VigilanteRepositoryImpl.class);
 	}
 
-	
 	@Test
 	public void guardarVehiculoTest() {
 
@@ -44,6 +45,8 @@ public class VigilanteRepositoryImplTest {
 		vehiculo.setPlaca("BCA55C");
 		vehiculo.setTipoVehiculo("M");
 		vehiculo.setCilindraje(125);
+
+		//verify(repositorio).guardarVehiculo(vehiculo);
 		// act
 		repositorio.guardarVehiculo(vehiculo);
 	}
@@ -89,22 +92,20 @@ public class VigilanteRepositoryImplTest {
 		Vehiculo result = repositorio.buscarVehiculo(vehiculo.getPlaca());
 		Assert.assertEquals(vehiculo.getPlaca(), result.getPlaca());
 	}
-	
+
 	@Test
 	public void buscarVehiculoNoEncontradoTest() {
 
 		String placa = "GXL";
 		Vehiculo vehiculo = new Vehiculo();
 		vehiculo.setPlaca(placa);
-		 mock(Vehiculo.class);
+		mock(Vehiculo.class);
 		// act
-			Vehiculo resul= repositorio.buscarVehiculo(placa);
-			Assert.assertEquals(null, resul);
-		
+		Vehiculo resul = repositorio.buscarVehiculo(placa);
+		Assert.assertEquals(null, resul);
 
 	}
 
-	
 	@Test
 	public void contarCarrosParqueadosTest() {
 
@@ -129,7 +130,7 @@ public class VigilanteRepositoryImplTest {
 		Integer cantidad = 1;
 		Assert.assertTrue(repositorio.contarMotosParqueados() >= cantidad);
 	}
-	
+
 	@Test
 	public void listarMotosParqueadasTest() {
 
@@ -159,7 +160,7 @@ public class VigilanteRepositoryImplTest {
 	public void salidaVehiculosParqueaderoTest() {
 
 		// arrange
-	
+
 		Calendar fechaIngreso;
 		Parqueadero parqueadero;
 		try {
@@ -176,8 +177,8 @@ public class VigilanteRepositoryImplTest {
 	}
 
 	@Test
-	public void ingresoVehiculosParqueaderoTest(){
-		
+	public void ingresoVehiculosParqueaderoTest() {
+
 		mock(Parqueadero.class);
 		Parqueadero parqueadero;
 		try {
@@ -214,6 +215,7 @@ public class VigilanteRepositoryImplTest {
 		Vehiculo vehiculo = repositorio.buscarVehiculoParqueado("KDY533");
 		Vehiculo vehiculoEsperado = new Vehiculo(20, "KDY533", "C", 2000);
 		mock(Vehiculo.class);
+		
 		Assert.assertEquals(vehiculoEsperado.getId(), vehiculo.getId());
 	}
 }
