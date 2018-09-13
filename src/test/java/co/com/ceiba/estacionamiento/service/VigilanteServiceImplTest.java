@@ -1,6 +1,9 @@
 package co.com.ceiba.estacionamiento.service;
 
+import static org.hamcrest.CoreMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.text.ParseException;
 
@@ -10,6 +13,8 @@ import javax.persistence.PersistenceContext;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mockito.Mockito;
+
 import co.com.ceiba.estacionamiento.dao.VigilanteRepository;
 import co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
@@ -22,6 +27,7 @@ public class VigilanteServiceImplTest {
 
 	@PersistenceContext
 	private static EntityManager entityManager;
+	
 	private static VigilanteServiceImpl repositorio;
 	private static VigilanteRepository repositorioVigilante;
 	static final String EXITO_AL_GUARDAR_VEHICULO = "Exito";
@@ -36,7 +42,7 @@ public class VigilanteServiceImplTest {
 
 		entityManager = (EntityManager) Persistence.createEntityManagerFactory("TestPersistence").createEntityManager();
 		repositorioVigilante = new VigilanteRepositoryImpl(entityManager);
-		repositorio = new VigilanteServiceImpl(repositorioVigilante);
+		repositorio = Mockito.spy(new VigilanteServiceImpl(repositorioVigilante));
 	}
 
 	@Test
@@ -95,14 +101,17 @@ public class VigilanteServiceImplTest {
 	}
 
 	@Test
-	public void buscarVehiculo() {
+	public void buscarVehiculoTest() {
 
-		mock(Vehiculo.class);
+		//Arrange
 		Vehiculo vehiculo = new Vehiculo(1, "GXL315", "C", 115);
 		// act
+		when(repositorio.buscarVehiculo(vehiculo)).thenReturn(vehiculo);
 		Vehiculo result = repositorio.buscarVehiculo(vehiculo);
 
-		Assert.assertEquals(vehiculo.getPlaca(), result.getPlaca());
+		//Assert
+		Assert.assertNotNull(result);
+		
 	}
 
 	@Test
@@ -118,7 +127,6 @@ public class VigilanteServiceImplTest {
 		} catch (ParqueaderoException e) {
 			Assert.assertEquals(VEHICULO_NO_ENCONTRADO, e.getMessage());
 		}
-
 	}
 
 	@Test
