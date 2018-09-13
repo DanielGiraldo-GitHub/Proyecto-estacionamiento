@@ -44,13 +44,13 @@ pipeline {
 
 			}    
 		}  
-	
 	stage('Build') {
-	steps {
-		echo "------------>Build<------------"
-		sh 'gradle --b ./build.gradle build -x test'
-	} 
-}	
+			steps{
+				echo "------------>Build<------------"
+				sh 'gradle --b ./build.gradle build -x test'
+			}
+		}
+		
 		stage('Static Code Analysis') {    
 			steps{       
 				echo '------------>Analisis de codigo estatico<------------'  
