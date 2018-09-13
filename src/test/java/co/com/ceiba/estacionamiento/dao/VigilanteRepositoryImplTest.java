@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -210,10 +211,10 @@ public class VigilanteRepositoryImplTest {
 
 	@Test
 	public void buscarVehiculoParqueadoTest() {
-		mock(Vehiculo.class);
+
 		Vehiculo vehiculo = repositorio.buscarVehiculoParqueado("KDY533");
 		Vehiculo vehiculoEsperado = new Vehiculo(20, "KDY533", "C", 2000);
-		
+		mock(Vehiculo.class);
 		Assert.assertEquals(vehiculoEsperado.getId(), vehiculo.getId());
 	}
 }
