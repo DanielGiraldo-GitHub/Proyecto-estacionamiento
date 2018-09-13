@@ -32,9 +32,19 @@ pipeline {
 			}  
 		}    
 		
+		stage('Compile') {
+			steps{
+				echo "------------>Build<------------"
+				sh 'gradle clean'
+				sh 'gradle --b ./build.gradle compileJava'
+			}
+		}
+		
 		stage('Unit Tests') {    
 			steps{    
-				echo "------------>Unit Tests<------------"     
+				echo "------------>Unit Tests<------------"   
+				sh 'gradle clean' 
+				sh 'gradle --b ./build.gradle test'
 			}   
 		}  
 		
@@ -44,17 +54,19 @@ pipeline {
 
 			}    
 		}  
-	stage('Build') {
+		
+	   stage('Build') {
 			steps{
 				echo "------------>Build<------------"
-				sh 'gradle --b ./build.gradle build'
+				sh 'gradle clean'
+				sh 'gradle --b ./build.gradle build -x test'
 			}
 		}
 		
 		stage('Static Code Analysis') {    
 			steps{       
 				echo '------------>Analisis de codigo estatico<------------'  
-		
+		         
 				 withSonarQubeEnv('Sonar') {
                  sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
            }
