@@ -27,7 +27,6 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 		String sentencia = "SELECT COUNT(p.id) " + "FROM   Parqueadero p JOIN Vehiculo v "
 				+ "ON     p.idVehiculo   = v.id WHERE p.estado <> 0 " + "AND    v.tipoVehiculo = 'C'";
 		Query query = entityManager.createQuery(sentencia);
-
 		return Integer.parseInt(query.getSingleResult().toString());
 	}
 
@@ -37,15 +36,13 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 		String sentencia = "SELECT COUNT(p.id) " + "FROM   Parqueadero p JOIN Vehiculo v "
 				+ "ON     p.idVehiculo   = v.id WHERE p.estado <> 0 " + "AND    v.tipoVehiculo = 'M'";
 		Query query = entityManager.createQuery(sentencia);
-
 		return Integer.parseInt(query.getSingleResult().toString());
 	}
 
 	@Override
 	public List<Vehiculo> listarCarrosParqueados() {
 			Query query = entityManager.createQuery("SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso "
-					+ "FROM Parqueadero p join Vehiculo v on p.idVehiculo = v.id WHERE   v.tipoVehiculo = 'C' and p.estado <> 0");
-			
+					+ "FROM Parqueadero p join Vehiculo v on p.idVehiculo = v.id WHERE   v.tipoVehiculo = 'C' and p.estado <> 0");	
 			@SuppressWarnings("unchecked")
 			List<Vehiculo> lista = query.getResultList();
 			return lista;
@@ -98,7 +95,6 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 		} catch (RuntimeException e) {
 			return null;
 		}
-
 	}
 
 	@Override
@@ -117,6 +113,4 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 			return null;
 		}
 	}
-	
-
 }

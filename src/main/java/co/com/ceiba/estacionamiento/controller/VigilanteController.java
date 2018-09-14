@@ -1,7 +1,5 @@
 package co.com.ceiba.estacionamiento.controller;
 
-import java.text.ParseException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +17,7 @@ public class VigilanteController {
 	@Autowired
 	protected VigilanteService vigilanteService;
 
+	
 	@RequestMapping(value = "/ingresarVehiculo", method = RequestMethod.POST)
 	public void ingresarVehiculo(@RequestBody Vehiculo vehiculo) {
 		vigilanteService.ingresarVehiculoParqueadero(vehiculo);
@@ -41,8 +40,7 @@ public class VigilanteController {
 	}
 	
 	@GetMapping("/buscarVehiculoParqueado")
-	public Vehiculo buscarVehiculoParqueado(@RequestBody Vehiculo vehiculo) {
-		
+	public Vehiculo buscarVehiculoParqueado(@RequestBody Vehiculo vehiculo) {	
 		return vigilanteService.buscarVehiculoParqueado(vehiculo.getPlaca());
 	}
 
@@ -57,7 +55,7 @@ public class VigilanteController {
 	}
 
 	@PostMapping("/salidaVehiculo")
-	public String salidaVehiculo(@RequestBody Vehiculo vehiculo) throws ParseException {
+	public String salidaVehiculo(@RequestBody Vehiculo vehiculo) {
 		Parqueadero parqueadero = vigilanteService.buscarParqueaderoVehiculo(vehiculo.getId());
 		return vigilanteService.salidaVehiculo(parqueadero, vehiculo).toString();
 	}

@@ -17,7 +17,6 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 	protected ControlTarifas controlTarifas = new ControlTarifas();
 	protected ControlFecha controlFechas = new ControlFecha();
-
 	static final char PLACA_CON_RESTRICCION = 'A';
 	static final String EXCEPCION_VEHICULO_NO_ENCONTRADO = "No se ha encontrado ningun vehiculo";
 	static final String CAMPOS_SIN_DILIGENCIAR = "los campos obligatorios no estan diligenciados";
@@ -33,7 +32,6 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 	@Autowired
 	protected VigilanteRepository vigilanteRepository;
-
 	public VigilanteServiceImpl(VigilanteRepository vigilanteRepository) {
 		super();
 		this.vigilanteRepository = vigilanteRepository;
@@ -43,7 +41,6 @@ public class VigilanteServiceImpl implements VigilanteService {
 	public void save(Vehiculo vehiculo) {
 
 		if (!validate(vehiculo))
-
 			throw new ParqueaderoException(CAMPOS_SIN_DILIGENCIAR);
 
 		if (!validarPlaca(vehiculo.getPlaca()))
@@ -51,6 +48,7 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 		try {
 			vigilanteRepository.guardarVehiculo(vehiculo);
+			
 		} catch (DataIntegrityViolationException e) {
 			throw new ParqueaderoException(PLACA_DUPLICADA);
 		}
@@ -100,6 +98,7 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 			if (i == 0 && cuposDisponibles[i] <= 0)
 				throw new ParqueaderoException(PARQUEADERO_SIN_CUPO_DE_CARRO);
+			
 			if (i == 1 && cuposDisponibles[1] <= 0)
 				throw new ParqueaderoException(PARQUEADERO_SIN_CUPO_DE_MOTO);
 		}
@@ -161,12 +160,10 @@ public class VigilanteServiceImpl implements VigilanteService {
 		} catch (ParseException e) {
 			throw new ParqueaderoException(ERROR_CONVERSION_FECHAS);
 		}
-
 	}
 
 	@Override
 	public Vehiculo buscarVehiculoParqueado(String placa) {
-
 			return vigilanteRepository.buscarVehiculo(placa);
 	}
 
