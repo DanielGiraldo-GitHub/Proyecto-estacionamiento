@@ -20,7 +20,7 @@ public class VigilanteController {
 	
 	public VigilanteController(VigilanteService vigilanteService) {
 		super();
-		this.vigilanteService = vigilanteService;
+		 this.vigilanteService = vigilanteService;
 	}
 
 	@RequestMapping(value = "/ingresarVehiculo", method = RequestMethod.POST)
@@ -31,12 +31,6 @@ public class VigilanteController {
 	@GetMapping("/consultarDisponibilidad")
 	public int[] consultarDisponibilidad() {
 		return vigilanteService.consultarDisponibilidad();
-	}
-
-	@RequestMapping("/registerVehicle")
-	@PostMapping
-	public void registerVehicle(@RequestBody Vehiculo vehiculo) {
-		vigilanteService.save(vehiculo);
 	}
 
 	@GetMapping("/buscarVehiculo")

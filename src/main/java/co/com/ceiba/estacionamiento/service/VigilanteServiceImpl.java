@@ -31,83 +31,70 @@ public class VigilanteServiceImpl implements VigilanteService {
 	static final int CUPOS_MOTO = 10;
 
 	@Autowired
-	protected VigilanteRepository vigilanteRepository;
-	
+	protected VigilanteRepository repositorio;
+
 	public VigilanteServiceImpl(VigilanteRepository vigilanteRepository) {
 		super();
-		this.vigilanteRepository = vigilanteRepository;
+		this.repositorio = vigilanteRepository;
 	}
 
 	@Override
-	public void save(Vehiculo vehiculo) {
-
+	public boolean save(Vehiculo vehiculo) throws ParseException {
 
 		if (!validate(vehiculo))
-			throw new ParqueaderoException(CAMPOS_SIN_DILIGENCIAR);
+			return false;
 
 		if (!validarPlaca(vehiculo.getPlaca()))
-			throw new ParqueaderoException(RESTRICCION_DE_PLACA);
+			return false;
 		
-		try {
-			vigilanteRepository.guardarVehiculo(vehiculo);
-			
-		} catch (DataIntegrityViolationException e) {
-			throw new ParqueaderoException(PLACA_DUPLICADA);
-		}
+		 repositorio.guardarVehiculo(vehiculo);
+		 return true;
 	}
 
 	@Override
 	public Vehiculo buscarVehiculo(Vehiculo vehiculo) {
-
-		Vehiculo resul =vigilanteRepository.buscarVehiculo(vehiculo.getPlaca());
-		if(resul!= null){
+		Vehiculo resul = repositorio.buscarVehiculo(vehiculo.getPlaca());
+		if (resul != null) {
 			return resul;
-		}else{
-		return null;
+		} else {
+			return null;
 		}
 	}
 
 	@Override
 	public boolean validate(Vehiculo vehiculo) {
 		boolean expression = true;
-		System.out.println("placa "+vehiculo.getPlaca() +" tipo "+vehiculo.getTipoVehiculo() + " cilindraje "+vehiculo.getCilindraje());
-		if (vehiculo.getPlaca() != null && vehiculo.getTipoVehiculo() != null && vehiculo.getCilindraje() > 0){
+		if (vehiculo.getPlaca() != null && vehiculo.getTipoVehiculo() != null && vehiculo.getCilindraje() > 0) {
 			return expression;
 		}
-			
 		return !expression;
-
 	}
 
 	@Override
-	public boolean validarPlaca(String placa) {
+	public boolean validarPlaca(String placa) throws ParseException {
 
 		if (placa.toUpperCase().charAt(0) == PLACA_CON_RESTRICCION)
-			try {
-				return controlFechas.velidarDia();
-			} catch (ParseException e) {
-				throw new ParqueaderoException("Error al validar la placa del vehiculo");
-			}
+			return controlFechas.velidarDia();
 		return true;
 	}
 
 	@Override
 	public Vehiculo buscarVehiculoPorId(int idVehiculo) {
-		return vigilanteRepository.buscarVehiculoPorId(idVehiculo);
+		return repositorio.buscarVehiculoPorId(idVehiculo);
 	}
 
 	@Override
 	public int[] consultarDisponibilidad() {
 
 		int[] cuposDisponibles = new int[2];
-		cuposDisponibles[0] = CUPOS_CARRO - vigilanteRepository.contarCarrosParqueados();
-		cuposDisponibles[1] = CUPOS_MOTO - vigilanteRepository.contarMotosParqueados();
+		cuposDisponibles[0] = CUPOS_CARRO - repositorio.contarCarrosParqueados();
+		cuposDisponibles[1] = CUPOS_MOTO - repositorio.contarMotosParqueados();
 
 		for (int i = 0; i < cuposDisponibles.length; i++) {
 
 			if (i == 0 && cuposDisponibles[i] <= 0)
 				throw new ParqueaderoException(PARQUEADERO_SIN_CUPO_DE_CARRO);
-			
+
 			if (i == 1 && cuposDisponibles[1] <= 0)
 				throw new ParqueaderoException(PARQUEADERO_SIN_CUPO_DE_MOTO);
 		}
@@ -116,12 +103,12 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 	@Override
 	public List<Vehiculo> listarMotosParqueadas() {
-		return vigilanteRepository.listarMotosParqueadas();
+		return repositorio.listarMotosParqueadas();
 	}
 
 	@Override
 	public List<Vehiculo> listarCarrosParqueados() {
-		return vigilanteRepository.listarCarrosParqueados();
+		return repositorio.listarCarrosParqueados();
 	}
 
 	@Override
@@ -131,18 +118,18 @@ public class VigilanteServiceImpl implements VigilanteService {
 		try {
 			if (parqueadero == null) {
 				throw new ParqueaderoException("Este vehiculo no se encuentra en el parqueadero");
-			}
-			else {
+			} else {
 				tiempoPermanencia = controlFechas.calcularTiempo(parqueadero.getFehcaIngreso());
 				if (vehiculo.getTipoVehiculo().equals("C")) {
 					parqueadero.setPrecio(controlTarifas.calcularPrecioCarro(tiempoPermanencia));
 				} else {
 
-					parqueadero.setPrecio(controlTarifas.calcularPrecioMoto(vehiculo.getCilindraje(), tiempoPermanencia));
+					parqueadero
+							.setPrecio(controlTarifas.calcularPrecioMoto(vehiculo.getCilindraje(), tiempoPermanencia));
 				}
 				parqueadero.setEstado(false);
 				parqueadero.setFechaSalida(controlFechas.fechaAcutalSistema().getTime());
-				vigilanteRepository.salidaVehiculoParqueado(parqueadero);
+				repositorio.salidaVehiculoParqueado(parqueadero);
 			}
 			return parqueadero;
 		} catch (ParseException e) {
@@ -151,37 +138,38 @@ public class VigilanteServiceImpl implements VigilanteService {
 	}
 
 	@Override
-	public void ingresarVehiculoParqueadero(Vehiculo vehiculo) {
+	public boolean ingresarVehiculoParqueadero(Vehiculo vehiculo) {
 
 		Parqueadero parqueadero = null;
 		Vehiculo busquedaVehiculo = buscarVehiculo(vehiculo);
+
 		try {
 			if (busquedaVehiculo == null) {
 				save(vehiculo);
 				busquedaVehiculo = buscarVehiculo(vehiculo);
 			}
-			if (buscarParqueaderoVehiculo(busquedaVehiculo.getId()) != null)
-			{
+			if (buscarParqueaderoVehiculo(busquedaVehiculo.getId()) != null) {
 				throw new ParqueaderoException("Este vehiculo ya se encuentra en el parqueadero");
-			}else{
-				parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(), busquedaVehiculo.getId(), true);
-				vigilanteRepository.ingresarVehiculoParqueadero(parqueadero);
+			} else {
+				parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(), busquedaVehiculo.getId(),
+						true);
+				 repositorio.ingresarVehiculoParqueadero(parqueadero);
 			}
 			
-
 		} catch (ParseException e) {
 			throw new ParqueaderoException(ERROR_CONVERSION_FECHAS);
 		}
+		return false;
 	}
 
 	@Override
 	public Vehiculo buscarVehiculoParqueado(String placa) {
-			return vigilanteRepository.buscarVehiculo(placa);
+		return repositorio.buscarVehiculo(placa);
 	}
 
 	@Override
 	public Parqueadero buscarParqueaderoVehiculo(int idVehiculo) {
-		
-			return vigilanteRepository.buscarParqueaderoVehiculo(idVehiculo);
+
+		return repositorio.buscarParqueaderoVehiculo(idVehiculo);
 	}
 }
