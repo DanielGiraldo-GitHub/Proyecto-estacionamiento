@@ -41,7 +41,12 @@ public class Vehiculo {
 		this.tipoVehiculo = tipoVehiculo;
 		this.cilindraje = cilindraje;
 	}
-
+	public Vehiculo( String placa, String tipoVehiculo, int cilindraje) {
+		super();
+		this.placa = placa;
+		this.tipoVehiculo = tipoVehiculo;
+		this.cilindraje = cilindraje;
+	}
 	public int getId() {
 		return id;
 	}

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2018-09-17T12:26:40" hostname="DANIEL-GIRALDO" time="0.324">
+<testsuite name="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2018-09-17T16:26:36" hostname="DANIEL-GIRALDO" time="0.236">
   <properties/>
-  <testcase name="salidaVehiculosParqueaderoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.15"/>
-  <testcase name="listarCarrosParqueadosTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.013"/>
-  <testcase name="buscarVehiculoParqueadoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.12"/>
-  <testcase name="contarCarrosParqueadosTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
-  <testcase name="buscarParqueaderoVehiculoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.003"/>
-  <testcase name="buscarParqueaderoVehiculoNoParqueadoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.002"/>
-  <testcase name="contarMotosParqueadosTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.003"/>
-  <testcase name="buscarVehiculoNoEncontradoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.002"/>
-  <testcase name="guardarVehiculoSinPlacaTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
+  <testcase name="salidaVehiculosParqueaderoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.153"/>
+  <testcase name="listarCarrosParqueadosTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.012"/>
+  <testcase name="buscarVehiculoParqueadoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.064"/>
+  <testcase name="contarCarrosParqueadosTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.0"/>
+  <testcase name="buscarParqueaderoVehiculoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
+  <testcase name="buscarParqueaderoVehiculoNoParqueadoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
+  <testcase name="contarMotosParqueadosTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
+  <testcase name="buscarVehiculoNoEncontradoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.0"/>
+  <testcase name="guardarVehiculoSinPlacaTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.0"/>
   <testcase name="listarMotosParqueadasTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
   <testcase name="ingresoVehiculosParqueaderoTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.001"/>
   <testcase name="guardarVehiculoExistenteTest" classname="co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImplTest" time="0.0"/>

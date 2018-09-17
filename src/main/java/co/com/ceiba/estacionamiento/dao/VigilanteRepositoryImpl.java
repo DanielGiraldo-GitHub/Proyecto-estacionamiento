@@ -21,6 +21,9 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 		this.entityManager = entityManager;
 	}
 
+	public VigilanteRepositoryImpl() {
+	}
+
 	@Override
 	public Integer contarCarrosParqueados() {
 

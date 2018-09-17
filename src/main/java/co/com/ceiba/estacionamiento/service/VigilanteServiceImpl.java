@@ -32,6 +32,7 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 	@Autowired
 	protected VigilanteRepository vigilanteRepository;
+	
 	public VigilanteServiceImpl(VigilanteRepository vigilanteRepository) {
 		super();
 		this.vigilanteRepository = vigilanteRepository;
@@ -40,12 +41,13 @@ public class VigilanteServiceImpl implements VigilanteService {
 	@Override
 	public void save(Vehiculo vehiculo) {
 
+
 		if (!validate(vehiculo))
 			throw new ParqueaderoException(CAMPOS_SIN_DILIGENCIAR);
 
 		if (!validarPlaca(vehiculo.getPlaca()))
 			throw new ParqueaderoException(RESTRICCION_DE_PLACA);
-
+		
 		try {
 			vigilanteRepository.guardarVehiculo(vehiculo);
 			
@@ -58,16 +60,23 @@ public class VigilanteServiceImpl implements VigilanteService {
 	public Vehiculo buscarVehiculo(Vehiculo vehiculo) {
 
 		Vehiculo resul =vigilanteRepository.buscarVehiculo(vehiculo.getPlaca());
-		if(resul!= null)return resul;
-		throw new ParqueaderoException(VEHICULO_NO_ENCONTRADO);
+		if(resul!= null){
+			return resul;
+		}else{
+		return null;
+		}
 	}
 
 	@Override
 	public boolean validate(Vehiculo vehiculo) {
 		boolean expression = true;
-		if (vehiculo.getPlaca() != null && vehiculo.getTipoVehiculo() != null && vehiculo.getCilindraje() > 0)
+		System.out.println("placa "+vehiculo.getPlaca() +" tipo "+vehiculo.getTipoVehiculo() + " cilindraje "+vehiculo.getCilindraje());
+		if (vehiculo.getPlaca() != null && vehiculo.getTipoVehiculo() != null && vehiculo.getCilindraje() > 0){
 			return expression;
+		}
+			
 		return !expression;
+
 	}
 
 	@Override
@@ -152,10 +161,13 @@ public class VigilanteServiceImpl implements VigilanteService {
 				busquedaVehiculo = buscarVehiculo(vehiculo);
 			}
 			if (buscarParqueaderoVehiculo(busquedaVehiculo.getId()) != null)
-				throw new ParqueaderoException("este vehiculo ya se encuentra en el parqueadero");
-
-			parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(), busquedaVehiculo.getId(), true);
-			vigilanteRepository.ingresarVehiculoParqueadero(parqueadero);
+			{
+				throw new ParqueaderoException("Este vehiculo ya se encuentra en el parqueadero");
+			}else{
+				parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(), busquedaVehiculo.getId(), true);
+				vigilanteRepository.ingresarVehiculoParqueadero(parqueadero);
+			}
+			
 
 		} catch (ParseException e) {
 			throw new ParqueaderoException(ERROR_CONVERSION_FECHAS);

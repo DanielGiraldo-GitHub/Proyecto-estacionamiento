@@ -18,6 +18,11 @@ public class VigilanteController {
 	protected VigilanteService vigilanteService;
 
 	
+	public VigilanteController(VigilanteService vigilanteService) {
+		super();
+		this.vigilanteService = vigilanteService;
+	}
+
 	@RequestMapping(value = "/ingresarVehiculo", method = RequestMethod.POST)
 	public void ingresarVehiculo(@RequestBody Vehiculo vehiculo) {
 		vigilanteService.ingresarVehiculoParqueadero(vehiculo);
@@ -55,8 +60,8 @@ public class VigilanteController {
 	}
 
 	@PostMapping("/salidaVehiculo")
-	public String salidaVehiculo(@RequestBody Vehiculo vehiculo) {
+	public Parqueadero salidaVehiculo(@RequestBody Vehiculo vehiculo) {
 		Parqueadero parqueadero = vigilanteService.buscarParqueaderoVehiculo(vehiculo.getId());
-		return vigilanteService.salidaVehiculo(parqueadero, vehiculo).toString();
+		return vigilanteService.salidaVehiculo(parqueadero, vehiculo);
 	}
 }

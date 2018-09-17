@@ -1,7 +1,6 @@
 package co.com.ceiba.estacionamiento.util;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
@@ -10,6 +9,7 @@ import org.junit.Test;
 
 public class ControlFechaTest {
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void velidarDiaLunesTest() {
 
@@ -26,6 +26,7 @@ public class ControlFechaTest {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void fechaAcutalSistema() throws ParseException {
 
