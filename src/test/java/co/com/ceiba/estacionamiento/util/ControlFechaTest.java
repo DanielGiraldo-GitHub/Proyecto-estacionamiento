@@ -1,5 +1,6 @@
 package co.com.ceiba.estacionamiento.util;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import java.text.ParseException;
 import java.util.Calendar;
@@ -18,7 +19,7 @@ public class ControlFechaTest {
 		ControlFecha control = new ControlFecha();
 
 		try {
-			assertTrue(control.velidarDia());
+			assertFalse(control.velidarDia());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
