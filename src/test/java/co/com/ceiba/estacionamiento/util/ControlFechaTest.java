@@ -17,13 +17,7 @@ public class ControlFechaTest {
 		fecha.getTime();
 		fecha.setDate(10);
 		ControlFecha control = new ControlFecha();
-
-		try {
-			assertFalse(control.velidarDia());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		assertFalse(control.velidarDia());
 	}
 
 	@SuppressWarnings("deprecation")
@@ -34,31 +28,20 @@ public class ControlFechaTest {
 		fecha.getTime();
 		ControlFecha control = new ControlFecha();
 
-		try {
-			Calendar fechaActual = control.fechaAcutalSistema();
-			Assert.assertEquals(fecha.getDay(), fechaActual.getTime().getDay());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Calendar fechaActual = control.fechaAcutalSistema();
+		Assert.assertEquals(fecha.getDay(), fechaActual.getTime().getDay());
 	}
 
 	@Test
-	public void calcularTiempoTest(){
+	public void calcularTiempoTest() {
 
 		ControlFecha control = new ControlFecha();
 		Date fecha = new Date();
 		fecha.getTime();
-		int[] tiempo= new int[2];
-		tiempo[0] = 0 ;
+		int[] tiempo = new int[2];
+		tiempo[0] = 0;
 		tiempo[1] = 0;
-		
-		try {
-			Assert.assertArrayEquals(tiempo,control.calcularTiempo(fecha));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Assert.assertArrayEquals(tiempo, control.calcularTiempo(fecha));
 	}
 
 }

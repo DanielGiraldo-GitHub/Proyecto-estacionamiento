@@ -2,7 +2,6 @@ package co.com.ceiba.estacionamiento.dao;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -34,35 +33,7 @@ public class VigilanteRepositoryImplTest {
 		repositorio = mock(VigilanteRepositoryImpl.class);
 	}
 
-	@Test
-	public void guardarVehiculoExistenteTest() {
-
-		// arrange
-		Vehiculo vehiculo = new Vehiculo();
-		vehiculo.setPlaca("GXL315");
-		vehiculo.setTipoVehiculo("C");
-		vehiculo.setCilindraje(115);
-		repositorio.guardarVehiculo(vehiculo);
-		// assert
-
-	}
-
-	@Test
-	public void guardarVehiculoSinPlacaTest() {
-
-		// arrange
-		Vehiculo vehiculo = new Vehiculo();
-		vehiculo = mock(Vehiculo.class);
-		vehiculo = mock(Vehiculo.class);
-		vehiculo.setTipoVehiculo("M");
-		vehiculo.setCilindraje(125);
-		try {
-			repositorio.guardarVehiculo(vehiculo);
-		} catch (ParqueaderoException e) {
-			// assert
-			Assert.assertEquals(CAMPOS_SIN_DILIGENCIAR, e.getMessage());
-		}
-	}
+	
 
 	@Test
 	public void buscarVehiculoTest() {
@@ -106,7 +77,7 @@ public class VigilanteRepositoryImplTest {
 		// arrange
 		Integer cantidad = 2;
 		Integer cantidadResultado = 0;
-		
+
 		when(repositorio.contarMotosParqueados()).thenReturn(cantidad);
 		cantidadResultado = repositorio.contarMotosParqueados();
 		Assert.assertTrue(cantidadResultado >= cantidad);
@@ -121,11 +92,11 @@ public class VigilanteRepositoryImplTest {
 		List<Vehiculo> listaMotos = new ArrayList<>();
 		listaMotos.add(vehiculo_1);
 		when(repositorio.listarMotosParqueadas()).thenReturn(listaMotos);
-		
+
 		List<Vehiculo> listaResultado = repositorio.listarMotosParqueadas();
 		Assert.assertNotNull(listaResultado);
 	}
-	
+
 	@Test
 	public void listarCarrosParqueadosTest() {
 
@@ -133,7 +104,7 @@ public class VigilanteRepositoryImplTest {
 		Vehiculo vehiculo_1 = new Vehiculo(20, "KDY533", "C", 2000);
 		List<Vehiculo> listaCarros = new ArrayList<>();
 		listaCarros.add(vehiculo_1);
-		
+
 		when(repositorio.listarCarrosParqueados()).thenReturn(listaCarros);
 		List<Vehiculo> listaResultado = repositorio.listarCarrosParqueados();
 		Assert.assertNotNull(listaResultado);
@@ -143,48 +114,37 @@ public class VigilanteRepositoryImplTest {
 	public void salidaVehiculosParqueaderoTest() {
 
 		// arrange
-
 		Calendar fechaIngreso;
 		Parqueadero parqueadero;
-		try {
-			fechaIngreso = control.fechaAcutalSistema();
-			fechaIngreso.set(2018, 9, 11);
-			parqueadero = new Parqueadero(fechaIngreso.getTime(), 1, false);
-			parqueadero.setFechaSalida(control.fechaAcutalSistema().getTime());
-			parqueadero.setPrecio(8000.0);
-			parqueadero = mock(Parqueadero.class);
-			repositorio.salidaVehiculoParqueado(parqueadero);
+		fechaIngreso = control.fechaAcutalSistema();
+		fechaIngreso.set(2018, 9, 11);
+		parqueadero = new Parqueadero(fechaIngreso.getTime(), 1, false);
+		parqueadero.setFechaSalida(control.fechaAcutalSistema().getTime());
+		parqueadero.setPrecio(8000.0);
+		parqueadero = mock(Parqueadero.class);
+		repositorio.salidaVehiculoParqueado(parqueadero);
 
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
 	}
-	
+
 	@Test
 	public void ingresoVehiculosParqueaderoTest() {
-	
+
 		Parqueadero parqueadero;
-			try {
-			
-				parqueadero = new Parqueadero(control.fechaAcutalSistema().getTime(), 1, true);
-				parqueadero =mock(Parqueadero.class);
-				repositorio.ingresarVehiculoParqueadero(parqueadero);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}			
+		parqueadero = new Parqueadero(control.fechaAcutalSistema().getTime(), 1, true);
+		parqueadero = mock(Parqueadero.class);
+		repositorio.ingresarVehiculoParqueadero(parqueadero);
 	}
-	
+
 	@Test
 	public void buscarParqueaderoVehiculoTest() {
 
 		Parqueadero parqueadero = new Parqueadero();
 		parqueadero.setId(23);
-		when(repositorio.buscarParqueaderoVehiculo(20)).thenReturn(parqueadero);		
+		when(repositorio.buscarParqueaderoVehiculo(20)).thenReturn(parqueadero);
 		Parqueadero resultado = repositorio.buscarParqueaderoVehiculo(20);
 		Assert.assertNotNull(resultado);
 	}
-	
+
 	@Test
 	public void buscarParqueaderoVehiculoNoParqueadoTest() {
 
@@ -194,18 +154,18 @@ public class VigilanteRepositoryImplTest {
 		esperado.setEstado(false);
 		vehiculo = mock(Vehiculo.class);
 		esperado = mock(Parqueadero.class);
-		when(repositorio.buscarParqueaderoVehiculo(vehiculo.getId())).thenReturn(esperado);		
-		
+		when(repositorio.buscarParqueaderoVehiculo(vehiculo.getId())).thenReturn(esperado);
+
 		Parqueadero parqueadero = repositorio.buscarParqueaderoVehiculo(vehiculo.getId());
 		Assert.assertNotNull(parqueadero);
 	}
-	
+
 	@Test
 	public void buscarVehiculoParqueadoTest() {
 
 		Vehiculo vehiculoEsperado = new Vehiculo(20, "KDY533", "C", 2000);
 		vehiculoEsperado = mock(Vehiculo.class);
-		when(repositorio.buscarVehiculoParqueado("KDY533")).thenReturn(vehiculoEsperado);		
+		when(repositorio.buscarVehiculoParqueado("KDY533")).thenReturn(vehiculoEsperado);
 		Vehiculo vehiculo = repositorio.buscarVehiculoParqueado("KDY533");
 		Assert.assertNotNull(vehiculo);
 	}

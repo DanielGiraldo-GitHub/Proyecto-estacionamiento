@@ -2,8 +2,6 @@ package co.com.ceiba.estacionamiento.service;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import java.text.ParseException;
 import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +12,6 @@ import org.mockito.Mockito;
 import co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
-import co.com.ceiba.estacionamiento.service.VigilanteService;
 import co.com.ceiba.estacionamiento.service.VigilanteServiceImpl;
 import dominio.excepcion.ParqueaderoException;
 
@@ -36,7 +33,8 @@ public class VigilanteServiceImplTest {
 	@BeforeClass
 	public static void setUpClass() throws Exception {
 		repository = Mockito.spy(new VigilanteRepositoryImpl());
-		service = Mockito.spy(new VigilanteServiceImpl(repository));
+		// service = Mockito.spy(new VigilanteServiceImpl(repository));
+		service = new VigilanteServiceImpl(repository);
 	}
 
 	@Test
@@ -44,7 +42,6 @@ public class VigilanteServiceImplTest {
 
 		// arrange
 		Vehiculo vehiculo = new Vehiculo();
-
 		vehiculo.setPlaca("BCA55C");
 		vehiculo.setTipoVehiculo("M");
 		vehiculo.setCilindraje(125);
@@ -53,13 +50,8 @@ public class VigilanteServiceImplTest {
 		vehiculo = mock(Vehiculo.class);
 
 		// act
-		try {
-			when(service.save(vehiculo)).thenReturn(true);
-			boolean respuesta = service.save(vehiculo);
-			Assert.assertEquals(true, respuesta);
-		} catch (ParseException e) {
-			Assert.assertEquals(ERROR_CONVERSION_FECHAS, e.getMessage());
-		}
+		when(service.save(vehiculo)).thenReturn(167);
+		Assert.assertEquals(167, service.save(vehiculo));
 	}
 
 	@Test
@@ -72,14 +64,9 @@ public class VigilanteServiceImplTest {
 		// act
 		service = mock(VigilanteServiceImpl.class);
 		try {
-			when(service.save(vehiculo)).thenReturn(true);
-			boolean respuesta = service.save(vehiculo);
-			Assert.assertEquals(true, respuesta);
+			service.save(vehiculo);
 		} catch (ParqueaderoException e) {
 			Assert.assertEquals(CAMPOS_SIN_DILIGENCIAR, e.getMessage());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
@@ -106,7 +93,7 @@ public class VigilanteServiceImplTest {
 		// act
 		vehiculo = mock(Vehiculo.class);
 		try {
-			Vehiculo resul = service.buscarVehiculo(vehiculo);
+	       service.buscarVehiculo(vehiculo);
 		} catch (ParqueaderoException e) {
 			Assert.assertEquals(VEHICULO_NO_ENCONTRADO, e.getMessage());
 		}
@@ -115,12 +102,7 @@ public class VigilanteServiceImplTest {
 	@Test
 	public void validarPlacaTest() {
 		String placa = "AFIOD";
-		try {
-			Assert.assertFalse(service.validarPlaca(placa));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Assert.assertFalse(service.validarPlaca(placa));
 	}
 
 	@Test
@@ -134,12 +116,11 @@ public class VigilanteServiceImplTest {
 		when(service.salidaVehiculo(parqueadero, vehiculo)).thenReturn(parqueadero);
 
 		Parqueadero parqueaderoSalida = service.salidaVehiculo(parqueadero, vehiculo);
-
 		Assert.assertNotNull(parqueaderoSalida);
 
 	}
 
-	@Test // "este vehiculo ya se encuentra en el parqueadero"
+	@Test
 	public void ingresarVehiculoParqueaderoVehiculoInexistenteTest() {
 
 		Vehiculo vehiculo = new Vehiculo();
@@ -161,11 +142,14 @@ public class VigilanteServiceImplTest {
 	public void ingresarVehiculoParqueaderoTest() {
 
 		Vehiculo vehiculo = new Vehiculo(19, "XXL342", "C", 1800);
-		vehiculo = mock(Vehiculo.class);
+		Parqueadero parqueadero = new Parqueadero();
 		repository = mock(VigilanteRepositoryImpl.class);
 		service = mock(VigilanteServiceImpl.class);
 		when(repository.buscarVehiculo("XXL342")).thenReturn(vehiculo);
-		service.ingresarVehiculoParqueadero(vehiculo);
+		when(repository.buscarParqueaderoVehiculo(19)).thenReturn(parqueadero);
+		when(repository.guardarVehiculo(vehiculo)).thenReturn(56);
+		when(service.ingresarVehiculoParqueadero(vehiculo)).thenReturn(true);
+		Assert.assertEquals(true,service.ingresarVehiculoParqueadero(vehiculo));
 
 	}
 

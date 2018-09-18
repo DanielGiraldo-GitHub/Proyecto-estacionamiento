@@ -35,7 +35,6 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 
 	@Override
 	public Integer contarMotosParqueados() {
-
 		String sentencia = "SELECT COUNT(p.id) " + "FROM   Parqueadero p JOIN Vehiculo v "
 				+ "ON     p.idVehiculo   = v.id WHERE p.estado <> 0 " + "AND    v.tipoVehiculo = 'M'";
 		Query query = entityManager.createQuery(sentencia);
@@ -44,7 +43,7 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 
 	@Override
 	public List<Vehiculo> listarCarrosParqueados() {
-			Query query = entityManager.createQuery("SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso "
+			Query query = entityManager.createQuery("SELECT  v "
 					+ "FROM Parqueadero p join Vehiculo v on p.idVehiculo = v.id WHERE   v.tipoVehiculo = 'C' and p.estado <> 0");	
 			@SuppressWarnings("unchecked")
 			List<Vehiculo> lista = query.getResultList();
@@ -53,7 +52,7 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 
 	@Override
 	public List<Vehiculo> listarMotosParqueadas() {
-			Query query = entityManager.createQuery("SELECT  v.placa,v.tipoVehiculo,v.cilindraje, p.fehcaIngreso "
+			Query query = entityManager.createQuery("SELECT  v "
 					+ "                               FROM    Parqueadero p join Vehiculo v on p.idVehiculo = v.id "
 					+ "                               WHERE   v.tipoVehiculo = 'M' and p.estado <> 0");
 			@SuppressWarnings("unchecked")
@@ -72,8 +71,9 @@ public class VigilanteRepositoryImpl implements VigilanteRepository {
 	}
 
 	@Override
-	public void guardarVehiculo(Vehiculo vehiculo) {
-		entityManager.persist(vehiculo);
+	public int guardarVehiculo(Vehiculo vehiculo) {
+		 entityManager.persist(vehiculo);
+		return vehiculo.getId();
 	}
 
 	@Override

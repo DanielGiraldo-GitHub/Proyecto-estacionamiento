@@ -13,11 +13,11 @@ public interface VigilanteService {
 
 	List<Vehiculo> listarCarrosParqueados();
 
-	Parqueadero salidaVehiculo(Parqueadero parqueadero, Vehiculo vehiculo);
+	Parqueadero salidaVehiculo(Parqueadero parqueadero, Vehiculo vehiculo) ;
 
 	boolean ingresarVehiculoParqueadero(Vehiculo vehiculo);
 
-	boolean save(Vehiculo vehiculo)throws ParseException;
+	int save(Vehiculo vehiculo);
 
 	Vehiculo buscarVehiculo(Vehiculo vehiculo);
 

@@ -5,16 +5,19 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import dominio.excepcion.ParqueaderoException;
+
 public class ControlFecha {
 
 	static final int MAXIMO_DIA_EN_SEGUNDOS = 86400;
 	static final int MAXIMO_HORA_EN_SEGUNDOS = 3600;
-
+	static final String ERROR_CONVERSION_FECHAS = "Error al realizar conversion de fechas";
+	
 	public ControlFecha() {
 		super();
 	}
 
-	public boolean velidarDia() throws ParseException {
+	public boolean velidarDia() {
 
 		Calendar fechaSistema = fechaAcutalSistema();
 		boolean retorno = true;
@@ -24,22 +27,28 @@ public class ControlFecha {
 		return retorno;
 	}
 
-	public Calendar fechaAcutalSistema() throws ParseException {
+	public Calendar fechaAcutalSistema(){
 
 		Date fecha = new Date();
 		SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss.SSS");
 		Calendar fechaActual = Calendar.getInstance();
-		fechaActual.setTime(formateador.parse(formateador.format(fecha)));
-		fechaActual.add(Calendar.DAY_OF_YEAR, 0);
+		try {
+			fechaActual.setTime(formateador.parse(formateador.format(fecha)));
+			fechaActual.add(Calendar.DAY_OF_YEAR,0);
+		} catch (ParseException e) {
+			throw new ParqueaderoException(ERROR_CONVERSION_FECHAS);
+		}
+		
 		return fechaActual;
 	}
 
-	public int[] calcularTiempo(Date fechaIngreso) throws ParseException {
+	public int[] calcularTiempo(Date fechaIngreso) {
 
 		// la posicion [0] equivale a los dias y la posicion [1] equivale a las
 		// horas
 		int[] tiempo = new int[2];
-		Calendar fechaSalida = fechaAcutalSistema();
+		Calendar fechaSalida;
+		fechaSalida = fechaAcutalSistema();
 		int tiempoTotal = (int) ((fechaSalida.getTime().getTime() - fechaIngreso.getTime()) / 1000);
 		
 		if (tiempoTotal > MAXIMO_DIA_EN_SEGUNDOS) {

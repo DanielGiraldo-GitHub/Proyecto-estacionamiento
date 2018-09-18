@@ -18,7 +18,7 @@ public interface VigilanteRepository {
 
 	void ingresarVehiculoParqueadero(Parqueadero parqueadero);
 
-	void guardarVehiculo(Vehiculo vehiculo);
+	int guardarVehiculo(Vehiculo vehiculo);
 
 	Vehiculo buscarVehiculo(String placa);
 
