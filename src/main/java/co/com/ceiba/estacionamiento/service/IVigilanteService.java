@@ -2,12 +2,14 @@ package co.com.ceiba.estacionamiento.service;
 
 import java.text.ParseException;
 import java.util.List;
+
+import co.com.ceiba.estacionamiento.model.Disponibilidad;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
 
 public interface IVigilanteService {
 
-	int[] consultarDisponibilidad();
+	Disponibilidad consultarDisponibilidad();
 
 	List<Vehiculo> listarMotosParqueadas();
 
@@ -17,13 +19,13 @@ public interface IVigilanteService {
 
 	boolean ingresarVehiculoParqueadero(Vehiculo vehiculo);
 
-	int save(Vehiculo vehiculo);
+	void guardarVehiculo(Vehiculo vehiculo);
 
-	Vehiculo buscarVehiculo(Vehiculo vehiculo);
+	Vehiculo buscarVehiculo(String placa);
 
-	boolean validate(Vehiculo vehiculo);
+	void validarCampos(Vehiculo vehiculo);
 
-	boolean validarPlaca(String placa)throws ParseException;
+	void validarPlaca(String placa)throws ParseException;
 
 	Vehiculo buscarVehiculoPorId(int idVehiculo);
 	

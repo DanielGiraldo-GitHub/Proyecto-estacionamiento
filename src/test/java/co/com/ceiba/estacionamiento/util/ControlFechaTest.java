@@ -5,17 +5,26 @@ import java.util.Date;
 import org.junit.Assert;
 import org.junit.Test;
 
+import dominio.excepcion.ParqueaderoException;
+
 public class ControlFechaTest {
 
+	
+	static final String RESTRICCION_DE_PLACA = "El vehiculo no puede ser parqueado los dias domingo y lunes";
+	
 	@SuppressWarnings("deprecation")
 	@Test
 	public void velidarDiaLunesTest() {
 
 		Date fecha = new Date();
 		fecha.getTime();
-		fecha.setDate(10);
+		fecha.setDate(18);
 		ControlFecha control = new ControlFecha();
-		Assert.assertTrue(control.velidarDia());
+		try {
+			control.velidarDia();
+		} catch (ParqueaderoException e) {
+		Assert.assertEquals(RESTRICCION_DE_PLACA, e.getMessage());
+		}
 	}
 
 	@SuppressWarnings("deprecation")

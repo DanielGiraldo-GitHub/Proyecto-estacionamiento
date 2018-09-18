@@ -1,11 +1,8 @@
 package co.com.ceiba.estacionamiento.controller;
 
-import java.text.ParseException;
 import java.util.List;
-
+import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import co.com.ceiba.estacionamiento.model.Disponibilidad;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
 import co.com.ceiba.estacionamiento.service.IVigilanteService;
@@ -24,41 +22,28 @@ public class VigilanteController {
 	@Autowired
 	protected IVigilanteService iVigilanteService;
 
-	
 	public VigilanteController(IVigilanteService iVigilanteService) {
-		super();
-		 this.iVigilanteService = iVigilanteService;
+		this.iVigilanteService = iVigilanteService;
 	}
 
-	
 	@RequestMapping(value = "/ingresarVehiculo", method = RequestMethod.POST)
-	public ResponseEntity<String> ingresarVehiculo(@RequestBody Vehiculo vehiculo) {
-		
-		 iVigilanteService.ingresarVehiculoParqueadero(vehiculo);
-		 return new ResponseEntity <String> ("Ok", HttpStatus.CREATED);
+	public void ingresarVehiculo(@RequestBody Vehiculo vehiculo) {
+		iVigilanteService.ingresarVehiculoParqueadero(vehiculo);
 	}
 
 	@GetMapping("/consultarDisponibilidad")
-	public int[] consultarDisponibilidad() {
+	public Disponibilidad consultarDisponibilidad() {
 		return iVigilanteService.consultarDisponibilidad();
 	}
 
-	@RequestMapping("/registerVehicle")
-	@PostMapping
-	public int registerVehicle(@RequestBody Vehiculo vehiculo) throws ParseException {
-		  
-		int result = iVigilanteService.save(vehiculo); 
-		if(result > 0)return result;
-		return -1;
+	@GetMapping("/buscarVehiculo/{placa}")
+	public Vehiculo buscarVehiculo(@PathParam("placa")  String placa) {
+
+		return iVigilanteService.buscarVehiculo(placa);
 	}
 
-	@GetMapping("/buscarVehiculo")
-	public Vehiculo buscarVehiculo(@RequestBody Vehiculo vehiculo) {
-		return iVigilanteService.buscarVehiculo(vehiculo);
-	}
-	
 	@GetMapping("/buscarVehiculoParqueado")
-	public Vehiculo buscarVehiculoParqueado(@RequestBody Vehiculo vehiculo) {	
+	public Vehiculo buscarVehiculoParqueado(@RequestBody Vehiculo vehiculo) {
 		return iVigilanteService.buscarVehiculoParqueado(vehiculo.getPlaca());
 	}
 
@@ -74,7 +59,6 @@ public class VigilanteController {
 
 	@PostMapping("/salidaVehiculo")
 	public Parqueadero salidaVehiculo(@RequestBody Vehiculo vehiculo) {
-		
 		return iVigilanteService.salidaVehiculo(vehiculo);
 	}
 }

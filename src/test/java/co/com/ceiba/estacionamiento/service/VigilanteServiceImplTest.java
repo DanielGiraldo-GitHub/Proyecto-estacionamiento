@@ -1,5 +1,4 @@
 package co.com.ceiba.estacionamiento.service;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import java.util.Date;
@@ -46,10 +45,8 @@ public class VigilanteServiceImplTest {
 
 		// Act
 		service = mock(VigilanteServiceImpl.class);
-		when(service.save(vehiculo)).thenReturn(167);
+		service.guardarVehiculo(vehiculo);
 
-		// Assert
-		Assert.assertEquals(167, service.save(vehiculo));
 	}
 
 	@Test
@@ -63,7 +60,7 @@ public class VigilanteServiceImplTest {
 		// Act
 		service = mock(VigilanteServiceImpl.class);
 		try {
-			service.save(vehiculo);
+			service.guardarVehiculo(vehiculo);
 		} catch (ParqueaderoException e) {
 			// Assert
 			Assert.assertEquals(CAMPOS_SIN_DILIGENCIAR, e.getMessage());
@@ -77,8 +74,8 @@ public class VigilanteServiceImplTest {
 		// Arrange
 		Vehiculo vehiculo = new Vehiculo(1, "GXL315", "C", 115);
 		// act
-		when(service.buscarVehiculo(vehiculo)).thenReturn(vehiculo);
-		Vehiculo result = service.buscarVehiculo(vehiculo);
+		when(service.buscarVehiculo(vehiculo.getPlaca())).thenReturn(vehiculo);
+		Vehiculo result = service.buscarVehiculo(vehiculo.getPlaca());
 
 		// Assert
 		Assert.assertNotNull(result);
@@ -94,7 +91,7 @@ public class VigilanteServiceImplTest {
 		// Act
 		vehiculo = mock(Vehiculo.class);
 		try {
-			service.buscarVehiculo(vehiculo);
+			service.buscarVehiculo(vehiculo.getPlaca());
 		} catch (ParqueaderoException e) {
 			// Assert
 			Assert.assertEquals(VEHICULO_NO_ENCONTRADO, e.getMessage());
@@ -104,7 +101,12 @@ public class VigilanteServiceImplTest {
 	@Test
 	public void validarPlacaTest() {
 		String placa = "AFIOD";
-		Assert.assertFalse(service.validarPlaca(placa));
+		try {
+			service.validarPlaca(placa);
+		} catch (ParqueaderoException e) {
+			Assert.assertEquals(RESTRICCION_DE_PLACA, e.getMessage());
+		}
+
 	}
 
 	@Test

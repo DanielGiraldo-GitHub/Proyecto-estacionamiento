@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import co.com.ceiba.estacionamiento.dao.IVigilanteRepository;
+import co.com.ceiba.estacionamiento.model.Disponibilidad;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
 import co.com.ceiba.estacionamiento.util.ControlFecha;
@@ -18,7 +19,6 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	static final char PLACA_CON_RESTRICCION = 'A';
 	static final String EXCEPCION_VEHICULO_NO_ENCONTRADO = "No se ha encontrado ningun vehiculo";
 	static final String CAMPOS_SIN_DILIGENCIAR = "los campos obligatorios no estan diligenciados";
-	static final String RESTRICCION_DE_PLACA = "El vehiculo no puede ser parqueado los dias domingo y lunes";
 	static final String PARQUEADERO_SIN_CUPO_DE_CARRO = "El parqueadero no tiene cupos disponibles para carros";
 	static final String PARQUEADERO_SIN_CUPO_DE_MOTO = "El parqueadero no tiene cupos disponibles para moto";
 	static final String ERROR_AL_CALCULAR_PRECIO = "Se ha precentado un error al calcular el precio del vehiculo";
@@ -36,20 +36,16 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	}
 
 	@Override
-	public int save(Vehiculo vehiculo) {
+	public void guardarVehiculo(Vehiculo vehiculo) {
 
-		if (!validate(vehiculo))
-			throw new ParqueaderoException(CAMPOS_SIN_DILIGENCIAR);
-
-		if (!validarPlaca(vehiculo.getPlaca()))
-			throw new ParqueaderoException(RESTRICCION_DE_PLACA);
-
-		return repositorio.guardarVehiculo(vehiculo);
+		validarCampos(vehiculo);
+		validarPlaca(vehiculo.getPlaca());
+		repositorio.guardarVehiculo(vehiculo);
 	}
 
 	@Override
-	public Vehiculo buscarVehiculo(Vehiculo vehiculo) {
-		Vehiculo resul = repositorio.buscarVehiculo(vehiculo.getPlaca());
+	public Vehiculo buscarVehiculo(String placa) {
+		Vehiculo resul = repositorio.buscarVehiculo(placa);
 		if (resul != null) {
 			return resul;
 		} else {
@@ -58,20 +54,17 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	}
 
 	@Override
-	public boolean validate(Vehiculo vehiculo) {
-		boolean expression = true;
+	public void validarCampos(Vehiculo vehiculo) {
+
 		if (vehiculo.getPlaca() != null && vehiculo.getTipoVehiculo() != null && vehiculo.getCilindraje() > 0) {
-			return expression;
+			throw new ParqueaderoException(CAMPOS_SIN_DILIGENCIAR);
 		}
-		return !expression;
 	}
 
 	@Override
-	public boolean validarPlaca(String placa) {
-
+	public void validarPlaca(String placa) {
 		if (placa.toUpperCase().charAt(0) == PLACA_CON_RESTRICCION)
-			return controlFechas.velidarDia();
-		return true;
+			controlFechas.velidarDia();
 	}
 
 	@Override
@@ -80,20 +73,14 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	}
 
 	@Override
-	public int[] consultarDisponibilidad() {
+	public Disponibilidad consultarDisponibilidad() {
 
-		int[] cuposDisponibles = new int[2];
-		cuposDisponibles[0] = CUPOS_CARRO - repositorio.contarCarrosParqueados();
-		cuposDisponibles[1] = CUPOS_MOTO - repositorio.contarMotosParqueados();
+		Disponibilidad cuposDisponibles = new Disponibilidad();
+		cuposDisponibles.setCarros(CUPOS_CARRO - repositorio.contarCarrosParqueados());
+		cuposDisponibles.setMotos(CUPOS_MOTO - repositorio.contarMotosParqueados());
 
-		for (int i = 0; i < cuposDisponibles.length; i++) {
-
-			if (i == 0 && cuposDisponibles[i] <= 0)
-				throw new ParqueaderoException(PARQUEADERO_SIN_CUPO_DE_CARRO);
-
-			if (i == 1 && cuposDisponibles[1] <= 0)
-				throw new ParqueaderoException(PARQUEADERO_SIN_CUPO_DE_MOTO);
-		}
+		if (cuposDisponibles.getCarros() <= 0 || cuposDisponibles.getMotos() <= 0)
+			throw new ParqueaderoException(PARQUEADERO_SIN_CUPO_DE_CARRO);
 		return cuposDisponibles;
 	}
 
@@ -106,7 +93,7 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	public List<Vehiculo> listarCarrosParqueados() {
 		return repositorio.listarCarrosParqueados();
 	}
- 
+
 	@Override
 	public Parqueadero salidaVehiculo(Vehiculo vehiculo) {
 
@@ -119,7 +106,6 @@ public class VigilanteServiceImpl implements IVigilanteService {
 			if (vehiculo.getTipoVehiculo().equals("C")) {
 				parqueadero.setPrecio(controlTarifas.calcularPrecioCarro(tiempoPermanencia));
 			} else {
-
 				parqueadero.setPrecio(controlTarifas.calcularPrecioMoto(vehiculo.getCilindraje(), tiempoPermanencia));
 			}
 			parqueadero.setEstado(false);
@@ -131,21 +117,20 @@ public class VigilanteServiceImpl implements IVigilanteService {
 
 	@Override
 	public boolean ingresarVehiculoParqueadero(Vehiculo vehiculo) {
- 
+
 		Parqueadero parqueadero = null;
-		Vehiculo busquedaVehiculo = buscarVehiculo(vehiculo);
-		int id = -1;
+		Vehiculo busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
 		if (busquedaVehiculo == null) {
-			id = save(vehiculo);
-			vehiculo.setId(id);
+			guardarVehiculo(vehiculo);
+
 		} else {
-			
+			busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
 			if (buscarParqueaderoVehiculo(vehiculo.getId()) != null) {
 				throw new ParqueaderoException("Este vehiculo ya se encuentra en el parqueadero");
 			}
-			busquedaVehiculo = buscarVehiculo(vehiculo);
-			parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(),busquedaVehiculo.getId(), true);
-			repositorio.ingresarVehiculoParqueadero(parqueadero);	
+			busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
+			parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(), busquedaVehiculo.getId(), true);
+			repositorio.ingresarVehiculoParqueadero(parqueadero);
 		}
 		return true;
 	}

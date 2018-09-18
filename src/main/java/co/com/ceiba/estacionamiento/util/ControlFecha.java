@@ -12,19 +12,18 @@ public class ControlFecha {
 	static final int MAXIMO_DIA_EN_SEGUNDOS = 86400;
 	static final int MAXIMO_HORA_EN_SEGUNDOS = 3600;
 	static final String ERROR_CONVERSION_FECHAS = "Error al realizar conversion de fechas";
+	static final String RESTRICCION_DE_PLACA = "El vehiculo no puede ser parqueado los dias domingo y lunes";
 	
 	public ControlFecha() {
 		super();
 	}
 
-	public boolean velidarDia() {
+	public void velidarDia() {
 
 		Calendar fechaSistema = fechaAcutalSistema();
-		boolean retorno = true;
 		if (fechaSistema.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY
 				|| fechaSistema.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY)
-			return !retorno;
-		return retorno;
+			throw new ParqueaderoException(RESTRICCION_DE_PLACA);
 	}
 
 	public Calendar fechaAcutalSistema(){
