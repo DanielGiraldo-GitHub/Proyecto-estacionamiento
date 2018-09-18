@@ -14,7 +14,6 @@ import co.com.ceiba.estacionamiento.dao.VigilanteRepositoryImpl;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
 import co.com.ceiba.estacionamiento.util.ControlFecha;
-import dominio.excepcion.ParqueaderoException;
 
 public class VigilanteRepositoryImplTest {
 
