@@ -1,6 +1,4 @@
 package co.com.ceiba.estacionamiento.util;
-
-import static org.junit.Assert.assertFalse;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,7 +15,7 @@ public class ControlFechaTest {
 		fecha.getTime();
 		fecha.setDate(10);
 		ControlFecha control = new ControlFecha();
-		assertFalse(control.velidarDia());
+		Assert.assertTrue(control.velidarDia());
 	}
 
 	@SuppressWarnings("deprecation")
