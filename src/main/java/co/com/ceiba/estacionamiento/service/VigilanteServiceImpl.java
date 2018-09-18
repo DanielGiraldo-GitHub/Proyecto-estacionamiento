@@ -3,7 +3,7 @@ package co.com.ceiba.estacionamiento.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import co.com.ceiba.estacionamiento.dao.VigilanteRepository;
+import co.com.ceiba.estacionamiento.dao.IVigilanteRepository;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
 import co.com.ceiba.estacionamiento.util.ControlFecha;
@@ -11,7 +11,7 @@ import co.com.ceiba.estacionamiento.util.ControlTarifas;
 import dominio.excepcion.ParqueaderoException;
 
 @Service
-public class VigilanteServiceImpl implements VigilanteService {
+public class VigilanteServiceImpl implements IVigilanteService {
 
 	protected ControlTarifas controlTarifas = new ControlTarifas();
 	protected ControlFecha controlFechas = new ControlFecha();
@@ -28,11 +28,11 @@ public class VigilanteServiceImpl implements VigilanteService {
 	static final int CUPOS_MOTO = 10;
 
 	@Autowired
-	protected VigilanteRepository repositorio;
+	protected IVigilanteRepository repositorio;
 
-	public VigilanteServiceImpl(VigilanteRepository vigilanteRepository) {
+	public VigilanteServiceImpl(IVigilanteRepository iVigilanteRepository) {
 		super();
-		this.repositorio = vigilanteRepository;
+		this.repositorio = iVigilanteRepository;
 	}
 
 	@Override
@@ -106,12 +106,12 @@ public class VigilanteServiceImpl implements VigilanteService {
 	public List<Vehiculo> listarCarrosParqueados() {
 		return repositorio.listarCarrosParqueados();
 	}
-
+ 
 	@Override
-	public Parqueadero salidaVehiculo(Parqueadero parqueadero, Vehiculo vehiculo) {
+	public Parqueadero salidaVehiculo(Vehiculo vehiculo) {
 
 		int[] tiempoPermanencia;
-
+		Parqueadero parqueadero = buscarParqueaderoVehiculo(vehiculo.getId());
 		if (parqueadero == null) {
 			throw new ParqueaderoException("Este vehiculo no se encuentra en el parqueadero");
 		} else {
@@ -131,20 +131,23 @@ public class VigilanteServiceImpl implements VigilanteService {
 
 	@Override
 	public boolean ingresarVehiculoParqueadero(Vehiculo vehiculo) {
-
+ 
 		Parqueadero parqueadero = null;
 		Vehiculo busquedaVehiculo = buscarVehiculo(vehiculo);
 		int id = -1;
 		if (busquedaVehiculo == null) {
 			id = save(vehiculo);
-		}
-		if (buscarParqueaderoVehiculo(id) != null) {
-			throw new ParqueaderoException("Este vehiculo ya se encuentra en el parqueadero");
+			vehiculo.setId(id);
 		} else {
-			parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(), busquedaVehiculo.getId(), true);
-			repositorio.ingresarVehiculoParqueadero(parqueadero);
-			return true;
+			
+			if (buscarParqueaderoVehiculo(vehiculo.getId()) != null) {
+				throw new ParqueaderoException("Este vehiculo ya se encuentra en el parqueadero");
+			}
+			busquedaVehiculo = buscarVehiculo(vehiculo);
+			parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(),busquedaVehiculo.getId(), true);
+			repositorio.ingresarVehiculoParqueadero(parqueadero);	
 		}
+		return true;
 	}
 
 	@Override

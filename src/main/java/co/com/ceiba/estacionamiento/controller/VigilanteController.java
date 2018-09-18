@@ -15,66 +15,66 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
-import co.com.ceiba.estacionamiento.service.VigilanteService;
+import co.com.ceiba.estacionamiento.service.IVigilanteService;
 
 @RestController
 @CrossOrigin(origins = { "http://localhost:4200" })
 public class VigilanteController {
 
 	@Autowired
-	protected VigilanteService vigilanteService;
+	protected IVigilanteService iVigilanteService;
 
 	
-	public VigilanteController(VigilanteService vigilanteService) {
+	public VigilanteController(IVigilanteService iVigilanteService) {
 		super();
-		 this.vigilanteService = vigilanteService;
+		 this.iVigilanteService = iVigilanteService;
 	}
 
 	
 	@RequestMapping(value = "/ingresarVehiculo", method = RequestMethod.POST)
 	public ResponseEntity<String> ingresarVehiculo(@RequestBody Vehiculo vehiculo) {
 		
-		 vigilanteService.ingresarVehiculoParqueadero(vehiculo);
+		 iVigilanteService.ingresarVehiculoParqueadero(vehiculo);
 		 return new ResponseEntity <String> ("Ok", HttpStatus.CREATED);
 	}
 
 	@GetMapping("/consultarDisponibilidad")
 	public int[] consultarDisponibilidad() {
-		return vigilanteService.consultarDisponibilidad();
+		return iVigilanteService.consultarDisponibilidad();
 	}
 
 	@RequestMapping("/registerVehicle")
 	@PostMapping
 	public int registerVehicle(@RequestBody Vehiculo vehiculo) throws ParseException {
 		  
-		int result = vigilanteService.save(vehiculo);
+		int result = iVigilanteService.save(vehiculo); 
 		if(result > 0)return result;
 		return -1;
 	}
 
 	@GetMapping("/buscarVehiculo")
 	public Vehiculo buscarVehiculo(@RequestBody Vehiculo vehiculo) {
-		return vigilanteService.buscarVehiculo(vehiculo);
+		return iVigilanteService.buscarVehiculo(vehiculo);
 	}
 	
 	@GetMapping("/buscarVehiculoParqueado")
 	public Vehiculo buscarVehiculoParqueado(@RequestBody Vehiculo vehiculo) {	
-		return vigilanteService.buscarVehiculoParqueado(vehiculo.getPlaca());
+		return iVigilanteService.buscarVehiculoParqueado(vehiculo.getPlaca());
 	}
 
 	@GetMapping("/listarMotosParqueadas")
 	public List<Vehiculo> listarMotosParqueadas() {
-		return vigilanteService.listarMotosParqueadas();
+		return iVigilanteService.listarMotosParqueadas();
 	}
 
 	@GetMapping("/listarCarrosParqueados")
 	public List<Vehiculo> listarCarrosParqueados() {
-		return vigilanteService.listarCarrosParqueados();
+		return iVigilanteService.listarCarrosParqueados();
 	}
 
 	@PostMapping("/salidaVehiculo")
 	public Parqueadero salidaVehiculo(@RequestBody Vehiculo vehiculo) {
-		Parqueadero parqueadero = vigilanteService.buscarParqueaderoVehiculo(vehiculo.getId());
-		return vigilanteService.salidaVehiculo(parqueadero, vehiculo);
+		
+		return iVigilanteService.salidaVehiculo(vehiculo);
 	}
 }

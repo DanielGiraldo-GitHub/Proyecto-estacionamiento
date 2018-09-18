@@ -11,7 +11,7 @@ import co.com.ceiba.estacionamiento.model.Vehiculo;
 
 @Repository
 @Transactional
-public class VigilanteRepositoryImpl implements VigilanteRepository {
+public class VigilanteRepositoryImpl implements IVigilanteRepository {
 
 	@PersistenceContext
 	public EntityManager entityManager;

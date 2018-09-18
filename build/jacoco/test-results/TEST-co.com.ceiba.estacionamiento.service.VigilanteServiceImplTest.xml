@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-09-18T12:12:25" hostname="DANIEL-GIRALDO" time="0.124">
+<testsuite name="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-09-18T13:12:59" hostname="DANIEL-GIRALDO" time="0.105">
   <properties/>
-  <testcase name="buscarVehiculoNoEncontrado" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.001"/>
-  <testcase name="ingresarVehiculoParqueaderoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.111"/>
+  <testcase name="buscarVehiculoNoEncontrado" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.0"/>
+  <testcase name="ingresarVehiculoParqueaderoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.095"/>
   <testcase name="buscarVehiculoParqueadoEncontradoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.001"/>
   <testcase name="salidaVehiculoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.001"/>
-  <testcase name="guardarVehiculoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.003"/>
-  <testcase name="buscarVehiculoParqueadoNoEncontradoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.001"/>
+  <testcase name="guardarVehiculoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.001"/>
+  <testcase name="buscarVehiculoParqueadoNoEncontradoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.0"/>
   <testcase name="guardarVehiculoSinPlacaTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.0"/>
   <testcase name="ingresarVehiculoParqueaderoVehiculoInexistenteTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.0"/>
-  <testcase name="validarPlacaTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.0"/>
-  <testcase name="buscarVehiculoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.002"/>
-  <testcase name="buscarParqueaderoVehiculoEncontradoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.001"/>
+  <testcase name="validarPlacaTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.001"/>
+  <testcase name="buscarVehiculoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.0"/>
+  <testcase name="buscarParqueaderoVehiculoEncontradoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.0"/>
   <testcase name="buscarParqueaderoVehiculoNoEncontradoTest" classname="co.com.ceiba.estacionamiento.service.VigilanteServiceImplTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
