@@ -79,8 +79,8 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 	@Override
 	public Vehiculo buscarVehiculo(String placa) {
 		try {
-			Query query = entityManager.createQuery("SELECT v FROM Vehiculo v WHERE v.placa =?");
-			query.setParameter(0, placa);
+			Query query = entityManager.createQuery("SELECT v FROM Vehiculo v WHERE v.placa =:placa");
+			query.setParameter("placa", placa);
 			return (Vehiculo) (query.getSingleResult());
 		} catch (RuntimeException e) {
 			return null;
@@ -92,8 +92,8 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 		try {
 			Query query = entityManager.createQuery("SELECT   v "
 					+ "                               FROM    Parqueadero p join Vehiculo v on p.idVehiculo = v.id "
-					+ "                               WHERE   p.estado <> 0 AND v.placa =?");
-			query.setParameter(0, placa);
+					+ "                               WHERE   p.estado <> 0 AND v.placa =:placa");
+			query.setParameter("placa", placa);
 			return (Vehiculo) (query.getSingleResult());
 		} catch (RuntimeException e) {
 			return null;
@@ -109,8 +109,8 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 	public Parqueadero buscarParqueaderoVehiculo(int idVehiculo) {
 		try {
 			Query query = entityManager
-					.createQuery("SELECT p FROM Parqueadero p WHERE p.estado <> 0 AND  p.idVehiculo =?");
-			query.setParameter(0, idVehiculo);
+					.createQuery("SELECT p FROM Parqueadero p WHERE p.estado <> 0 AND  p.idVehiculo =:idVehiculo");
+			query.setParameter("idVehiculo", idVehiculo);
 			return (Parqueadero) (query.getSingleResult());
 		} catch (RuntimeException e) {
 			return null;
