@@ -20,7 +20,6 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 	static final String VEHICULO_NO_ENCONTRADO_PARQUEADERO = "No se ha encontrado ningun vehiculo";
 
 	public VigilanteRepositoryImpl(EntityManager entityManager) {
-		super();
 		this.entityManager = entityManager;
 	}
 
@@ -74,9 +73,8 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 	}
 
 	@Override
-	public int guardarVehiculo(Vehiculo vehiculo) {
+	public void guardarVehiculo(Vehiculo vehiculo) {
 		entityManager.persist(vehiculo);
-		return vehiculo.getId();
 	}
 
 	@Override

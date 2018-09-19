@@ -1,8 +1,6 @@
 package co.com.ceiba.estacionamiento.service;
 
-import java.text.ParseException;
 import java.util.List;
-
 import co.com.ceiba.estacionamiento.model.Disponibilidad;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
@@ -25,7 +23,7 @@ public interface IVigilanteService {
 
 	void validarCampos(Vehiculo vehiculo);
 
-	void validarPlaca(String placa)throws ParseException;
+	void validarPlaca(String placa);
 
 	Vehiculo buscarVehiculoPorId(int idVehiculo);
 	

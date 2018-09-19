@@ -38,7 +38,7 @@ public class VigilanteController extends ResponseEntityExceptionHandler {
 	protected IVigilanteService iVigilanteService;
 
 	public VigilanteController(IVigilanteService iVigilanteService) {
-		this.iVigilanteService = iVigilanteService;
+		this.iVigilanteService = iVigilanteService; 
 	}
 
 	@RequestMapping(value = "/ingresarVehiculo", method = RequestMethod.POST)

@@ -21,6 +21,8 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	static final String CAMPOS_SIN_DILIGENCIAR = "los campos obligatorios no estan diligenciados";
 	static final String PARQUEADERO_SIN_CUPO_DE_CARRO = "El parqueadero no tiene cupos disponibles para carros";
 	static final String PARQUEADERO_SIN_CUPO_DE_MOTO = "El parqueadero no tiene cupos disponibles para moto";
+	static final String VEHICULO_NO_PARQUEADO = "Este vehiculo no se encuentra en el parqueadero";
+	static final String VEHICULO_PARQUEADO = "Este vehiculo ya se encuentra en el parqueadero";
 	static final int CUPOS_CARRO = 20;
 	static final int CUPOS_MOTO = 10;
 
@@ -29,6 +31,9 @@ public class VigilanteServiceImpl implements IVigilanteService {
 
 	public VigilanteServiceImpl(IVigilanteRepository iVigilanteRepository) {
 		this.repositorio = iVigilanteRepository;
+	}
+
+	public VigilanteServiceImpl() {
 	}
 
 	@Override
@@ -46,7 +51,7 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	@Override
 	public void validarCampos(Vehiculo vehiculo) {
 
-		if (vehiculo.getPlaca() == null && vehiculo.getTipoVehiculo() == null && vehiculo.getCilindraje() <= 0) {
+		if (vehiculo.getPlaca() == null || vehiculo.getTipoVehiculo() == null || vehiculo.getCilindraje() <= 0) {
 			throw new ParqueaderoException(CAMPOS_SIN_DILIGENCIAR);
 		}
 	}
@@ -90,8 +95,9 @@ public class VigilanteServiceImpl implements IVigilanteService {
 
 		TiempoPermanencia tiempoPermanencia;
 		Parqueadero parqueadero = buscarParqueaderoVehiculo(vehiculo.getId());
+
 		if (parqueadero == null) {
-			throw new ParqueaderoException("Este vehiculo no se encuentra en el parqueadero");
+			throw new ParqueaderoException(VEHICULO_NO_PARQUEADO);
 		} else {
 			tiempoPermanencia = controlFechas.calcularTiempo(parqueadero.getFehcaIngreso());
 			if (vehiculo.getTipoVehiculo().equals("C")) {
@@ -110,16 +116,18 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	public boolean ingresarVehiculoParqueadero(Vehiculo vehiculo) {
 
 		Parqueadero parqueadero = null;
-		Vehiculo busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
-		if (busquedaVehiculo == null) {
+		Vehiculo busquedaVehiculo = null;
+		if (vehiculo.getId() <= 0) {
 			guardarVehiculo(vehiculo);
-		}
-		if (buscarParqueaderoVehiculo(vehiculo.getId()) != null) {
-			throw new ParqueaderoException("Este vehiculo ya se encuentra en el parqueadero");
+			busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
 		}
 		busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
+		if (buscarParqueaderoVehiculo(vehiculo.getId()) != null)
+			throw new ParqueaderoException(VEHICULO_PARQUEADO);
+
 		parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(), busquedaVehiculo.getId(), true);
 		repositorio.ingresarVehiculoParqueadero(parqueadero);
+
 		return true;
 	}
 
