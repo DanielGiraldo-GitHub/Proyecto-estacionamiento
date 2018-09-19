@@ -1,5 +1,4 @@
 package co.com.ceiba.estacionamiento.service;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -127,7 +126,6 @@ public class VigilanteServiceImpl implements IVigilanteService {
 			guardarVehiculo(vehiculo);
 
 		} 
-			busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
 			if (buscarParqueaderoVehiculo(vehiculo.getId()) != null) {
 				throw new ParqueaderoException("Este vehiculo ya se encuentra en el parqueadero");
 			}
