@@ -49,11 +49,11 @@ public class ControlFecha {
 		int tiempoTotal = (int) ((fechaSalida.getTime().getTime() - fechaIngreso.getTime()) / 1000);
 		
 		if (tiempoTotal > MAXIMO_DIA_EN_SEGUNDOS) {
-			tiempo.setDias((int) Math.floor(computeMaximoDias(tiempoTotal)));
+			tiempo.setDias((int) computeMaximoDias(tiempoTotal));
 			tiempoTotal = tiempoTotal - (tiempo.getDias() * MAXIMO_DIA_EN_SEGUNDOS);
 		}
 		if (tiempoTotal > MAXIMO_HORA_EN_SEGUNDOS) {
-			tiempo.setHoras((int) Math.floor(computeMaximoHoras(tiempoTotal)));
+			tiempo.setHoras((int) computeMaximoHoras(tiempoTotal));
 		}
 		return tiempo;
 	}
