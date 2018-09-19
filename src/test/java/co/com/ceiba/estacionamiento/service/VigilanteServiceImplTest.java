@@ -32,7 +32,6 @@ public class VigilanteServiceImplTest {
 	@BeforeClass
 	public static void setUpClass() throws Exception {
 		repository = Mockito.spy(new VigilanteRepositoryImpl());
-		// service = Mockito.spy(new VigilanteServiceImpl(repository));
 		service = new VigilanteServiceImpl(repository);
 	}
 

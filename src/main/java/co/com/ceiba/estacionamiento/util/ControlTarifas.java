@@ -1,4 +1,5 @@
 package co.com.ceiba.estacionamiento.util;
+import co.com.ceiba.estacionamiento.model.TiempoPermanencia;
 
 public class ControlTarifas {
 
@@ -10,31 +11,25 @@ public class ControlTarifas {
 	static final double HORAS_PERMANECIA = 9;
 	static final double MAXIMO_CILINDRAJE_MOTO = 500;
 
-	public double calcularPrecioCarro( int[] tiempoPermanencia) {
+	public double calcularPrecioCarro( TiempoPermanencia tiempoPermanencia) {
 
-		int dias = tiempoPermanencia[0];
-		int horas = tiempoPermanencia[1];
-
-		if (horas > HORAS_PERMANECIA)
-			return ((dias + 1) * PRECIO_DIA_CARROS);
+		if (tiempoPermanencia.getHoras() > HORAS_PERMANECIA)
+			return ((tiempoPermanencia.getDias() + 1) * PRECIO_DIA_CARROS);
 		else
-			return (dias * PRECIO_DIA_CARROS + horas * PRECIO_HORA_CARROS);
+			return (tiempoPermanencia.getDias() * PRECIO_DIA_CARROS + tiempoPermanencia.getHoras() * PRECIO_HORA_CARROS);
 	}
 
-	public double calcularPrecioMoto(int cilindraje, int[] tiempoPermanencia) {
+	public double calcularPrecioMoto(int cilindraje, TiempoPermanencia tiempoPermanencia) {
 
-		int dias = tiempoPermanencia[0];
-		int horas = tiempoPermanencia[1];
 		double precio = 0;
-
 		if (cilindraje > MAXIMO_CILINDRAJE_MOTO)
 			precio += COBRO_ADICIONAL_MOTOS;
 
-		 if (horas > HORAS_PERMANECIA) {
-			precio += ((dias + 1) * PRECIO_DIA_MOTOS);
+		 if (tiempoPermanencia.getHoras() > HORAS_PERMANECIA) {
+			precio += ((tiempoPermanencia.getDias() + 1) * PRECIO_DIA_MOTOS);
 			return precio;
 		} else {
-			precio += (dias * PRECIO_DIA_MOTOS + horas * PRECIO_HORA_MOTOS);
+			precio += (tiempoPermanencia.getDias() * PRECIO_DIA_MOTOS + tiempoPermanencia.getHoras() * PRECIO_HORA_MOTOS);
 
 		}
 		return precio;

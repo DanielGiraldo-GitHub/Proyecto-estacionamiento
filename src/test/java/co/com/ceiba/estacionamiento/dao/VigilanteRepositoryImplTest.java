@@ -27,12 +27,11 @@ public class VigilanteRepositoryImplTest {
 	static final String RESTRICCION_DE_PLACA = "El vehiculo no puede ser parqueado los dias domingo y lunes";
 
 	@BeforeClass
-	public static void setUpClass() throws Exception {
+	public static void setUpClass() {
 		repositorio = new VigilanteRepositoryImpl(entityManager);
 		repositorio = mock(VigilanteRepositoryImpl.class);
 	}
 
-	
 
 	@Test
 	public void buscarVehiculoTest() {

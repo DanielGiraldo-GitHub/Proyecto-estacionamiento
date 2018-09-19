@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+import co.com.ceiba.estacionamiento.model.TiempoPermanencia;
+
 public class ControlTarifasTest {
 	
 	static final double PRECIO_HORA_MOTOS = 500;
@@ -16,12 +18,12 @@ public class ControlTarifasTest {
 	public void calcularPrecioCarroTest() {
 
 		ControlTarifas control = new ControlTarifas();	
-		int [] tiempo = new int[2];
-		tiempo[0] = 0;
-		tiempo[1] = 6;
+		TiempoPermanencia tiempo = new TiempoPermanencia();
+		tiempo.setDias(0); 
+		tiempo.setHoras(6); 
         double total = (6 *  PRECIO_HORA_CARROS); 
 		assertEquals((Double)total, (Double)control.calcularPrecioCarro(tiempo) );
-		
+	
 	}
 	
 	@Test
@@ -29,9 +31,9 @@ public class ControlTarifasTest {
 
 		ControlTarifas control = new ControlTarifas();	
 		int cilindraje = 700;
-		int [] tiempo = new int[2];
-		tiempo[0] = 0;
-		tiempo[1] = 10;
+		TiempoPermanencia tiempo = new TiempoPermanencia();
+		tiempo.setDias(0); 
+		tiempo.setHoras(10); 
         double total = ((0 + 1 ) *  PRECIO_DIA_MOTOS) + COBRO_ADICIONAL_MOTOS; 
 			
 		Assert.assertEquals((Double)total, (Double)control.calcularPrecioMoto(cilindraje, tiempo));
@@ -42,9 +44,9 @@ public class ControlTarifasTest {
 
 		ControlTarifas control = new ControlTarifas();	
 		int cilindraje = 400;
-		int [] tiempo = new int[2];
-		tiempo[0] = 0;
-		tiempo[1] = 10;
+		TiempoPermanencia tiempo = new TiempoPermanencia();
+		tiempo.setDias(0); 
+		tiempo.setHoras(10); 
         double total = ((1) *  PRECIO_DIA_MOTOS) ; 
 			
 		Assert.assertEquals((Double)total, (Double)control.calcularPrecioMoto(cilindraje, tiempo));

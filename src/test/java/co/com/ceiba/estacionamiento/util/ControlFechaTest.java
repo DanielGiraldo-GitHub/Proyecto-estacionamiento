@@ -1,15 +1,14 @@
 package co.com.ceiba.estacionamiento.util;
-import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import org.junit.Assert;
 import org.junit.Test;
 
+import co.com.ceiba.estacionamiento.model.TiempoPermanencia;
 import dominio.excepcion.ParqueaderoException;
 
 public class ControlFechaTest {
 
-	
 	static final String RESTRICCION_DE_PLACA = "El vehiculo no puede ser parqueado los dias domingo y lunes";
 	
 	@SuppressWarnings("deprecation")
@@ -29,7 +28,7 @@ public class ControlFechaTest {
 
 	@SuppressWarnings("deprecation")
 	@Test
-	public void fechaAcutalSistema() throws ParseException {
+	public void fechaAcutalSistema(){
 
 		Date fecha = new Date();
 		fecha.getTime();
@@ -45,10 +44,10 @@ public class ControlFechaTest {
 		ControlFecha control = new ControlFecha();
 		Date fecha = new Date();
 		fecha.getTime();
-		int[] tiempo = new int[2];
-		tiempo[0] = 0;
-		tiempo[1] = 0;
-		Assert.assertArrayEquals(tiempo, control.calcularTiempo(fecha));
+		TiempoPermanencia tiempo = new TiempoPermanencia();
+		tiempo.setDias(0); 
+		tiempo.setHoras(0); 
+		Assert.assertEquals(tiempo.getDias(), control.calcularTiempo(fecha).getDias());
 	}
 
 }

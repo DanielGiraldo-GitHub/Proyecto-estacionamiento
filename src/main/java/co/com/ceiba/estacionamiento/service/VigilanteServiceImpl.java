@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import co.com.ceiba.estacionamiento.dao.IVigilanteRepository;
 import co.com.ceiba.estacionamiento.model.Disponibilidad;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
+import co.com.ceiba.estacionamiento.model.TiempoPermanencia;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
 import co.com.ceiba.estacionamiento.util.ControlFecha;
 import co.com.ceiba.estacionamiento.util.ControlTarifas;
@@ -48,7 +49,7 @@ public class VigilanteServiceImpl implements IVigilanteService {
 		if (resul != null) {
 			return resul;
 		} else {
-			return null;
+			throw new ParqueaderoException(VEHICULO_NO_ENCONTRADO);
 		}
 	}
 
@@ -99,7 +100,7 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	@Override
 	public Parqueadero salidaVehiculo(Vehiculo vehiculo) {
 
-		int[] tiempoPermanencia;
+		TiempoPermanencia tiempoPermanencia;
 		Parqueadero parqueadero = buscarParqueaderoVehiculo(vehiculo.getId());
 		if (parqueadero == null) {
 			throw new ParqueaderoException("Este vehiculo no se encuentra en el parqueadero");

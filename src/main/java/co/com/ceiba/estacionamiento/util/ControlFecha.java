@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import co.com.ceiba.estacionamiento.model.TiempoPermanencia;
 import dominio.excepcion.ParqueaderoException;
 
 public class ControlFecha {
@@ -36,26 +37,23 @@ public class ControlFecha {
 			fechaActual.add(Calendar.DAY_OF_YEAR,0);
 		} catch (ParseException e) {
 			throw new ParqueaderoException(ERROR_CONVERSION_FECHAS);
-		}
-		
+		}		
 		return fechaActual;
 	}
 
-	public int[] calcularTiempo(Date fechaIngreso) {
+	public TiempoPermanencia calcularTiempo(Date fechaIngreso) {
 
-		// la posicion [0] equivale a los dias y la posicion [1] equivale a las
-		// horas
-		int[] tiempo = new int[2];
+		TiempoPermanencia tiempo = new TiempoPermanencia();
 		Calendar fechaSalida;
 		fechaSalida = fechaAcutalSistema();
 		int tiempoTotal = (int) ((fechaSalida.getTime().getTime() - fechaIngreso.getTime()) / 1000);
 		
 		if (tiempoTotal > MAXIMO_DIA_EN_SEGUNDOS) {
-			tiempo[0] = (int) Math.floor(computeMaximoDias(tiempoTotal));
-			tiempoTotal = tiempoTotal - (tiempo[0] * MAXIMO_DIA_EN_SEGUNDOS);
+			tiempo.setDias((int) Math.floor(computeMaximoDias(tiempoTotal)));
+			tiempoTotal = tiempoTotal - (tiempo.getDias() * MAXIMO_DIA_EN_SEGUNDOS);
 		}
 		if (tiempoTotal > MAXIMO_HORA_EN_SEGUNDOS) {
-			tiempo[1] = (int) Math.floor(computeMaximoHoras(tiempoTotal));
+			tiempo.setHoras((int) Math.floor(computeMaximoHoras(tiempoTotal)));
 		}
 		return tiempo;
 	}
