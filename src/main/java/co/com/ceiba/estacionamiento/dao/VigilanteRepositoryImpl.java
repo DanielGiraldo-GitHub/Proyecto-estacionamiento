@@ -63,7 +63,7 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 	}
 
 	@Override
-	public void salidaVehiculoParqueado(Parqueadero parqueadero) {
+	public void salidaVehiculo(Parqueadero parqueadero) {
 		entityManager.merge(parqueadero);
 	}
 
@@ -102,12 +102,7 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 	}
 
 	@Override
-	public Vehiculo buscarVehiculoPorId(int idVehiculo) {
-		return entityManager.find(Vehiculo.class, idVehiculo);
-	}
-
-	@Override
-	public Parqueadero buscarParqueaderoVehiculo(int idVehiculo) {
+	public Parqueadero buscarParqueadero(int idVehiculo) {
 		try {
 			Query query = entityManager
 					.createQuery("SELECT p FROM Parqueadero p WHERE p.estado <> 0 AND  p.idVehiculo =:idVehiculo");

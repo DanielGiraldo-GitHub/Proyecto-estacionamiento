@@ -43,7 +43,7 @@ public class VigilanteController extends ResponseEntityExceptionHandler {
 
 	@RequestMapping(value = "/ingresarVehiculo", method = RequestMethod.POST)
 	public void ingresarVehiculo(@RequestBody Vehiculo vehiculo) {
-		iVigilanteService.ingresarVehiculoParqueadero(vehiculo);
+		iVigilanteService.ingresarVehiculo(vehiculo);
 	}
 
 	@GetMapping("/consultarDisponibilidad")

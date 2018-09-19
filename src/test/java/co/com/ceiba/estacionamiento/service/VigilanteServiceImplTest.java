@@ -128,8 +128,8 @@ public class VigilanteServiceImplTest {
 		repository = Mockito.mock(VigilanteRepositoryImpl.class);
 		// Act}
 		service = new VigilanteServiceImpl(repository);
-		when(repository.buscarParqueaderoVehiculo(18)).thenReturn(parqueadero);
-		doNothing().when(repository).salidaVehiculoParqueado(parqueadero);
+		when(repository.buscarParqueadero(18)).thenReturn(parqueadero);
+		doNothing().when(repository).salidaVehiculo(parqueadero);
 
 		Parqueadero parqueaderoSalida = service.salidaVehiculo(vehiculo);
 		// Assert
@@ -147,8 +147,8 @@ public class VigilanteServiceImplTest {
 		repository = Mockito.mock(VigilanteRepositoryImpl.class);
 		// Act}
 		service = new VigilanteServiceImpl(repository);
-		when(repository.buscarParqueaderoVehiculo(18)).thenReturn(parqueadero);
-		doNothing().when(repository).salidaVehiculoParqueado(parqueadero);
+		when(repository.buscarParqueadero(18)).thenReturn(parqueadero);
+		doNothing().when(repository).salidaVehiculo(parqueadero);
 
 		Parqueadero parqueaderoSalida = service.salidaVehiculo(vehiculo);
 		// Assert
@@ -164,7 +164,7 @@ public class VigilanteServiceImplTest {
 		repository = Mockito.mock(VigilanteRepositoryImpl.class);
 		// Act
 		service = new VigilanteServiceImpl(repository);
-		when(repository.buscarParqueaderoVehiculo(18)).thenReturn(parqueadero);
+		when(repository.buscarParqueadero(18)).thenReturn(parqueadero);
 		try {
 			service.salidaVehiculo(vehiculo);
 
@@ -187,10 +187,10 @@ public class VigilanteServiceImplTest {
 		service = new VigilanteServiceImpl(repository);
 		when(repository.buscarVehiculo(vehiculo.getPlaca())).thenReturn(vehiculo);
 		doNothing().when(repository).guardarVehiculo(vehiculo);
-		when(repository.buscarParqueaderoVehiculo(vehiculo.getId())).thenReturn(parqueadero);
+		when(repository.buscarParqueadero(vehiculo.getId())).thenReturn(parqueadero);
 
 		try {
-			service.ingresarVehiculoParqueadero(vehiculo);
+			service.ingresarVehiculo(vehiculo);
 		} catch (ParqueaderoException e) {
 
 			Assert.assertEquals(VEHICULO_PARQUEADO, e.getMessage());
@@ -208,11 +208,11 @@ public class VigilanteServiceImplTest {
 		service = new VigilanteServiceImpl(repository);
 		when(repository.buscarVehiculo(vehiculo.getPlaca())).thenReturn(vehiculo);
 		doNothing().when(repository).guardarVehiculo(vehiculo);
-		when(repository.buscarParqueaderoVehiculo(vehiculo.getId())).thenReturn(null);
+		when(repository.buscarParqueadero(vehiculo.getId())).thenReturn(null);
 		doNothing().when(repository).ingresarVehiculoParqueadero(parqueadero);
 
 		// Assert
-		Assert.assertTrue(service.ingresarVehiculoParqueadero(vehiculo));
+		Assert.assertTrue(service.ingresarVehiculo(vehiculo));
 
 	}
 
@@ -228,10 +228,10 @@ public class VigilanteServiceImplTest {
 		doNothing().when(repository).guardarVehiculo(vehiculo);
 		vehiculo.setId(19);
 		when(repository.buscarVehiculo("XXL342")).thenReturn(vehiculo);
-		when(repository.buscarParqueaderoVehiculo(19)).thenReturn(null);
+		when(repository.buscarParqueadero(19)).thenReturn(null);
 		doNothing().when(repository).ingresarVehiculoParqueadero(parqueadero);
 		// Assert
-		Assert.assertEquals(true, service.ingresarVehiculoParqueadero(vehiculo));
+		Assert.assertEquals(true, service.ingresarVehiculo(vehiculo));
 
 	}
 
@@ -270,8 +270,8 @@ public class VigilanteServiceImplTest {
 		parqueadero.setFechaSalida(new Date());
 		parqueadero = mock(Parqueadero.class);
 		// Act
-		when(service.buscarParqueaderoVehiculo(idVehiculo)).thenReturn(parqueadero);
-		Parqueadero parqueaderoBusqueda = service.buscarParqueaderoVehiculo(idVehiculo);
+		when(service.buscarParqueadero(idVehiculo)).thenReturn(parqueadero);
+		Parqueadero parqueaderoBusqueda = service.buscarParqueadero(idVehiculo);
 		// Assert
 		Assert.assertNotNull(parqueaderoBusqueda);
 	}
@@ -279,9 +279,9 @@ public class VigilanteServiceImplTest {
 	@Test
 	public void buscarParqueaderoVehiculoNoEncontradoTest() {
 		int idVehiculo = 255;
-		Parqueadero parqueadero = service.buscarParqueaderoVehiculo(idVehiculo);
+		Parqueadero parqueadero = service.buscarParqueadero(idVehiculo);
 		parqueadero = mock(Parqueadero.class);
-		when(service.buscarParqueaderoVehiculo(idVehiculo)).thenReturn(parqueadero);
+		when(service.buscarParqueadero(idVehiculo)).thenReturn(parqueadero);
 
 		Assert.assertNotNull(parqueadero);
 	}

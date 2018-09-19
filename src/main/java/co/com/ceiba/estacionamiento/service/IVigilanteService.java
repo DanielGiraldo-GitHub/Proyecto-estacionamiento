@@ -15,7 +15,7 @@ public interface IVigilanteService {
 
 	Parqueadero salidaVehiculo(Vehiculo vehiculo) ;
 
-	boolean ingresarVehiculoParqueadero(Vehiculo vehiculo);
+	boolean ingresarVehiculo(Vehiculo vehiculo);
 
 	void guardarVehiculo(Vehiculo vehiculo);
 
@@ -24,10 +24,8 @@ public interface IVigilanteService {
 	void validarCampos(Vehiculo vehiculo);
 
 	void validarPlaca(String placa);
-
-	Vehiculo buscarVehiculoPorId(int idVehiculo);
 	
 	Vehiculo buscarVehiculoParqueado(String placa);
 	
-	Parqueadero buscarParqueaderoVehiculo(int idVehiculo);
+	Parqueadero buscarParqueadero(int idVehiculo);
 }

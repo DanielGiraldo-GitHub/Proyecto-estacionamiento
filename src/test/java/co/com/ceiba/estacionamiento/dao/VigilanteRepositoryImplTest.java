@@ -120,7 +120,7 @@ public class VigilanteRepositoryImplTest {
 		parqueadero.setFechaSalida(control.fechaAcutalSistema().getTime());
 		parqueadero.setPrecio(8000.0);
 		parqueadero = mock(Parqueadero.class);
-		repositorio.salidaVehiculoParqueado(parqueadero);
+		repositorio.salidaVehiculo(parqueadero);
 
 	}
 
@@ -138,8 +138,8 @@ public class VigilanteRepositoryImplTest {
 
 		Parqueadero parqueadero = new Parqueadero();
 		parqueadero.setId(23);
-		when(repositorio.buscarParqueaderoVehiculo(20)).thenReturn(parqueadero);
-		Parqueadero resultado = repositorio.buscarParqueaderoVehiculo(20);
+		when(repositorio.buscarParqueadero(20)).thenReturn(parqueadero);
+		Parqueadero resultado = repositorio.buscarParqueadero(20);
 		Assert.assertNotNull(resultado);
 	}
 
@@ -152,9 +152,9 @@ public class VigilanteRepositoryImplTest {
 		esperado.setEstado(false);
 		vehiculo = mock(Vehiculo.class);
 		esperado = mock(Parqueadero.class);
-		when(repositorio.buscarParqueaderoVehiculo(vehiculo.getId())).thenReturn(esperado);
+		when(repositorio.buscarParqueadero(vehiculo.getId())).thenReturn(esperado);
 
-		Parqueadero parqueadero = repositorio.buscarParqueaderoVehiculo(vehiculo.getId());
+		Parqueadero parqueadero = repositorio.buscarParqueadero(vehiculo.getId());
 		Assert.assertNotNull(parqueadero);
 	}
 

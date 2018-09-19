@@ -14,7 +14,7 @@ public interface IVigilanteRepository {
 
 	List<Vehiculo> listarMotosParqueadas();
 
-	void salidaVehiculoParqueado(Parqueadero parqueadero);
+	void salidaVehiculo(Parqueadero parqueadero);
 
 	void ingresarVehiculoParqueadero(Parqueadero parqueadero);
 
@@ -22,11 +22,9 @@ public interface IVigilanteRepository {
 
 	Vehiculo buscarVehiculo(String placa);
 
-	Vehiculo buscarVehiculoPorId(int idVehiculo);
-
 	Vehiculo buscarVehiculoParqueado(String placa);
 
-	Parqueadero buscarParqueaderoVehiculo(int idVehiculo);
+	Parqueadero buscarParqueadero(int idVehiculo);
 
 
 }

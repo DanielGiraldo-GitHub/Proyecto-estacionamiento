@@ -62,10 +62,7 @@ public class VigilanteServiceImpl implements IVigilanteService {
 			controlFechas.velidarDia();
 	}
 
-	@Override
-	public Vehiculo buscarVehiculoPorId(int idVehiculo) {
-		return repositorio.buscarVehiculoPorId(idVehiculo);
-	}
+	
 
 	@Override
 	public Disponibilidad consultarDisponibilidad() {
@@ -94,7 +91,7 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	public Parqueadero salidaVehiculo(Vehiculo vehiculo) {
 
 		TiempoPermanencia tiempoPermanencia;
-		Parqueadero parqueadero = buscarParqueaderoVehiculo(vehiculo.getId());
+		Parqueadero parqueadero = buscarParqueadero(vehiculo.getId());
 
 		if (parqueadero == null) {
 			throw new ParqueaderoException(VEHICULO_NO_PARQUEADO);
@@ -107,13 +104,13 @@ public class VigilanteServiceImpl implements IVigilanteService {
 			}
 			parqueadero.setEstado(false);
 			parqueadero.setFechaSalida(controlFechas.fechaAcutalSistema().getTime());
-			repositorio.salidaVehiculoParqueado(parqueadero);
+			repositorio.salidaVehiculo(parqueadero);
 		}
 		return parqueadero;
 	}
 
 	@Override
-	public boolean ingresarVehiculoParqueadero(Vehiculo vehiculo) {
+	public boolean ingresarVehiculo(Vehiculo vehiculo) {
 
 		Parqueadero parqueadero = null;
 		Vehiculo busquedaVehiculo = null;
@@ -122,7 +119,7 @@ public class VigilanteServiceImpl implements IVigilanteService {
 			busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
 		}
 		busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
-		if (buscarParqueaderoVehiculo(vehiculo.getId()) != null)
+		if (buscarParqueadero(vehiculo.getId()) != null)
 			throw new ParqueaderoException(VEHICULO_PARQUEADO);
 
 		parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(), busquedaVehiculo.getId(), true);
@@ -137,7 +134,7 @@ public class VigilanteServiceImpl implements IVigilanteService {
 	}
 
 	@Override
-	public Parqueadero buscarParqueaderoVehiculo(int idVehiculo) {
-		return repositorio.buscarParqueaderoVehiculo(idVehiculo);
+	public Parqueadero buscarParqueadero(int idVehiculo) {
+		return repositorio.buscarParqueadero(idVehiculo);
 	}
 }
