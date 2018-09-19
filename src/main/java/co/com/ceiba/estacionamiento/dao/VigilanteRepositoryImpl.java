@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import co.com.ceiba.estacionamiento.model.Parqueadero;
 import co.com.ceiba.estacionamiento.model.Vehiculo;
+import dominio.excepcion.ParqueaderoException;
 
 @Repository
 @Transactional
@@ -15,7 +16,9 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 
 	@PersistenceContext
 	public EntityManager entityManager;
-	
+	static final String VEHICULO_NO_ENCONTRADO = "Este vehiculo no se encuentra registrado";
+	static final String VEHICULO_NO_ENCONTRADO_PARQUEADERO = "No se ha encontrado ningun vehiculo";
+
 	public VigilanteRepositoryImpl(EntityManager entityManager) {
 		super();
 		this.entityManager = entityManager;
@@ -43,21 +46,21 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 
 	@Override
 	public List<Vehiculo> listarCarrosParqueados() {
-			Query query = entityManager.createQuery("SELECT  v "
-					+ "FROM Parqueadero p join Vehiculo v on p.idVehiculo = v.id WHERE   v.tipoVehiculo = 'C' and p.estado <> 0");	
-			@SuppressWarnings("unchecked")
-			List<Vehiculo> lista = query.getResultList();
-			return lista;
+		Query query = entityManager.createQuery("SELECT  v "
+				+ "FROM Parqueadero p join Vehiculo v on p.idVehiculo = v.id WHERE   v.tipoVehiculo = 'C' and p.estado <> 0");
+		@SuppressWarnings("unchecked")
+		List<Vehiculo> lista = query.getResultList();
+		return lista;
 	}
 
 	@Override
 	public List<Vehiculo> listarMotosParqueadas() {
-			Query query = entityManager.createQuery("SELECT  v "
-					+ "                               FROM    Parqueadero p join Vehiculo v on p.idVehiculo = v.id "
-					+ "                               WHERE   v.tipoVehiculo = 'M' and p.estado <> 0");
-			@SuppressWarnings("unchecked")
-			List<Vehiculo> lista = query.getResultList();
-			return lista;
+		Query query = entityManager.createQuery("SELECT  v "
+				+ "                               FROM    Parqueadero p join Vehiculo v on p.idVehiculo = v.id "
+				+ "                               WHERE   v.tipoVehiculo = 'M' and p.estado <> 0");
+		@SuppressWarnings("unchecked")
+		List<Vehiculo> lista = query.getResultList();
+		return lista;
 	}
 
 	@Override
@@ -72,7 +75,7 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 
 	@Override
 	public int guardarVehiculo(Vehiculo vehiculo) {
-		 entityManager.persist(vehiculo);
+		entityManager.persist(vehiculo);
 		return vehiculo.getId();
 	}
 
@@ -83,7 +86,7 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 			query.setParameter("placa", placa);
 			return (Vehiculo) (query.getSingleResult());
 		} catch (RuntimeException e) {
-			return null;
+			throw new ParqueaderoException(VEHICULO_NO_ENCONTRADO);
 		}
 	}
 
@@ -96,7 +99,7 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 			query.setParameter("placa", placa);
 			return (Vehiculo) (query.getSingleResult());
 		} catch (RuntimeException e) {
-			return null;
+			throw new ParqueaderoException(VEHICULO_NO_ENCONTRADO_PARQUEADERO);
 		}
 	}
 
@@ -113,7 +116,7 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 			query.setParameter("idVehiculo", idVehiculo);
 			return (Parqueadero) (query.getSingleResult());
 		} catch (RuntimeException e) {
-			return null;
+			throw new ParqueaderoException(VEHICULO_NO_ENCONTRADO_PARQUEADERO);
 		}
 	}
 }
