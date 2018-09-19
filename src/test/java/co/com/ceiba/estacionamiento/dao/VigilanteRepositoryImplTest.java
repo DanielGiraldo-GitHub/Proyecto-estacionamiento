@@ -28,7 +28,7 @@ public class VigilanteRepositoryImplTest {
 
 	@BeforeClass
 	public static void setUpClass() {
-		repositorio = new VigilanteRepositoryImpl(entityManager);
+		
 		repositorio = mock(VigilanteRepositoryImpl.class);
 	}
 

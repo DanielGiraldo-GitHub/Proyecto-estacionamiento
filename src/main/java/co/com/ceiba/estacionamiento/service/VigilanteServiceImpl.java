@@ -33,8 +33,6 @@ public class VigilanteServiceImpl implements IVigilanteService {
 		this.repositorio = iVigilanteRepository;
 	}
 
-	public VigilanteServiceImpl() {
-	}
 
 	@Override
 	public void guardarVehiculo(Vehiculo vehiculo) {

@@ -14,17 +14,10 @@ import dominio.excepcion.ParqueaderoException;
 @Transactional
 public class VigilanteRepositoryImpl implements IVigilanteRepository {
 
-	@PersistenceContext
+	@PersistenceContext 
 	public EntityManager entityManager;
 	static final String VEHICULO_NO_ENCONTRADO = "Este vehiculo no se encuentra registrado";
 	static final String VEHICULO_NO_ENCONTRADO_PARQUEADERO = "No se ha encontrado ningun vehiculo";
-
-	public VigilanteRepositoryImpl(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
-
-	public VigilanteRepositoryImpl() {
-	}
 
 	@Override
 	public Integer contarCarrosParqueados() {
