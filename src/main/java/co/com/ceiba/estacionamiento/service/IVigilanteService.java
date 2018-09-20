@@ -25,7 +25,5 @@ public interface IVigilanteService {
 
 	void validarPlaca(String placa);
 	
-	Vehiculo buscarVehiculoParqueado(String placa);
-	
 	Parqueadero buscarParqueadero(int idVehiculo);
 }

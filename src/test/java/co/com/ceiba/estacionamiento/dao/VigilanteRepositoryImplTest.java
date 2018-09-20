@@ -157,14 +157,4 @@ public class VigilanteRepositoryImplTest {
 		Parqueadero parqueadero = repositorio.buscarParqueadero(vehiculo.getId());
 		Assert.assertNotNull(parqueadero);
 	}
-
-	@Test
-	public void buscarVehiculoParqueadoTest() {
-
-		Vehiculo vehiculoEsperado = new Vehiculo(20, "KDY533", "C", 2000);
-		vehiculoEsperado = mock(Vehiculo.class);
-		when(repositorio.buscarVehiculoParqueado("KDY533")).thenReturn(vehiculoEsperado);
-		Vehiculo vehiculo = repositorio.buscarVehiculoParqueado("KDY533");
-		Assert.assertNotNull(vehiculo);
-	}
 }

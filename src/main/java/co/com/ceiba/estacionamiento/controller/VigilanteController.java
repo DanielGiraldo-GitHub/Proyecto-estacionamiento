@@ -56,11 +56,6 @@ public class VigilanteController extends ResponseEntityExceptionHandler {
 		return iVigilanteService.buscarVehiculo(placa);
 	}
 
-	@GetMapping("/buscarVehiculoParqueado")
-	public Vehiculo buscarVehiculoParqueado(@RequestBody Vehiculo vehiculo) {
-		return iVigilanteService.buscarVehiculoParqueado(vehiculo.getPlaca());
-	}
-
 	@GetMapping("/listarMotosParqueadas")
 	public List<Vehiculo> listarMotosParqueadas() {
 		return iVigilanteService.listarMotosParqueadas();

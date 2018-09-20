@@ -33,7 +33,6 @@ public class VigilanteServiceImpl implements IVigilanteService {
 		this.repositorio = iVigilanteRepository;
 	}
 
-
 	@Override
 	public void guardarVehiculo(Vehiculo vehiculo) {
 		validarCampos(vehiculo);
@@ -116,19 +115,14 @@ public class VigilanteServiceImpl implements IVigilanteService {
 			guardarVehiculo(vehiculo);
 			busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
 		}
-		busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
 		if (buscarParqueadero(vehiculo.getId()) != null)
 			throw new ParqueaderoException(VEHICULO_PARQUEADO);
-
+		
+		busquedaVehiculo = buscarVehiculo(vehiculo.getPlaca());
 		parqueadero = new Parqueadero(controlFechas.fechaAcutalSistema().getTime(), busquedaVehiculo.getId(), true);
 		repositorio.ingresarVehiculoParqueadero(parqueadero);
 
 		return true;
-	}
-
-	@Override
-	public Vehiculo buscarVehiculoParqueado(String placa) {
-		return repositorio.buscarVehiculo(placa);
 	}
 
 	@Override

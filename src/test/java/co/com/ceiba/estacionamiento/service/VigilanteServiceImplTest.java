@@ -34,7 +34,7 @@ public class VigilanteServiceImplTest {
 	static final String VEHICULO_NO_PARQUEADO = "Este vehiculo no se encuentra en el parqueadero";
 	static final String PARQUEADERO_SIN_CUPO_DE_CARRO = "El parqueadero no tiene cupos disponibles para carros";
 	static final String PARQUEADERO_SIN_CUPO_DE_MOTO = "El parqueadero no tiene cupos disponibles para moto";
-	
+
 	@Test
 	public void guardarVehiculoTest() {
 		// Arrange
@@ -45,6 +45,7 @@ public class VigilanteServiceImplTest {
 		try {
 			ser.guardarVehiculo(vehiculo);
 		} catch (RuntimeException e) {
+			// Assert
 			Assert.assertEquals(null, e.getMessage());
 		}
 	}
@@ -114,7 +115,8 @@ public class VigilanteServiceImplTest {
 		try {
 			ser.salidaVehiculo(vehiculo);
 		} catch (ParqueaderoException e) {
-			Assert.assertEquals(VEHICULO_NO_ENCONTRADO_PARQUEADERO, e.getMessage());
+			// Assert
+			Assert.assertEquals(VEHICULO_NO_PARQUEADO, e.getMessage());
 		}
 	}
 
@@ -124,13 +126,11 @@ public class VigilanteServiceImplTest {
 		Vehiculo vehiculo = new Vehiculo(18, "FDH851", "C", 1800);
 		Parqueadero parqueadero = new Parqueadero(new Date(), vehiculo.getId(), false);
 		parqueadero.setFechaSalida(new Date());
-
 		repository = Mockito.mock(VigilanteRepositoryImpl.class);
 		// Act}
 		service = new VigilanteServiceImpl(repository);
 		when(repository.buscarParqueadero(18)).thenReturn(parqueadero);
 		doNothing().when(repository).salidaVehiculo(parqueadero);
-
 		Parqueadero parqueaderoSalida = service.salidaVehiculo(vehiculo);
 		// Assert
 		Assert.assertNotNull(parqueaderoSalida);
@@ -140,16 +140,13 @@ public class VigilanteServiceImplTest {
 	public void salidaVehiculoMotoTest() {
 		// Arrange
 		Vehiculo vehiculo = new Vehiculo(18, "BCA54C", "M", 125);
-
 		Parqueadero parqueadero = new Parqueadero(new Date(), vehiculo.getId(), false);
 		parqueadero.setFechaSalida(new Date());
-
 		repository = Mockito.mock(VigilanteRepositoryImpl.class);
 		// Act}
 		service = new VigilanteServiceImpl(repository);
 		when(repository.buscarParqueadero(18)).thenReturn(parqueadero);
 		doNothing().when(repository).salidaVehiculo(parqueadero);
-
 		Parqueadero parqueaderoSalida = service.salidaVehiculo(vehiculo);
 		// Assert
 		Assert.assertNotNull(parqueaderoSalida);
@@ -159,7 +156,6 @@ public class VigilanteServiceImplTest {
 	public void salidaVehiculoNoParqueadoTest() {
 		// Arrange
 		Vehiculo vehiculo = new Vehiculo(18, "BCA54C", "M", 125);
-
 		Parqueadero parqueadero = null;
 		repository = Mockito.mock(VigilanteRepositoryImpl.class);
 		// Act
@@ -167,7 +163,6 @@ public class VigilanteServiceImplTest {
 		when(repository.buscarParqueadero(18)).thenReturn(parqueadero);
 		try {
 			service.salidaVehiculo(vehiculo);
-
 		} catch (Exception e) {
 			// Assert
 			Assert.assertEquals(VEHICULO_NO_PARQUEADO, e.getMessage());
@@ -192,7 +187,7 @@ public class VigilanteServiceImplTest {
 		try {
 			service.ingresarVehiculo(vehiculo);
 		} catch (ParqueaderoException e) {
-
+			// Assert
 			Assert.assertEquals(VEHICULO_PARQUEADO, e.getMessage());
 		}
 	}
@@ -236,33 +231,6 @@ public class VigilanteServiceImplTest {
 	}
 
 	@Test
-	public void buscarVehiculoParqueadoEncontradoTest() {
-		// Arrange
-		Vehiculo vehiculo = new Vehiculo();
-		vehiculo.setId(18);
-		vehiculo.setPlaca("BCA54C");
-		vehiculo.setTipoVehiculo("M");
-		vehiculo.setCilindraje(125);
-		// Act
-		when(service.buscarVehiculoParqueado(vehiculo.getPlaca())).thenReturn(vehiculo);
-		Vehiculo busqueda = service.buscarVehiculoParqueado(vehiculo.getPlaca());
-		// Assert
-		Assert.assertNotNull(busqueda);
-	}
-
-	@Test
-	public void buscarVehiculoParqueadoNoEncontradoTest() {
-		// Arrange
-		Vehiculo vehiculo = new Vehiculo();
-		vehiculo.setPlaca("FSJ54C");
-		vehiculo = mock(Vehiculo.class);
-
-		Vehiculo busqueda = service.buscarVehiculoParqueado(vehiculo.getPlaca());
-		// Assert
-		Assert.assertEquals(null, busqueda);
-	}
-
-	@Test
 	public void buscarParqueaderoVehiculoEncontradoTest() {
 		// Arrange
 		int idVehiculo = 18;
@@ -301,7 +269,7 @@ public class VigilanteServiceImplTest {
 		// Assert
 		Assert.assertEquals(disponibilidad.getCarros(), result.getCarros());
 	}
-	
+
 	@Test
 	public void consultarDisponibilidadSinCupoCarro() {
 		// Arrange
@@ -316,11 +284,10 @@ public class VigilanteServiceImplTest {
 		try {
 			service.consultarDisponibilidad();
 		} catch (ParqueaderoException e) {
-			// Assert	
-			Assert.assertEquals(PARQUEADERO_SIN_CUPO_DE_CARRO,e.getMessage());
-		}		
+			// Assert
+			Assert.assertEquals(PARQUEADERO_SIN_CUPO_DE_CARRO, e.getMessage());
+		}
 	}
-	
 
 	@Test
 	public void consultarDisponibilidadSinCupoMoto() {
@@ -336,8 +303,8 @@ public class VigilanteServiceImplTest {
 		try {
 			service.consultarDisponibilidad();
 		} catch (ParqueaderoException e) {
-			// Assert	
-			Assert.assertEquals(PARQUEADERO_SIN_CUPO_DE_MOTO,e.getMessage());
-		}		
+			// Assert
+			Assert.assertEquals(PARQUEADERO_SIN_CUPO_DE_MOTO, e.getMessage());
+		}
 	}
 }

@@ -58,16 +58,19 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 	@Override
 	public void salidaVehiculo(Parqueadero parqueadero) {
 		entityManager.merge(parqueadero);
+		entityManager.flush();
 	}
 
 	@Override
 	public void ingresarVehiculoParqueadero(Parqueadero parqueadero) {
 		entityManager.persist(parqueadero);
+		entityManager.flush();
 	}
 
 	@Override
 	public void guardarVehiculo(Vehiculo vehiculo) {
 		entityManager.persist(vehiculo);
+		entityManager.flush();
 	}
 
 	@Override
@@ -82,19 +85,6 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 	}
 
 	@Override
-	public Vehiculo buscarVehiculoParqueado(String placa) {
-		try {
-			Query query = entityManager.createQuery("SELECT   v "
-					+ "                               FROM    Parqueadero p join Vehiculo v on p.idVehiculo = v.id "
-					+ "                               WHERE   p.estado <> 0 AND v.placa =:placa");
-			query.setParameter("placa", placa);
-			return (Vehiculo) (query.getSingleResult());
-		} catch (RuntimeException e) {
-			throw new ParqueaderoException(VEHICULO_NO_ENCONTRADO_PARQUEADERO);
-		}
-	}
-
-	@Override
 	public Parqueadero buscarParqueadero(int idVehiculo) {
 		try {
 			Query query = entityManager
@@ -102,7 +92,7 @@ public class VigilanteRepositoryImpl implements IVigilanteRepository {
 			query.setParameter("idVehiculo", idVehiculo);
 			return (Parqueadero) (query.getSingleResult());
 		} catch (RuntimeException e) {
-			throw new ParqueaderoException(VEHICULO_NO_ENCONTRADO_PARQUEADERO);
+			return null;
 		}
 	}
 }
